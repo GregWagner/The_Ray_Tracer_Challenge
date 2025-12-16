@@ -25,7 +25,6 @@ if(RAYTRACER_ENABLE_WARNINGS)
 endif()
 
 add_library(raytracer_lib
-    src/lib/tuple.cpp
     src/lib/color.cpp
     src/lib/canvas.cpp
 )

@@ -6,19 +6,68 @@
 using namespace rtc;
 using Catch::Approx;
 
-SCENARIO("Points and vectors are distinguished by w", "[tuple][bdd]")
+SCENARIO("A tuple with w = 1.0 is a point", "[tuple][bdd]")
 {
-    GIVEN("a point created with Tuple::point and a vector created with Tuple::vector")
+    GIVEN("a <- typle(4.3, -4.2, 3.1, 1.0)")
     {
-        Tuple p = Tuple::point(4, -4, 3);
-        Tuple v = Tuple::vector(4, -4, 3);
+        Tuple a(4.3, -4.2, 3.1, 1.0);
 
-        THEN("the point and vector predicates are correct")
+        THEN("a.x == 4.3")
         {
-            REQUIRE(p.is_point());
-            REQUIRE_FALSE(p.is_vector());
-            REQUIRE(v.is_vector());
-            REQUIRE_FALSE(v.is_point());
+            REQUIRE(a.x == Approx(4.3));
+        }
+        THEN("a.y == -4.2")
+        {
+            REQUIRE(a.y == Approx(-4.2));
+        }
+        THEN("a.z == 3.1")
+        {
+            REQUIRE(a.z == Approx(3.1));
+        }
+        THEN("a.w == 1.0")
+        {
+            REQUIRE(a.w == Approx(1.0));
+        }
+        THEN("a is a point")
+        {
+            REQUIRE(a.is_point());
+        }
+        THEN("a is not a vector")
+        {
+            REQUIRE_FALSE(a.is_vector());
+        }
+    }
+}
+
+SCENARIO("A tuple with w = 0 is a vector", "[tuple][bdd]")
+{
+    GIVEN("a <- typle(4.3, -4.2, 3.1, 1.0)")
+    {
+        Tuple a(4.3, -4.2, 3.1, 0.0);
+
+        THEN("a.x == 4.3")
+        {
+            REQUIRE(a.x == Approx(4.3));
+        }
+        THEN("a.y == -4.2")
+        {
+            REQUIRE(a.y == Approx(-4.2));
+        }
+        THEN("a.z == 3.1")
+        {
+            REQUIRE(a.z == Approx(3.1));
+        }
+        THEN("a.w == 0.0")
+        {
+            REQUIRE(a.w == Approx(0));
+        }
+        THEN("a is not a point")
+        {
+            REQUIRE_FALSE(a.is_point());
+        }
+        THEN("a is not a vector")
+        {
+            REQUIRE(a.is_vector());
         }
     }
 }
