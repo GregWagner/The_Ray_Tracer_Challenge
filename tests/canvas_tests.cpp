@@ -35,3 +35,22 @@ TEST(Canvas, ConstructingPpmHeader) {
     std::string expectedValue = "P3\n5 3\n255\n";
     EXPECT_EQ(ppmValue.substr(0, expectedValue.size()), expectedValue);
 }
+
+TEST(Canvas, ConstructingPpmPixelData) {
+    Canvas canvasValue = canvas(5, 3);
+    Tuple colorOne = color(1.5, 0.0, 0.0);
+    Tuple colorTwo = color(0.0, 0.5, 0.0);
+    Tuple colorThree = color(-0.5, 0.0, 1.0);
+
+    writePixel(canvasValue, 0, 0, colorOne);
+    writePixel(canvasValue, 2, 1, colorTwo);
+    writePixel(canvasValue, 4, 2, colorThree);
+
+    std::string ppmValue = canvasToPpm(canvasValue);
+
+    std::string expectedRows =
+        "255 0 0 0 0 0 0 0 0 0 0 0 0 0 0\n"
+        "0 0 0 0 0 0 0 128 0 0 0 0 0 0 0\n"
+        "0 0 0 0 0 0 0 0 0 0 0 0 0 0 255\n";
+    EXPECT_TRUE(ppmValue.find(expectedRows) != std::string::npos);
+}
