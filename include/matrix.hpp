@@ -6,6 +6,12 @@
 #include <cstddef>
 #include <initializer_list>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
+const double PI = M_PI;
+
 struct Matrix {
     int rows;
     int columns;
@@ -74,6 +80,10 @@ Matrix translationMatrix(double xValue, double yValue, double zValue);
 
 Matrix scaling(double xValue, double yValue, double zValue);
 Matrix scalingMatrix(double xValue, double yValue, double zValue);
+
+Matrix rotationX(double angleValue);
+Matrix rotation_x(double angleValue);
+Matrix rotationXMatrix(double angleValue);
 Matrix identity_matrix();
 Matrix identity();
 

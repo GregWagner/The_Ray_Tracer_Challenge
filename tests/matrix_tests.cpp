@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include <cmath>
+
 #include "matrix.hpp"
 #include "tuple.hpp"
 
@@ -388,6 +390,25 @@ TEST(Matrix, TranslationDoesNotAffectVectors) {
     Tuple resultValue = transformValue * vectorValue;
 
     EXPECT_TRUE(resultValue == vectorValue);
+}
+
+TEST(Matrix, RotatingPointAroundXAxis) {
+    Tuple pointValue = point(0.0, 1.0, 0.0);
+
+    Matrix halfQuarter = rotation_x(PI / 4.0);
+    Matrix fullQuarter = rotation_x(PI / 2.0);
+
+    Tuple resultOne = halfQuarter * pointValue;
+    Tuple resultTwo = fullQuarter * pointValue;
+
+    double rootTwoOverTwo = std::sqrt(2.0) / 2.0;
+    EXPECT_NEAR(resultOne.x, 0.0, 0.00001);
+    EXPECT_NEAR(resultOne.y, rootTwoOverTwo, 0.00001);
+    EXPECT_NEAR(resultOne.z, rootTwoOverTwo, 0.00001);
+
+    EXPECT_NEAR(resultTwo.x, 0.0, 0.00001);
+    EXPECT_NEAR(resultTwo.y, 0.0, 0.00001);
+    EXPECT_NEAR(resultTwo.z, 1.0, 0.00001);
 }
 
 TEST(Matrix, MultiplyingByTranslationMatrix) {

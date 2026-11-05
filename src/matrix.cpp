@@ -179,6 +179,16 @@ Matrix scalingMatrix(double xValue, double yValue, double zValue) {
     return scaling(xValue, yValue, zValue);
 }
 
+Matrix rotationX(double angleValue) {
+    double cosineValue = std::cos(angleValue);
+    double sineValue = std::sin(angleValue);
+    Matrix resultValue = Matrix(1.0, 0.0, 0.0, 0.0,
+                                0.0, cosineValue, -sineValue, 0.0,
+                                0.0, sineValue, cosineValue, 0.0,
+                                0.0, 0.0, 0.0, 1.0);
+    return resultValue;
+}
+
 Matrix inverse(const Matrix &matrixValue) {
     Matrix cofactorMatrix;
     cofactorMatrix.rows = matrixValue.rows;
@@ -348,4 +358,11 @@ bool operator==(const Matrix &leftValue, const Matrix &rightValue) {
         index = index + 1;
     }
     return true;
+}
+Matrix rotation_x(double angleValue) {
+    return rotationX(angleValue);
+}
+
+Matrix rotationXMatrix(double angleValue) {
+    return rotationX(angleValue);
 }
