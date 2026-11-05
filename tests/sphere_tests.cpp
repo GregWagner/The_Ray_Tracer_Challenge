@@ -25,6 +25,55 @@ TEST(Sphere, IntersectionEncapsulatesTAndObject) {
     EXPECT_EQ(intersectionValue.object, &sphereValue);
 }
 
+TEST(Sphere, HitWhenAllIntersectionsPositive) {
+    Sphere sphereValue = sphere();
+    Intersection intersectionOne = intersection(1.0, sphereValue);
+    Intersection intersectionTwo = intersection(2.0, sphereValue);
+    Intersections intersectionsValue = intersections(intersectionTwo, intersectionOne);
+
+    Hit hitValue = hit(intersectionsValue);
+
+    EXPECT_TRUE(hitValue);
+    EXPECT_TRUE(hitValue == intersectionOne);
+}
+
+TEST(Sphere, HitWhenSomeIntersectionsNegative) {
+    Sphere sphereValue = sphere();
+    Intersection intersectionOne = intersection(-1.0, sphereValue);
+    Intersection intersectionTwo = intersection(1.0, sphereValue);
+    Intersections intersectionsValue = intersections(intersectionTwo, intersectionOne);
+
+    Hit hitValue = hit(intersectionsValue);
+
+    EXPECT_TRUE(hitValue);
+    EXPECT_TRUE(hitValue == intersectionTwo);
+}
+
+TEST(Sphere, HitWhenAllIntersectionsNegative) {
+    Sphere sphereValue = sphere();
+    Intersection intersectionOne = intersection(-2.0, sphereValue);
+    Intersection intersectionTwo = intersection(-1.0, sphereValue);
+    Intersections intersectionsValue = intersections(intersectionTwo, intersectionOne);
+
+    Hit hitValue = hit(intersectionsValue);
+
+    EXPECT_FALSE(hitValue);
+}
+
+TEST(Sphere, HitIsLowestNonnegativeIntersection) {
+    Sphere sphereValue = sphere();
+    Intersection intersectionOne = intersection(5.0, sphereValue);
+    Intersection intersectionTwo = intersection(7.0, sphereValue);
+    Intersection intersectionThree = intersection(-3.0, sphereValue);
+    Intersection intersectionFour = intersection(2.0, sphereValue);
+    Intersections intersectionsValue = intersections(intersectionOne, intersectionTwo, intersectionThree, intersectionFour);
+
+    Hit hitValue = hit(intersectionsValue);
+
+    EXPECT_TRUE(hitValue);
+    EXPECT_TRUE(hitValue == intersectionFour);
+}
+
 TEST(Sphere, IntersectSetsObjectOnIntersection) {
     Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
     Sphere sphereValue = sphere();

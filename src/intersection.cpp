@@ -26,6 +26,20 @@ Intersection::operator double() const {
     return t;
 }
 
+bool operator==(const Intersection &leftValue, const Intersection &rightValue) {
+    double differenceValue = leftValue.t - rightValue.t;
+    if (differenceValue < 0.0) {
+        differenceValue = -differenceValue;
+    }
+    if (differenceValue > 0.00001) {
+        return false;
+    }
+    if (leftValue.object != rightValue.object) {
+        return false;
+    }
+    return true;
+}
+
 Intersection intersection(double tValue, const Sphere &sphereValue) {
     Intersection resultValue(tValue, &sphereValue);
     return resultValue;
@@ -48,10 +62,112 @@ const Intersection &Intersections::operator[](std::size_t indexValue) const {
     return intersections[indexValue];
 }
 
+Hit Intersections::hit() const {
+    return ::hit(*this);
+}
+
+Hit::Hit() {
+    intersection = 0;
+}
+
+Hit::Hit(Intersection *intersectionValue) {
+    intersection = intersectionValue;
+}
+
+bool Hit::has_value() const {
+    if (intersection != 0) {
+        return true;
+    }
+    return false;
+}
+
+bool Hit::hasValue() const {
+    return has_value();
+}
+
+Hit::operator bool() const {
+    if (intersection != 0) {
+        return true;
+    }
+    return false;
+}
+
+Intersection &Hit::value() const {
+    return *intersection;
+}
+
+Intersection *Hit::operator->() const {
+    return intersection;
+}
+
+Intersection &Hit::operator*() const {
+    return *intersection;
+}
+
+Hit::operator Intersection *() const {
+    return intersection;
+}
+
+Hit::operator const Intersection *() const {
+    return intersection;
+}
+
+Hit::operator std::optional<Intersection>() const {
+    if (intersection != 0) {
+        return *intersection;
+    }
+    return std::nullopt;
+}
+
+Hit::operator Intersection() const {
+    return *intersection;
+}
+
+bool Hit::operator==(const Hit &rightValue) const {
+    return intersection == rightValue.intersection;
+}
+
+bool Hit::operator==(const Intersection &rightValue) const {
+    if (intersection == 0) {
+        return false;
+    }
+    return *intersection == rightValue;
+}
+
+Hit hit(const Intersections &intersectionsValue) {
+    Intersection *bestValue = 0;
+    for (std::size_t indexValue = 0; indexValue < intersectionsValue.intersections.size(); indexValue++) {
+        const Intersection &candidateValue = intersectionsValue.intersections[indexValue];
+        if (candidateValue.t >= 0.0) {
+            if (bestValue == 0 || candidateValue.t < bestValue->t) {
+                bestValue = const_cast<Intersection *>(&candidateValue);
+            }
+        }
+    }
+    return Hit(bestValue);
+}
+
 Intersections intersections(Intersection firstValue, Intersection secondValue) {
     Intersections resultValue;
     resultValue.add(firstValue);
     resultValue.add(secondValue);
+    return resultValue;
+}
+
+Intersections intersections(Intersection firstValue, Intersection secondValue, Intersection thirdValue) {
+    Intersections resultValue;
+    resultValue.add(firstValue);
+    resultValue.add(secondValue);
+    resultValue.add(thirdValue);
+    return resultValue;
+}
+
+Intersections intersections(Intersection firstValue, Intersection secondValue, Intersection thirdValue, Intersection fourthValue) {
+    Intersections resultValue;
+    resultValue.add(firstValue);
+    resultValue.add(secondValue);
+    resultValue.add(thirdValue);
+    resultValue.add(fourthValue);
     return resultValue;
 }
 

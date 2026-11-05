@@ -3,6 +3,7 @@
 
 #include <cstddef>
 #include <initializer_list>
+#include <optional>
 #include <vector>
 
 #include "ray.hpp"
@@ -27,6 +28,32 @@ struct Intersection {
     operator double() const;
 };
 
+bool operator==(const Intersection &leftValue, const Intersection &rightValue);
+
+struct Hit {
+    Intersection *intersection;
+
+    Hit();
+    Hit(Intersection *intersectionValue);
+
+    bool has_value() const;
+    bool hasValue() const;
+
+    operator bool() const;
+
+    Intersection &value() const;
+    Intersection *operator->() const;
+    Intersection &operator*() const;
+
+    operator Intersection *() const;
+    operator const Intersection *() const;
+    operator std::optional<Intersection>() const;
+    operator Intersection() const;
+
+    bool operator==(const Hit &rightValue) const;
+    bool operator==(const Intersection &rightValue) const;
+};
+
 struct Intersections {
     std::vector<Intersection> intersections;
     int count;
@@ -36,6 +63,8 @@ struct Intersections {
     void add(const Intersection &intersectionValue);
     Intersection &operator[](std::size_t indexValue);
     const Intersection &operator[](std::size_t indexValue) const;
+
+    Hit hit() const;
 };
 
 Intersections intersect(const Sphere &sphereValue, const Ray &rayValue);
@@ -43,6 +72,10 @@ Intersections intersect(const Sphere &sphereValue, const Ray &rayValue);
 Intersection intersection(double tValue, const Sphere &sphereValue);
 
 Intersections intersections(Intersection firstValue, Intersection secondValue);
+Intersections intersections(Intersection firstValue, Intersection secondValue, Intersection thirdValue);
+Intersections intersections(Intersection firstValue, Intersection secondValue, Intersection thirdValue, Intersection fourthValue);
 Intersections intersections(std::initializer_list<Intersection> values);
+
+Hit hit(const Intersections &intersectionsValue);
 
 #endif
