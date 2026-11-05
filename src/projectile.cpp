@@ -1,3 +1,4 @@
+// Example program from Chapter 1 using vectors and points.
 #include "projectile.hpp"
 
 Projectile projectile(Tuple positionValue, Tuple velocityValue) {
@@ -16,6 +17,7 @@ Environment environment(Tuple gravityValue, Tuple windValue) {
 
 Projectile tick(Environment environmentValue, Projectile projectileValue) {
     Tuple positionValue = projectileValue.position + projectileValue.velocity;
-    Tuple velocityValue = projectileValue.velocity + environmentValue.gravity + environmentValue.wind;
+    Tuple velocityValue =
+        projectileValue.velocity + environmentValue.gravity + environmentValue.wind;
     return projectile(positionValue, velocityValue);
 }
