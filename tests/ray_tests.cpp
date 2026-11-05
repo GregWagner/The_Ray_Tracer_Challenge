@@ -12,3 +12,12 @@ TEST(Ray, CreatingAndQueryingARay) {
     EXPECT_TRUE(rayValue.origin == originValue);
     EXPECT_TRUE(rayValue.direction == directionValue);
 }
+
+TEST(Ray, ComputingAPointFromADistance) {
+    Ray rayValue = ray(point(2.0, 3.0, 4.0), vector(1.0, 0.0, 0.0));
+
+    EXPECT_TRUE(position(rayValue, 0.0) == point(2.0, 3.0, 4.0));
+    EXPECT_TRUE(position(rayValue, 1.0) == point(3.0, 3.0, 4.0));
+    EXPECT_TRUE(position(rayValue, -1.0) == point(1.0, 3.0, 4.0));
+    EXPECT_TRUE(position(rayValue, 2.5) == point(4.5, 3.0, 4.0));
+}
