@@ -26,6 +26,8 @@ struct Matrix {
 
     Tuple operator*(const Tuple &otherValue) const;
 
+    Matrix transpose() const;
+
     struct RowProxy {
         Matrix *matrixValue;
         int rowIndex;
@@ -42,6 +44,9 @@ using Matrix4 = Matrix;
 using Matrix4x4 = Matrix;
 
 Matrix matrix(std::initializer_list<double> valueList);
+
+Matrix transpose(const Matrix &matrixValue);
+Matrix transposeMatrix(const Matrix &matrixValue);
 
 Matrix identityMatrix();
 Matrix identity_matrix();

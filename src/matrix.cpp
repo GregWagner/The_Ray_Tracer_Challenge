@@ -155,6 +155,29 @@ Matrix identity() {
     return identityMatrix();
 }
 
+Matrix Matrix::transpose() const {
+    Matrix resultValue;
+    resultValue.rows = columns;
+    resultValue.columns = rows;
+    for (int index = 0; index < 16; index++) {
+        resultValue.data[index] = 0.0;
+    }
+    for (int rowIndex = 0; rowIndex < rows; rowIndex++) {
+        for (int columnIndex = 0; columnIndex < columns; columnIndex++) {
+            resultValue.data[columnIndex * resultValue.columns + rowIndex] = data[rowIndex * columns + columnIndex];
+        }
+    }
+    return resultValue;
+}
+
+Matrix transpose(const Matrix &matrixValue) {
+    return matrixValue.transpose();
+}
+
+Matrix transposeMatrix(const Matrix &matrixValue) {
+    return transpose(matrixValue);
+}
+
 bool operator!=(const Matrix &leftValue, const Matrix &rightValue) {
     return !(leftValue == rightValue);
 }
