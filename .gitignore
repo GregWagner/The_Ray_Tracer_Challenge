@@ -1,3 +1,4 @@
 build
 *.pdf
 compile_commands.json
+.idea
