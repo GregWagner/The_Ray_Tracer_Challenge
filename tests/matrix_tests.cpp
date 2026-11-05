@@ -115,6 +115,19 @@ TEST(Matrix, SubmatrixOf3x3Matrix) {
     EXPECT_TRUE(resultValue == expectedValue);
 }
 
+TEST(Matrix, MinorOf3x3Matrix) {
+    Matrix matrixValue = {
+        3.0, 5.0, 0.0,
+        2.0, -1.0, -7.0,
+        6.0, -1.0, 5.0
+    };
+
+    Matrix subMatrixValue = submatrix(matrixValue, 1, 0);
+
+    EXPECT_DOUBLE_EQ(determinant(subMatrixValue), 25.0);
+    EXPECT_DOUBLE_EQ(minor(matrixValue, 1, 0), 25.0);
+}
+
 TEST(Matrix, SubmatrixOf4x4Matrix) {
     Matrix matrixValue = {
         -6.0, 1.0, 1.0, 6.0,

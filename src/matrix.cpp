@@ -186,6 +186,10 @@ double Matrix::determinant() const {
     return ::determinant(*this);
 }
 
+double Matrix::minor(int removeRowValue, int removeColumnValue) const {
+    return ::minor(*this, removeRowValue, removeColumnValue);
+}
+
 Matrix submatrix(const Matrix &matrixValue, int removeRowValue, int removeColumnValue) {
     Matrix resultValue;
     resultValue.rows = matrixValue.rows - 1;
@@ -209,6 +213,11 @@ Matrix submatrix(const Matrix &matrixValue, int removeRowValue, int removeColumn
     }
 
     return resultValue;
+}
+
+double minor(const Matrix &matrixValue, int removeRowValue, int removeColumnValue) {
+    Matrix subMatrixValue = submatrix(matrixValue, removeRowValue, removeColumnValue);
+    return determinant(subMatrixValue);
 }
 
 double determinant(const Matrix &matrixValue) {
