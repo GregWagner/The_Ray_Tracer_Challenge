@@ -22,6 +22,14 @@ Canvas canvas(int widthValue, int heightValue);
 
 Tuple pixelAt(Canvas canvasValue, int xValue, int yValue);
 
+Tuple pixel_at(Canvas canvasValue, int xValue, int yValue);
+
+void writePixel(Canvas &canvasValue, int xValue, int yValue, Tuple colorValue);
+
 void writePixel(Canvas *canvasValue, int xValue, int yValue, Tuple colorValue);
+
+void write_pixel(Canvas &canvasValue, int xValue, int yValue, Tuple colorValue);
+
+void write_pixel(Canvas *canvasValue, int xValue, int yValue, Tuple colorValue);
 
 #endif

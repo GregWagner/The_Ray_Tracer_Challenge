@@ -34,11 +34,22 @@ Tuple pixelAt(Canvas canvasValue, int xValue, int yValue) {
     return canvasValue.pixelAt(xValue, yValue);
 }
 
+Tuple pixel_at(Canvas canvasValue, int xValue, int yValue) {
+    return pixelAt(canvasValue, xValue, yValue);
+}
+
 void writePixel(Canvas &canvasValue, int xValue, int yValue, Tuple colorValue) {
     canvasValue.writePixel(xValue, yValue, colorValue);
 }
 
-Canvas writePixel(Canvas canvasValue, int xValue, int yValue, Tuple colorValue) {
+void writePixel(Canvas *canvasValue, int xValue, int yValue, Tuple colorValue) {
+    canvasValue->writePixel(xValue, yValue, colorValue);
+}
+
+void write_pixel(Canvas &canvasValue, int xValue, int yValue, Tuple colorValue) {
     canvasValue.writePixel(xValue, yValue, colorValue);
-    return canvasValue;
+}
+
+void write_pixel(Canvas *canvasValue, int xValue, int yValue, Tuple colorValue) {
+    canvasValue->writePixel(xValue, yValue, colorValue);
 }

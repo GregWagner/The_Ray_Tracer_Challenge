@@ -15,3 +15,12 @@ TEST(Canvas, CreatingACanvas) {
         }
     }
 }
+
+TEST(Canvas, WritingPixelsToCanvas) {
+    Canvas canvasValue = canvas(10, 20);
+    Tuple redValue = color(1.0, 0.0, 0.0);
+
+    writePixel(canvasValue, 2, 3, redValue);
+
+    EXPECT_TRUE(pixelAt(canvasValue, 2, 3) == redValue);
+}
