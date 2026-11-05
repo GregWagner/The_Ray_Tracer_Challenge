@@ -98,6 +98,12 @@ TEST(Matrix, MultiplyingMatrixByIdentityMatrix) {
     EXPECT_TRUE(result == A);
 }
 
+TEST(Matrix, TransposingIdentityMatrix) {
+    Matrix resultValue = transpose(identityMatrix());
+
+    EXPECT_TRUE(resultValue == identityMatrix());
+}
+
 TEST(Matrix, TransposingAMatrix) {
     Matrix matrixValue = {
         0, 9, 3, 0,
