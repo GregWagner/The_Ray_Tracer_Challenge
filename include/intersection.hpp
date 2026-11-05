@@ -2,6 +2,7 @@
 #define INTERSECTION_HPP
 
 #include <cstddef>
+#include <initializer_list>
 #include <vector>
 
 #include "ray.hpp"
@@ -40,5 +41,8 @@ struct Intersections {
 Intersections intersect(const Sphere &sphereValue, const Ray &rayValue);
 
 Intersection intersection(double tValue, const Sphere &sphereValue);
+
+Intersections intersections(Intersection firstValue, Intersection secondValue);
+Intersections intersections(std::initializer_list<Intersection> values);
 
 #endif

@@ -48,6 +48,21 @@ const Intersection &Intersections::operator[](std::size_t indexValue) const {
     return intersections[indexValue];
 }
 
+Intersections intersections(Intersection firstValue, Intersection secondValue) {
+    Intersections resultValue;
+    resultValue.add(firstValue);
+    resultValue.add(secondValue);
+    return resultValue;
+}
+
+Intersections intersections(std::initializer_list<Intersection> values) {
+    Intersections resultValue;
+    for (std::initializer_list<Intersection>::iterator value = values.begin(); value != values.end(); value++) {
+        resultValue.add(*value);
+    }
+    return resultValue;
+}
+
 Intersections intersect(const Sphere &sphereValue, const Ray &rayValue) {
     Tuple sphereToRay = rayValue.origin - sphereValue.center;
 

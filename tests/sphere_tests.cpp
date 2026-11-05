@@ -4,6 +4,18 @@
 #include "ray.hpp"
 #include "tuple.hpp"
 
+TEST(Sphere, AggregatingIntersections) {
+    Sphere sphereValue = sphere();
+    Intersection intersectionOne = intersection(1.0, sphereValue);
+    Intersection intersectionTwo = intersection(2.0, sphereValue);
+
+    Intersections intersectionsValue = intersections(intersectionOne, intersectionTwo);
+
+    EXPECT_EQ(intersectionsValue.count, 2);
+    EXPECT_DOUBLE_EQ(intersectionsValue[0].t, 1.0);
+    EXPECT_DOUBLE_EQ(intersectionsValue[1].t, 2.0);
+}
+
 TEST(Sphere, IntersectionEncapsulatesTAndObject) {
     Sphere sphereValue = sphere();
 
