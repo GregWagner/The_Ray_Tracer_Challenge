@@ -366,3 +366,21 @@ Matrix rotation_x(double angleValue) {
 Matrix rotationXMatrix(double angleValue) {
     return rotationX(angleValue);
 }
+
+Matrix rotationY(double angleValue) {
+    double cosineValue = std::cos(angleValue);
+    double sineValue = std::sin(angleValue);
+    Matrix resultValue = Matrix(cosineValue, 0.0, sineValue, 0.0,
+                                0.0, 1.0, 0.0, 0.0,
+                                -sineValue, 0.0, cosineValue, 0.0,
+                                0.0, 0.0, 0.0, 1.0);
+    return resultValue;
+}
+
+Matrix rotation_y(double angleValue) {
+    return rotationY(angleValue);
+}
+
+Matrix rotationYMatrix(double angleValue) {
+    return rotationY(angleValue);
+}

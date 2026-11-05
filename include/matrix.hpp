@@ -84,6 +84,10 @@ Matrix scalingMatrix(double xValue, double yValue, double zValue);
 Matrix rotationX(double angleValue);
 Matrix rotation_x(double angleValue);
 Matrix rotationXMatrix(double angleValue);
+
+Matrix rotationY(double angleValue);
+Matrix rotation_y(double angleValue);
+Matrix rotationYMatrix(double angleValue);
 Matrix identity_matrix();
 Matrix identity();
 
