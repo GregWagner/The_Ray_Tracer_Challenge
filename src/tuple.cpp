@@ -165,3 +165,8 @@ Tuple cross(Tuple tupleValueOne, Tuple tupleValueTwo) {
         0.0);
     return resultValue;
 }
+Tuple reflect(Tuple inValue, Tuple normalValue) {
+    double factorValue = 2.0 * dot(inValue, normalValue);
+    Tuple resultValue = inValue - (normalValue * factorValue);
+    return resultValue;
+}

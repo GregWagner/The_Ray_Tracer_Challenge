@@ -52,4 +52,6 @@ Tuple normalize(Tuple tupleValue);
 double dot(Tuple tupleValueOne, Tuple tupleValueTwo);
 
 Tuple cross(Tuple tupleValueOne, Tuple tupleValueTwo);
+
+Tuple reflect(Tuple inValue, Tuple normalValue);
 #endif

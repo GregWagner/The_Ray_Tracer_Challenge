@@ -205,6 +205,15 @@ TEST(Tuples, MultiplyingColors) {
     EXPECT_TRUE(result == color(0.9, 0.2, 0.04));
 }
 
+TEST(Tuples, ReflectingVectorAt45Degrees) {
+    Tuple inValue = vector(1.0, -1.0, 0.0);
+    Tuple normalValue = vector(0.0, 1.0, 0.0);
+
+    Tuple resultValue = reflect(inValue, normalValue);
+
+    EXPECT_TRUE(resultValue == vector(1.0, 1.0, 0.0));
+}
+
 TEST(Tuples, CrossProductOfTwoVectors) {
     Tuple vectorA = vector(1, 2, 3);
     Tuple vectorB = vector(2, 3, 4);
