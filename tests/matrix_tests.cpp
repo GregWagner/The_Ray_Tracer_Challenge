@@ -525,6 +525,34 @@ TEST(Matrix, MultiplyingByTranslationMatrix) {
     EXPECT_TRUE(resultValue == point(2.0, 1.0, 7.0));
 }
 
+TEST(Matrix, IndividualTransformationsAppliedInSequence) {
+    Tuple pointValue = point(1.0, 0.0, 1.0);
+    Matrix rotationMatrix = rotation_x(PI / 2.0);
+    Matrix scalingMatrixValue = scaling(5.0, 5.0, 5.0);
+    Matrix translationMatrixValue = translation(10.0, 5.0, 7.0);
+
+    Tuple pointTwo = rotationMatrix * pointValue;
+    EXPECT_TRUE(pointTwo == point(1.0, -1.0, 0.0));
+
+    Tuple pointThree = scalingMatrixValue * pointTwo;
+    EXPECT_TRUE(pointThree == point(5.0, -5.0, 0.0));
+
+    Tuple pointFour = translationMatrixValue * pointThree;
+    EXPECT_TRUE(pointFour == point(15.0, 0.0, 7.0));
+}
+
+TEST(Matrix, ChainedTransformationsInReverseOrder) {
+    Tuple pointValue = point(1.0, 0.0, 1.0);
+    Matrix rotationMatrix = rotation_x(PI / 2.0);
+    Matrix scalingMatrixValue = scaling(5.0, 5.0, 5.0);
+    Matrix translationMatrixValue = translation(10.0, 5.0, 7.0);
+
+    Matrix transformValue = translationMatrixValue * scalingMatrixValue * rotationMatrix;
+    Tuple resultValue = transformValue * pointValue;
+
+    EXPECT_TRUE(resultValue == point(15.0, 0.0, 7.0));
+}
+
 TEST(Matrix, MultiplyingIdentityMatrixByTuple) {
     Tuple tupleValue = tuple(1, 2, 3, 4);
 
