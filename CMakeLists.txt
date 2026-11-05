@@ -73,3 +73,14 @@ if(BUILD_TESTING)
     enable_testing()
     add_subdirectory(tests)
 endif()
+
+add_executable(projectile_example
+    src/main.cpp
+    src/tuple.cpp
+    src/projectile.cpp
+)
+target_include_directories(projectile_example PRIVATE
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+target_compile_features(projectile_example PRIVATE cxx_std_20)
+raytracer_enable_strict_warnings(projectile_example)

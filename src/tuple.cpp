@@ -4,6 +4,13 @@
 
 #include <cmath>
 
+Tuple::Tuple() {
+    x = 0.0;
+    y = 0.0;
+    z = 0.0;
+    w = 0.0;
+}
+
 Tuple::Tuple(double xValue, double yValue, double zValue, double wValue) {
     x = xValue;
     y = yValue;

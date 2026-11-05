@@ -9,6 +9,8 @@ struct Tuple {
     double z;
     double w;
 
+    Tuple();
+
     Tuple(double xValue, double yValue, double zValue, double wValue);
 
     bool isPoint();
