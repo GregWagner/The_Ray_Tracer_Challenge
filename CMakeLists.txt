@@ -99,3 +99,10 @@ add_executable(trajectory_example
 target_link_libraries(trajectory_example PRIVATE raytracer_core)
 target_compile_features(trajectory_example PRIVATE cxx_std_20)
 raytracer_enable_strict_warnings(trajectory_example)
+
+add_executable(clock_example
+    examples/clock/main.cpp
+)
+target_link_libraries(clock_example PRIVATE raytracer_core)
+target_compile_features(clock_example PRIVATE cxx_std_20)
+raytracer_enable_strict_warnings(clock_example)
