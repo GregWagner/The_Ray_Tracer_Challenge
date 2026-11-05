@@ -91,3 +91,10 @@ add_executable(projectile_example
 target_link_libraries(projectile_example PRIVATE raytracer_core)
 target_compile_features(projectile_example PRIVATE cxx_std_20)
 raytracer_enable_strict_warnings(projectile_example)
+
+add_executable(trajectory_example
+    examples/trajectory/main.cpp
+)
+target_link_libraries(trajectory_example PRIVATE raytracer_core)
+target_compile_features(trajectory_example PRIVATE cxx_std_20)
+raytracer_enable_strict_warnings(trajectory_example)
