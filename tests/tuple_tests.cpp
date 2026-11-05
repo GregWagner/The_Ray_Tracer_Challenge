@@ -2,6 +2,8 @@
 
 #include <gtest/gtest.h>
 
+#include <cmath>
+
 #include "tuple.hpp"
 
 TEST(Tuples, ATupleWithWEqaulTo1IsAPoint) {
@@ -203,6 +205,16 @@ TEST(Tuples, MultiplyingColors) {
     Tuple result = colorOne * colorTwo;
 
     EXPECT_TRUE(result == color(0.9, 0.2, 0.04));
+}
+
+TEST(Tuples, ReflectingVectorOffSlantedSurface) {
+    double value = std::sqrt(2.0) / 2.0;
+    Tuple inValue = vector(0.0, -1.0, 0.0);
+    Tuple normalValue = vector(value, value, 0.0);
+
+    Tuple resultValue = reflect(inValue, normalValue);
+
+    EXPECT_TRUE(resultValue == vector(1.0, 0.0, 0.0));
 }
 
 TEST(Tuples, ReflectingVectorAt45Degrees) {
