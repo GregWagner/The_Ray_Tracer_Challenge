@@ -20,6 +20,8 @@ struct Matrix {
     double operator()(int rowIndex, int columnIndex) const;
     double &operator()(int rowIndex, int columnIndex);
 
+    Matrix operator*(const Matrix &otherValue) const;
+
     struct RowProxy {
         Matrix *matrixValue;
         int rowIndex;

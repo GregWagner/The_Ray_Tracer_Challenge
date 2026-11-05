@@ -93,6 +93,20 @@ double &Matrix::operator()(int rowIndex, int columnIndex) {
     return data[rowIndex * columns + columnIndex];
 }
 
+Matrix Matrix::operator*(const Matrix &otherValue) const {
+    Matrix resultValue;
+    for (int rowIndex = 0; rowIndex < 4; rowIndex++) {
+        for (int columnIndex = 0; columnIndex < 4; columnIndex++) {
+            double sumValue = 0.0;
+            for (int kIndex = 0; kIndex < 4; kIndex++) {
+                sumValue = sumValue + data[rowIndex * 4 + kIndex] * otherValue.data[kIndex * 4 + columnIndex];
+            }
+            resultValue.data[rowIndex * 4 + columnIndex] = sumValue;
+        }
+    }
+    return resultValue;
+}
+
 Matrix::RowProxy Matrix::operator[](int rowIndex) {
     RowProxy proxyValue;
     proxyValue.matrixValue = this;
