@@ -48,3 +48,39 @@ TEST(Matrix, A3x3MatrixIsRepresentable) {
     EXPECT_DOUBLE_EQ(M(1, 1), -2.0);
     EXPECT_DOUBLE_EQ(M(2, 2), 1.0);
 }
+
+TEST(Matrix, EqualMatricesAreEqual) {
+    Matrix A = {
+        1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 8, 7, 6,
+        5, 4, 3, 2
+    };
+    Matrix B = {
+        1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 8, 7, 6,
+        5, 4, 3, 2
+    };
+
+    EXPECT_TRUE(A == B);
+    EXPECT_FALSE(A != B);
+}
+
+TEST(Matrix, DifferentMatricesAreNotEqual) {
+    Matrix A = {
+        1, 2, 3, 4,
+        5, 6, 7, 8,
+        9, 8, 7, 6,
+        5, 4, 3, 2
+    };
+    Matrix B = {
+        2, 3, 4, 5,
+        6, 7, 8, 9,
+        8, 7, 6, 5,
+        4, 3, 2, 1
+    };
+
+    EXPECT_FALSE(A == B);
+    EXPECT_TRUE(A != B);
+}

@@ -117,6 +117,10 @@ Matrix matrix(std::initializer_list<double> valueList) {
     return Matrix(valueList);
 }
 
+bool operator!=(const Matrix &leftValue, const Matrix &rightValue) {
+    return !(leftValue == rightValue);
+}
+
 bool operator==(const Matrix &leftValue, const Matrix &rightValue) {
     if (leftValue.rows != rightValue.rows) {
         return false;
