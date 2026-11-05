@@ -402,3 +402,15 @@ Matrix rotation_z(double angleValue) {
 Matrix rotationZMatrix(double angleValue) {
     return rotationZ(angleValue);
 }
+
+Matrix shearing(double xyValue, double xzValue, double yxValue, double yzValue, double zxValue, double zyValue) {
+    Matrix resultValue = Matrix(1.0, xyValue, xzValue, 0.0,
+                                yxValue, 1.0, yzValue, 0.0,
+                                zxValue, zyValue, 1.0, 0.0,
+                                0.0, 0.0, 0.0, 1.0);
+    return resultValue;
+}
+
+Matrix shearingMatrix(double xyValue, double xzValue, double yxValue, double yzValue, double zxValue, double zyValue) {
+    return shearing(xyValue, xzValue, yxValue, yzValue, zxValue, zyValue);
+}

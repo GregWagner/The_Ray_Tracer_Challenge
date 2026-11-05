@@ -92,6 +92,9 @@ Matrix rotationYMatrix(double angleValue);
 Matrix rotationZ(double angleValue);
 Matrix rotation_z(double angleValue);
 Matrix rotationZMatrix(double angleValue);
+
+Matrix shearing(double xyValue, double xzValue, double yxValue, double yzValue, double zxValue, double zyValue);
+Matrix shearingMatrix(double xyValue, double xzValue, double yxValue, double yzValue, double zxValue, double zyValue);
 Matrix identity_matrix();
 Matrix identity();
 
