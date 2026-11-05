@@ -160,6 +160,34 @@ TEST(Matrix, SubmatrixOf4x4Matrix) {
     EXPECT_TRUE(resultValue == expectedValue);
 }
 
+TEST(Matrix, DeterminantOf3x3Matrix) {
+    Matrix matrixValue = {
+        1.0, 2.0, 6.0,
+        -5.0, 8.0, -4.0,
+        2.0, 6.0, 4.0
+    };
+
+    EXPECT_DOUBLE_EQ(cofactor(matrixValue, 0, 0), 56.0);
+    EXPECT_DOUBLE_EQ(cofactor(matrixValue, 0, 1), 12.0);
+    EXPECT_DOUBLE_EQ(cofactor(matrixValue, 0, 2), -46.0);
+    EXPECT_DOUBLE_EQ(determinant(matrixValue), -196.0);
+}
+
+TEST(Matrix, DeterminantOf4x4Matrix) {
+    Matrix matrixValue = {
+        -2.0, -8.0, 3.0, 5.0,
+        -3.0, 1.0, 7.0, 3.0,
+        1.0, 2.0, -9.0, 6.0,
+        -6.0, 7.0, 7.0, -9.0
+    };
+
+    EXPECT_DOUBLE_EQ(cofactor(matrixValue, 0, 0), 690.0);
+    EXPECT_DOUBLE_EQ(cofactor(matrixValue, 0, 1), 447.0);
+    EXPECT_DOUBLE_EQ(cofactor(matrixValue, 0, 2), 210.0);
+    EXPECT_DOUBLE_EQ(cofactor(matrixValue, 0, 3), 51.0);
+    EXPECT_DOUBLE_EQ(determinant(matrixValue), -4071.0);
+}
+
 TEST(Matrix, DeterminantOf2x2Matrix) {
     Matrix matrixValue = {
         1.0, 5.0,
