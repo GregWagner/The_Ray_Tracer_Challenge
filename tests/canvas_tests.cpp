@@ -1,4 +1,5 @@
 #include <gtest/gtest.h>
+#include <iostream>
 
 #include <string>
 
@@ -53,4 +54,23 @@ TEST(Canvas, ConstructingPpmPixelData) {
         "0 0 0 0 0 0 0 128 0 0 0 0 0 0 0\n"
         "0 0 0 0 0 0 0 0 0 0 0 0 0 0 255\n";
     EXPECT_TRUE(ppmValue.find(expectedRows) != std::string::npos);
+}
+
+TEST(Canvas, SplittingLongLinesInPpm) {
+    Canvas canvasValue = canvas(10, 2);
+    Tuple colorValue = color(1.0, 0.8, 0.6);
+    for (int yIndex = 0; yIndex < canvasValue.height; yIndex++) {
+        for (int xIndex = 0; xIndex < canvasValue.width; xIndex++) {
+            canvasValue.writePixel(xIndex, yIndex, colorValue);
+        }
+    }
+
+    std::string ppmValue = canvasToPpm(canvasValue);
+
+    std::string expectedLines =
+        "255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204\n"
+        "153 255 204 153 255 204 153 255 204 153 255 204 153\n"
+        "255 204 153 255 204 153 255 204 153 255 204 153 255 204 153 255 204\n"
+        "153 255 204 153 255 204 153 255 204 153 255 204 153\n";
+    EXPECT_TRUE(ppmValue.find(expectedLines) != std::string::npos);
 }

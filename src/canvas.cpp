@@ -62,9 +62,9 @@ std::string Canvas::toPpm() {
     resultValue = resultValue + std::to_string(width) + " " + std::to_string(height) + "\n";
     resultValue = resultValue + "255\n";
 
+    int lineLength = 0;
     int yIndex = 0;
     while (yIndex < height) {
-        std::string rowValue = "";
         int xIndex = 0;
         while (xIndex < width) {
             Tuple pixelValue = pixelAt(xIndex, yIndex);
@@ -96,16 +96,36 @@ std::string Canvas::toPpm() {
             int greenByte = static_cast<int>(std::floor(greenValue * 255.0 + 0.5));
             int blueByte = static_cast<int>(std::floor(blueValue * 255.0 + 0.5));
 
-            if (xIndex > 0) {
-                rowValue = rowValue + " ";
+            std::string redText = std::to_string(redByte);
+            std::string greenText = std::to_string(greenByte);
+            std::string blueText = std::to_string(blueByte);
+
+            std::string channelTexts[3];
+            channelTexts[0] = redText;
+            channelTexts[1] = greenText;
+            channelTexts[2] = blueText;
+
+            int channelIndex = 0;
+            while (channelIndex < 3) {
+                std::string channelText = channelTexts[channelIndex];
+                if (lineLength > 0 && lineLength + 1 + static_cast<int>(channelText.length()) > 70) {
+                    resultValue = resultValue + "\n";
+                    lineLength = 0;
+                }
+                if (lineLength > 0) {
+                    resultValue = resultValue + " ";
+                    lineLength = lineLength + 1;
+                }
+                resultValue = resultValue + channelText;
+                lineLength = lineLength + static_cast<int>(channelText.length());
+
+                channelIndex = channelIndex + 1;
             }
-            rowValue = rowValue + std::to_string(redByte);
-            rowValue = rowValue + " " + std::to_string(greenByte);
-            rowValue = rowValue + " " + std::to_string(blueByte);
 
             xIndex = xIndex + 1;
         }
-        resultValue = resultValue + rowValue + "\n";
+        resultValue = resultValue + "\n";
+        lineLength = 0;
         yIndex = yIndex + 1;
     }
 
