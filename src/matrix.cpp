@@ -167,6 +167,18 @@ Matrix translationMatrix(double xValue, double yValue, double zValue) {
     return translation(xValue, yValue, zValue);
 }
 
+Matrix scaling(double xValue, double yValue, double zValue) {
+    Matrix resultValue = Matrix(xValue, 0.0, 0.0, 0.0,
+                               0.0, yValue, 0.0, 0.0,
+                               0.0, 0.0, zValue, 0.0,
+                               0.0, 0.0, 0.0, 1.0);
+    return resultValue;
+}
+
+Matrix scalingMatrix(double xValue, double yValue, double zValue) {
+    return scaling(xValue, yValue, zValue);
+}
+
 Matrix inverse(const Matrix &matrixValue) {
     Matrix cofactorMatrix;
     cofactorMatrix.rows = matrixValue.rows;

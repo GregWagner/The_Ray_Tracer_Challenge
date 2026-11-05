@@ -71,6 +71,9 @@ Matrix identityMatrix();
 
 Matrix translation(double xValue, double yValue, double zValue);
 Matrix translationMatrix(double xValue, double yValue, double zValue);
+
+Matrix scaling(double xValue, double yValue, double zValue);
+Matrix scalingMatrix(double xValue, double yValue, double zValue);
 Matrix identity_matrix();
 Matrix identity();
 
