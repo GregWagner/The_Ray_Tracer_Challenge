@@ -108,3 +108,10 @@ add_executable(clock_example
 target_link_libraries(clock_example PRIVATE raytracer_core)
 target_compile_features(clock_example PRIVATE cxx_std_20)
 raytracer_enable_strict_warnings(clock_example)
+
+add_executable(ray_sphere_example
+    examples/ray_sphere/main.cpp
+)
+target_link_libraries(ray_sphere_example PRIVATE raytracer_core)
+target_compile_features(ray_sphere_example PRIVATE cxx_std_20)
+raytracer_enable_strict_warnings(ray_sphere_example)
