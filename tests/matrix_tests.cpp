@@ -392,6 +392,25 @@ TEST(Matrix, TranslationDoesNotAffectVectors) {
     EXPECT_TRUE(resultValue == vectorValue);
 }
 
+TEST(Matrix, RotatingPointAroundZAxis) {
+    Tuple pointValue = point(0.0, 1.0, 0.0);
+
+    Matrix halfQuarter = rotation_z(PI / 4.0);
+    Matrix fullQuarter = rotation_z(PI / 2.0);
+
+    Tuple resultOne = halfQuarter * pointValue;
+    Tuple resultTwo = fullQuarter * pointValue;
+
+    double rootTwoOverTwo = std::sqrt(2.0) / 2.0;
+    EXPECT_NEAR(resultOne.x, -rootTwoOverTwo, 0.00001);
+    EXPECT_NEAR(resultOne.y, rootTwoOverTwo, 0.00001);
+    EXPECT_NEAR(resultOne.z, 0.0, 0.00001);
+
+    EXPECT_NEAR(resultTwo.x, -1.0, 0.00001);
+    EXPECT_NEAR(resultTwo.y, 0.0, 0.00001);
+    EXPECT_NEAR(resultTwo.z, 0.0, 0.00001);
+}
+
 TEST(Matrix, RotatingPointAroundYAxis) {
     Tuple pointValue = point(0.0, 0.0, 1.0);
 

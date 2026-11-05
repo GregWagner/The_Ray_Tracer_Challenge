@@ -88,6 +88,10 @@ Matrix rotationXMatrix(double angleValue);
 Matrix rotationY(double angleValue);
 Matrix rotation_y(double angleValue);
 Matrix rotationYMatrix(double angleValue);
+
+Matrix rotationZ(double angleValue);
+Matrix rotation_z(double angleValue);
+Matrix rotationZMatrix(double angleValue);
 Matrix identity_matrix();
 Matrix identity();
 
