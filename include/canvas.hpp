@@ -2,6 +2,7 @@
 #define CANVAS_HPP
 
 #include <cstddef>
+#include <string>
 #include <vector>
 
 #include "tuple.hpp"
@@ -16,6 +17,8 @@ struct Canvas {
 
     Tuple pixelAt(int xValue, int yValue);
     void writePixel(int xValue, int yValue, Tuple colorValue);
+
+    std::string toPpm();
 };
 
 Canvas canvas(int widthValue, int heightValue);
@@ -31,5 +34,9 @@ void writePixel(Canvas *canvasValue, int xValue, int yValue, Tuple colorValue);
 void write_pixel(Canvas &canvasValue, int xValue, int yValue, Tuple colorValue);
 
 void write_pixel(Canvas *canvasValue, int xValue, int yValue, Tuple colorValue);
+
+std::string canvasToPpm(Canvas canvasValue);
+
+std::string canvas_to_ppm(Canvas canvasValue);
 
 #endif

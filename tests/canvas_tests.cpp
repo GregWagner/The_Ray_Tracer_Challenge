@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include <string>
+
 #include "canvas.hpp"
 #include "tuple.hpp"
 
@@ -23,4 +25,13 @@ TEST(Canvas, WritingPixelsToCanvas) {
     writePixel(canvasValue, 2, 3, redValue);
 
     EXPECT_TRUE(pixelAt(canvasValue, 2, 3) == redValue);
+}
+
+TEST(Canvas, ConstructingPpmHeader) {
+    Canvas canvasValue = canvas(5, 3);
+
+    std::string ppmValue = canvasToPpm(canvasValue);
+
+    std::string expectedValue = "P3\n5 3\n255\n";
+    EXPECT_EQ(ppmValue.substr(0, expectedValue.size()), expectedValue);
 }
