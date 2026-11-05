@@ -392,6 +392,19 @@ TEST(Matrix, TranslationDoesNotAffectVectors) {
     EXPECT_TRUE(resultValue == vectorValue);
 }
 
+TEST(Matrix, InverseOfXRotationRotatesOppositeDirection) {
+    Tuple pointValue = point(0.0, 1.0, 0.0);
+    Matrix halfQuarter = rotation_x(PI / 4.0);
+    Matrix inverseValue = inverse(halfQuarter);
+
+    Tuple resultValue = inverseValue * pointValue;
+
+    double rootTwoOverTwo = std::sqrt(2.0) / 2.0;
+    EXPECT_NEAR(resultValue.x, 0.0, 0.00001);
+    EXPECT_NEAR(resultValue.y, rootTwoOverTwo, 0.00001);
+    EXPECT_NEAR(resultValue.z, -rootTwoOverTwo, 0.00001);
+}
+
 TEST(Matrix, RotatingPointAroundXAxis) {
     Tuple pointValue = point(0.0, 1.0, 0.0);
 
