@@ -196,6 +196,15 @@ TEST(Tuples, MultiplyingColorByScalar) {
     EXPECT_TRUE(result == color(0.4, 0.6, 0.8));
 }
 
+TEST(Tuples, MultiplyingColors) {
+    Tuple colorOne = color(1, 0.2, 0.4);
+    Tuple colorTwo = color(0.9, 1, 0.1);
+
+    Tuple result = colorOne * colorTwo;
+
+    EXPECT_TRUE(result == color(0.9, 0.2, 0.04));
+}
+
 TEST(Tuples, CrossProductOfTwoVectors) {
     Tuple vectorA = vector(1, 2, 3);
     Tuple vectorB = vector(2, 3, 4);

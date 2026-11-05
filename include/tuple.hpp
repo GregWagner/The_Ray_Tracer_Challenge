@@ -31,6 +31,7 @@ struct Tuple {
     Tuple operator-();
 
     Tuple operator*(double scalarValue);
+    Tuple operator*(Tuple otherValue);
 
     Tuple operator/(double scalarValue);
 

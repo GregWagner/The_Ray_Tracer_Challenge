@@ -95,6 +95,11 @@ Tuple Tuple::operator*(double scalarValue) {
     return resultValue;
 }
 
+Tuple Tuple::operator*(Tuple otherValue) {
+    Tuple resultValue(x * otherValue.x, y * otherValue.y, z * otherValue.z, w * otherValue.w);
+    return resultValue;
+}
+
 Tuple Tuple::operator/(double scalarValue) {
     Tuple resultValue(x / scalarValue, y / scalarValue, z / scalarValue, w / scalarValue);
     return resultValue;
