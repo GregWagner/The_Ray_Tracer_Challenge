@@ -186,6 +186,10 @@ double Matrix::determinant() const {
     return ::determinant(*this);
 }
 
+bool Matrix::isInvertible() const {
+    return ::isInvertible(*this);
+}
+
 double Matrix::minor(int removeRowValue, int removeColumnValue) const {
     return ::minor(*this, removeRowValue, removeColumnValue);
 }
@@ -222,6 +226,18 @@ Matrix submatrix(const Matrix &matrixValue, int removeRowValue, int removeColumn
 double minor(const Matrix &matrixValue, int removeRowValue, int removeColumnValue) {
     Matrix subMatrixValue = submatrix(matrixValue, removeRowValue, removeColumnValue);
     return determinant(subMatrixValue);
+}
+
+bool isInvertible(const Matrix &matrixValue) {
+    double detValue = determinant(matrixValue);
+    double absValue = detValue;
+    if (absValue < 0.0) {
+        absValue = -absValue;
+    }
+    if (absValue > 0.00001) {
+        return true;
+    }
+    return false;
 }
 
 double cofactor(const Matrix &matrixValue, int removeRowValue, int removeColumnValue) {

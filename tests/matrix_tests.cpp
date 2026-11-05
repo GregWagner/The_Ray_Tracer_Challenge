@@ -173,6 +173,30 @@ TEST(Matrix, DeterminantOf3x3Matrix) {
     EXPECT_DOUBLE_EQ(determinant(matrixValue), -196.0);
 }
 
+TEST(Matrix, InvertibleMatrix) {
+    Matrix matrixValue = {
+        6.0, 4.0, 4.0, 4.0,
+        5.0, 5.0, 7.0, 6.0,
+        4.0, -9.0, 3.0, -7.0,
+        9.0, 1.0, 7.0, -6.0
+    };
+
+    EXPECT_DOUBLE_EQ(determinant(matrixValue), -2120.0);
+    EXPECT_TRUE(isInvertible(matrixValue));
+}
+
+TEST(Matrix, NoninvertibleMatrix) {
+    Matrix matrixValue = {
+        -4.0, 2.0, -2.0, -3.0,
+        9.0, 6.0, 2.0, 6.0,
+        0.0, -5.0, 1.0, -5.0,
+        0.0, 0.0, 0.0, 0.0
+    };
+
+    EXPECT_DOUBLE_EQ(determinant(matrixValue), 0.0);
+    EXPECT_FALSE(isInvertible(matrixValue));
+}
+
 TEST(Matrix, DeterminantOf4x4Matrix) {
     Matrix matrixValue = {
         -2.0, -8.0, 3.0, 5.0,

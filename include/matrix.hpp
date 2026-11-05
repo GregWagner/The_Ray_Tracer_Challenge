@@ -35,6 +35,9 @@ struct Matrix {
 double minor(int removeRowValue, int removeColumnValue) const;
 
 double cofactor(int removeRowValue, int removeColumnValue) const;
+
+    bool isInvertible() const;
+
     struct RowProxy {
         Matrix *matrixValue;
         int rowIndex;
@@ -59,6 +62,7 @@ Matrix submatrix(const Matrix &matrixValue, int removeRowValue, int removeColumn
 double determinant(const Matrix &matrixValue);
 double minor(const Matrix &matrixValue, int removeRowValue, int removeColumnValue);
 double cofactor(const Matrix &matrixValue, int removeRowValue, int removeColumnValue);
+bool isInvertible(const Matrix &matrixValue);
 
 Matrix identityMatrix();
 Matrix identity_matrix();
