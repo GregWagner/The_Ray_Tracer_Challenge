@@ -142,6 +142,30 @@ TEST(Sphere, NormalOnSphereAtAxialPointZ) {
     EXPECT_TRUE(normalValue == vector(0.0, 0.0, 1.0));
 }
 
+TEST(Sphere, NormalOnTranslatedSphere) {
+    Sphere sphereValue = sphere();
+    set_transform(sphereValue, translation(0.0, 1.0, 0.0));
+
+    Tuple normalValue = normal_at(sphereValue, point(0.0, 1.70711, -0.70711));
+
+    EXPECT_NEAR(normalValue.x, 0.0, 0.00001);
+    EXPECT_NEAR(normalValue.y, 0.70711, 0.00001);
+    EXPECT_NEAR(normalValue.z, -0.70711, 0.00001);
+}
+
+TEST(Sphere, NormalOnTransformedSphere) {
+    double value = std::sqrt(2.0) / 2.0;
+    Matrix matrixValue = scaling(1.0, 0.5, 1.0) * rotation_z(PI / 5.0);
+    Sphere sphereValue = sphere();
+    set_transform(sphereValue, matrixValue);
+
+    Tuple normalValue = normal_at(sphereValue, point(0.0, value, -value));
+
+    EXPECT_NEAR(normalValue.x, 0.0, 0.00001);
+    EXPECT_NEAR(normalValue.y, 0.97014, 0.00001);
+    EXPECT_NEAR(normalValue.z, -0.24254, 0.00001);
+}
+
 TEST(Sphere, NormalIsNormalizedVector) {
     double coordinateValue = std::sqrt(3.0) / 3.0;
     Sphere sphereValue = sphere();
