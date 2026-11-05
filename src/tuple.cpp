@@ -1,5 +1,9 @@
 #include "tuple.hpp"
 
+#include <cmath>
+
+#include <cmath>
+
 Tuple::Tuple(double xValue, double yValue, double zValue, double wValue) {
     x = xValue;
     y = yValue;
@@ -43,6 +47,26 @@ Tuple Tuple::operator+(Tuple otherValue) {
     return resultValue;
 }
 
+Tuple Tuple::operator-(Tuple otherValue) {
+    Tuple resultValue(x - otherValue.x, y - otherValue.y, z - otherValue.z, w - otherValue.w);
+    return resultValue;
+}
+
+Tuple Tuple::operator-() {
+    Tuple resultValue(-x, -y, -z, -w);
+    return resultValue;
+}
+
+Tuple Tuple::operator*(double scalarValue) {
+    Tuple resultValue(x * scalarValue, y * scalarValue, z * scalarValue, w * scalarValue);
+    return resultValue;
+}
+
+Tuple Tuple::operator/(double scalarValue) {
+    Tuple resultValue(x / scalarValue, y / scalarValue, z / scalarValue, w / scalarValue);
+    return resultValue;
+}
+
 Tuple tuple(double xValue, double yValue, double zValue, double wValue) {
     Tuple newTuple(xValue, yValue, zValue, wValue);
     return newTuple;
@@ -70,4 +94,31 @@ bool isVector(Tuple tupleValue) {
         return true;
     }
     return false;
+}
+
+double magnitude(Tuple tupleValue) {
+    double value = tupleValue.x * tupleValue.x;
+    value = value + tupleValue.y * tupleValue.y;
+    value = value + tupleValue.z * tupleValue.z;
+    return std::sqrt(value);
+}
+
+Tuple normalize(Tuple tupleValue) {
+    double magValue = magnitude(tupleValue);
+    Tuple resultValue(tupleValue.x / magValue, tupleValue.y / magValue, tupleValue.z / magValue, tupleValue.w);
+    return resultValue;
+}
+
+double dot(Tuple tupleValueOne, Tuple tupleValueTwo) {
+    double resultValue = (tupleValueOne.x * tupleValueTwo.x) + (tupleValueOne.y * tupleValueTwo.y) + (tupleValueOne.z * tupleValueTwo.z) + (tupleValueOne.w * tupleValueTwo.w);
+    return resultValue;
+}
+
+Tuple cross(Tuple tupleValueOne, Tuple tupleValueTwo) {
+    Tuple resultValue(
+        (tupleValueOne.y * tupleValueTwo.z) - (tupleValueOne.z * tupleValueTwo.y),
+        (tupleValueOne.z * tupleValueTwo.x) - (tupleValueOne.x * tupleValueTwo.z),
+        (tupleValueOne.x * tupleValueTwo.y) - (tupleValueOne.y * tupleValueTwo.x),
+        0.0);
+    return resultValue;
 }
