@@ -75,7 +75,7 @@ if(BUILD_TESTING)
 endif()
 
 add_executable(projectile_example
-    src/main.cpp
+    examples/projectile/main.cpp
     src/tuple.cpp
     src/projectile.cpp
 )
