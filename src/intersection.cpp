@@ -5,11 +5,26 @@
 Sphere::Sphere() {
     center = point(0.0, 0.0, 0.0);
     radius = 1.0;
+    transform = identityMatrix();
+}
+
+Sphere::Sphere(Tuple centerValue, double radiusValue) {
+    center = centerValue;
+    radius = radiusValue;
+    transform = identityMatrix();
 }
 
 Sphere sphere() {
     Sphere resultValue;
     return resultValue;
+}
+
+void set_transform(Sphere &sphereValue, Matrix transformValue) {
+    sphereValue.transform = transformValue;
+}
+
+void setTransform(Sphere &sphereValue, Matrix transformValue) {
+    set_transform(sphereValue, transformValue);
 }
 
 Intersection::Intersection() {
@@ -180,10 +195,13 @@ Intersections intersections(std::initializer_list<Intersection> values) {
 }
 
 Intersections intersect(const Sphere &sphereValue, const Ray &rayValue) {
-    Tuple sphereToRay = rayValue.origin - sphereValue.center;
+    Matrix inverseTransform = inverse(sphereValue.transform);
+    Ray rayToUse = transform(rayValue, inverseTransform);
 
-    double aValue = dot(rayValue.direction, rayValue.direction);
-    double bValue = 2.0 * dot(rayValue.direction, sphereToRay);
+    Tuple sphereToRay = rayToUse.origin - sphereValue.center;
+
+    double aValue = dot(rayToUse.direction, rayToUse.direction);
+    double bValue = 2.0 * dot(rayToUse.direction, sphereToRay);
     double cValue = dot(sphereToRay, sphereToRay) - (sphereValue.radius * sphereValue.radius);
     double discriminantValue = bValue * bValue - 4.0 * aValue * cValue;
 

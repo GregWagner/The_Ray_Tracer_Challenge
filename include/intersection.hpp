@@ -1,22 +1,29 @@
 #ifndef INTERSECTION_HPP
 #define INTERSECTION_HPP
 
+#include "matrix.hpp"
+#include "ray.hpp"
+#include "tuple.hpp"
+
 #include <cstddef>
 #include <initializer_list>
 #include <optional>
 #include <vector>
 
-#include "ray.hpp"
-#include "tuple.hpp"
-
 struct Sphere {
     Tuple center;
     double radius;
+    Matrix transform;
 
     Sphere();
+    Sphere(Tuple centerValue, double radiusValue);
 };
 
 Sphere sphere();
+
+void set_transform(Sphere &sphereValue, Matrix transformValue);
+
+void setTransform(Sphere &sphereValue, Matrix transformValue);
 
 struct Intersection {
     double t;

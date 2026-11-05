@@ -85,6 +85,21 @@ TEST(Sphere, IntersectSetsObjectOnIntersection) {
     EXPECT_EQ(intersectionsValue[1].object, &sphereValue);
 }
 
+TEST(Sphere, DefaultSphereTransformation) {
+    Sphere sphereValue = sphere();
+
+    EXPECT_TRUE(sphereValue.transform == identityMatrix());
+}
+
+TEST(Sphere, ChangingSphereTransformation) {
+    Sphere sphereValue = sphere();
+    Matrix transformValue = translation(2.0, 3.0, 4.0);
+
+    set_transform(sphereValue, transformValue);
+
+    EXPECT_TRUE(sphereValue.transform == transformValue);
+}
+
 TEST(Sphere, RayIntersectsSphereAtTwoPoints) {
     Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
     Sphere sphereValue = sphere();
