@@ -79,6 +79,7 @@ add_library(raytracer_core STATIC
     src/projectile.cpp
     src/canvas.cpp
     src/matrix.cpp
+    src/ray.cpp
 )
 target_include_directories(raytracer_core PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
