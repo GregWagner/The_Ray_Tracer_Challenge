@@ -17,6 +17,9 @@ struct Sphere {
 
     Sphere();
     Sphere(Tuple centerValue, double radiusValue);
+
+    Tuple normal_at(const Tuple &pointValue) const;
+    Tuple normalAt(const Tuple &pointValue) const;
 };
 
 Sphere sphere();
@@ -24,6 +27,10 @@ Sphere sphere();
 void set_transform(Sphere &sphereValue, Matrix transformValue);
 
 void setTransform(Sphere &sphereValue, Matrix transformValue);
+
+Tuple normal_at(const Sphere &sphereValue, const Tuple &pointValue);
+
+Tuple normalAt(const Sphere &sphereValue, const Tuple &pointValue);
 
 struct Intersection {
     double t;

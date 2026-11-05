@@ -27,6 +27,31 @@ void setTransform(Sphere &sphereValue, Matrix transformValue) {
     set_transform(sphereValue, transformValue);
 }
 
+Tuple Sphere::normal_at(const Tuple &pointValue) const {
+    return ::normal_at(*this, pointValue);
+}
+
+Tuple Sphere::normalAt(const Tuple &pointValue) const {
+    return ::normal_at(*this, pointValue);
+}
+
+Tuple normal_at(const Sphere &sphereValue, const Tuple &pointValue) {
+    Matrix inverseTransformValue = inverse(sphereValue.transform);
+    Tuple objectPointValue = inverseTransformValue * pointValue;
+    Tuple objectNormalValue = objectPointValue - point(0.0, 0.0, 0.0);
+    objectNormalValue.w = 0.0;
+    objectNormalValue = normalize(objectNormalValue);
+
+    Matrix normalTransformValue = transpose(inverseTransformValue);
+    Tuple worldNormalValue = normalTransformValue * objectNormalValue;
+    worldNormalValue.w = 0.0;
+    return normalize(worldNormalValue);
+}
+
+Tuple normalAt(const Sphere &sphereValue, const Tuple &pointValue) {
+    return normal_at(sphereValue, pointValue);
+}
+
 Intersection::Intersection() {
     t = 0.0;
     object = 0;

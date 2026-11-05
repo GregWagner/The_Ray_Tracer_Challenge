@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include <cmath>
+
 #include "intersection.hpp"
 #include "ray.hpp"
 #include "tuple.hpp"
@@ -120,6 +122,31 @@ TEST(Sphere, IntersectingTranslatedSphereWithRay) {
     Intersections intersectionsValue = intersect(sphereValue, rayValue);
 
     EXPECT_EQ(intersectionsValue.count, 0);
+}
+
+TEST(Sphere, NormalOnSphereAtAxialPointX) {
+    Sphere sphereValue = sphere();
+    Tuple normalValue = normal_at(sphereValue, point(1.0, 0.0, 0.0));
+    EXPECT_TRUE(normalValue == vector(1.0, 0.0, 0.0));
+}
+
+TEST(Sphere, NormalOnSphereAtAxialPointY) {
+    Sphere sphereValue = sphere();
+    Tuple normalValue = normal_at(sphereValue, point(0.0, 1.0, 0.0));
+    EXPECT_TRUE(normalValue == vector(0.0, 1.0, 0.0));
+}
+
+TEST(Sphere, NormalOnSphereAtAxialPointZ) {
+    Sphere sphereValue = sphere();
+    Tuple normalValue = normal_at(sphereValue, point(0.0, 0.0, 1.0));
+    EXPECT_TRUE(normalValue == vector(0.0, 0.0, 1.0));
+}
+
+TEST(Sphere, NormalOnSphereAtNonaxialPoint) {
+    double coordinateValue = std::sqrt(3.0) / 3.0;
+    Sphere sphereValue = sphere();
+    Tuple normalValue = normal_at(sphereValue, point(coordinateValue, coordinateValue, coordinateValue));
+    EXPECT_TRUE(normalValue == vector(coordinateValue, coordinateValue, coordinateValue));
 }
 
 TEST(Sphere, RayIntersectsSphereAtTwoPoints) {
