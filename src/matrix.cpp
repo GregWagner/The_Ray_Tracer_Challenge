@@ -178,6 +178,57 @@ Matrix transposeMatrix(const Matrix &matrixValue) {
     return transpose(matrixValue);
 }
 
+double Matrix::determinant() const {
+    return ::determinant(*this);
+}
+
+Matrix submatrix(const Matrix &matrixValue, int removeRowValue, int removeColumnValue) {
+    Matrix resultValue;
+    resultValue.rows = matrixValue.rows - 1;
+    resultValue.columns = matrixValue.columns - 1;
+    for (int index = 0; index < 16; index++) {
+        resultValue.data[index] = 0.0;
+    }
+
+    int destinationIndex = 0;
+    for (int rowIndex = 0; rowIndex < matrixValue.rows; rowIndex++) {
+        if (rowIndex == removeRowValue) {
+            continue;
+        }
+        for (int columnIndex = 0; columnIndex < matrixValue.columns; columnIndex++) {
+            if (columnIndex == removeColumnValue) {
+                continue;
+            }
+            resultValue.data[destinationIndex] = matrixValue.data[rowIndex * matrixValue.columns + columnIndex];
+            destinationIndex = destinationIndex + 1;
+        }
+    }
+
+    return resultValue;
+}
+
+double determinant(const Matrix &matrixValue) {
+    if (matrixValue.rows == 1) {
+        return matrixValue.data[0];
+    }
+
+    if (matrixValue.rows == 2) {
+        return matrixValue.data[0] * matrixValue.data[3] - matrixValue.data[1] * matrixValue.data[2];
+    }
+
+    double resultValue = 0.0;
+    for (int rowIndex = 0; rowIndex < matrixValue.rows; rowIndex++) {
+        Matrix subMatrixValue = submatrix(matrixValue, rowIndex, 0);
+        double minorValue = determinant(subMatrixValue);
+        double signValue = 1.0;
+        if (rowIndex % 2 == 1) {
+            signValue = -1.0;
+        }
+        resultValue = resultValue + matrixValue.data[rowIndex * matrixValue.columns] * signValue * minorValue;
+    }
+    return resultValue;
+}
+
 bool operator!=(const Matrix &leftValue, const Matrix &rightValue) {
     return !(leftValue == rightValue);
 }

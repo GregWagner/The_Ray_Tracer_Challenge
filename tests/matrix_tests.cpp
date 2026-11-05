@@ -98,6 +98,17 @@ TEST(Matrix, MultiplyingMatrixByIdentityMatrix) {
     EXPECT_TRUE(result == A);
 }
 
+TEST(Matrix, DeterminantOf2x2Matrix) {
+    Matrix matrixValue = {
+        1.0, 5.0,
+        -3.0, 2.0
+    };
+
+    double resultValue = determinant(matrixValue);
+
+    EXPECT_DOUBLE_EQ(resultValue, 17.0);
+}
+
 TEST(Matrix, TransposingIdentityMatrix) {
     Matrix resultValue = transpose(identityMatrix());
 

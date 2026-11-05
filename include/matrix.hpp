@@ -28,6 +28,8 @@ struct Matrix {
 
     Matrix transpose() const;
 
+    double determinant() const;
+
     struct RowProxy {
         Matrix *matrixValue;
         int rowIndex;
@@ -47,6 +49,9 @@ Matrix matrix(std::initializer_list<double> valueList);
 
 Matrix transpose(const Matrix &matrixValue);
 Matrix transposeMatrix(const Matrix &matrixValue);
+
+Matrix submatrix(const Matrix &matrixValue, int removeRowValue, int removeColumnValue);
+double determinant(const Matrix &matrixValue);
 
 Matrix identityMatrix();
 Matrix identity_matrix();
