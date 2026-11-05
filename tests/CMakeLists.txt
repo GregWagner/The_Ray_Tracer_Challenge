@@ -3,6 +3,7 @@ add_executable(raytracer_tests
     canvas_tests.cpp
     matrix_tests.cpp
     ray_tests.cpp
+    sphere_tests.cpp
 )
 
 target_link_libraries(raytracer_tests PRIVATE

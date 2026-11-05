@@ -17,23 +17,23 @@ struct Tuple {
 
     Tuple(double xValue, double yValue, double zValue, double wValue);
 
-    bool isPoint();
-    bool isVector();
+    bool isPoint() const;
+    bool isVector() const;
 
-    std::string type();
+    std::string type() const;
 
-    bool operator==(Tuple otherValue);
+    bool operator==(Tuple otherValue) const;
 
-    Tuple operator+(Tuple otherValue);
+    Tuple operator+(Tuple otherValue) const;
 
-    Tuple operator-(Tuple otherValue);
+    Tuple operator-(Tuple otherValue) const;
 
-    Tuple operator-();
+    Tuple operator-() const;
 
-    Tuple operator*(double scalarValue);
-    Tuple operator*(Tuple otherValue);
+    Tuple operator*(double scalarValue) const;
+    Tuple operator*(Tuple otherValue) const;
 
-    Tuple operator/(double scalarValue);
+    Tuple operator/(double scalarValue) const;
 
     double magnitude() const;
 };

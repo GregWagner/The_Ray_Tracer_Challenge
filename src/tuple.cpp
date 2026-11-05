@@ -26,21 +26,21 @@ Tuple::Tuple(double xValue, double yValue, double zValue, double wValue) {
     alpha = wValue;
 }
 
-bool Tuple::isPoint() {
+bool Tuple::isPoint() const {
     if (w == 1.0) {
         return true;
     }
     return false;
 }
 
-bool Tuple::isVector() {
+bool Tuple::isVector() const {
     if (w == 0.0) {
         return true;
     }
     return false;
 }
 
-std::string Tuple::type() {
+std::string Tuple::type() const {
     if (isPoint() == true) {
         return "point";
     }
@@ -50,7 +50,7 @@ std::string Tuple::type() {
     return "tuple";
 }
 
-bool Tuple::operator==(Tuple otherValue) {
+bool Tuple::operator==(Tuple otherValue) const {
     double differenceX = x - otherValue.x;
     double differenceY = y - otherValue.y;
     double differenceZ = z - otherValue.z;
@@ -75,32 +75,32 @@ bool Tuple::operator==(Tuple otherValue) {
     return false;
 }
 
-Tuple Tuple::operator+(Tuple otherValue) {
+Tuple Tuple::operator+(Tuple otherValue) const {
     Tuple resultValue(x + otherValue.x, y + otherValue.y, z + otherValue.z, w + otherValue.w);
     return resultValue;
 }
 
-Tuple Tuple::operator-(Tuple otherValue) {
+Tuple Tuple::operator-(Tuple otherValue) const {
     Tuple resultValue(x - otherValue.x, y - otherValue.y, z - otherValue.z, w - otherValue.w);
     return resultValue;
 }
 
-Tuple Tuple::operator-() {
+Tuple Tuple::operator-() const {
     Tuple resultValue(-x, -y, -z, -w);
     return resultValue;
 }
 
-Tuple Tuple::operator*(double scalarValue) {
+Tuple Tuple::operator*(double scalarValue) const {
     Tuple resultValue(x * scalarValue, y * scalarValue, z * scalarValue, w * scalarValue);
     return resultValue;
 }
 
-Tuple Tuple::operator*(Tuple otherValue) {
+Tuple Tuple::operator*(Tuple otherValue) const {
     Tuple resultValue(x * otherValue.x, y * otherValue.y, z * otherValue.z, w * otherValue.w);
     return resultValue;
 }
 
-Tuple Tuple::operator/(double scalarValue) {
+Tuple Tuple::operator/(double scalarValue) const {
     Tuple resultValue(x / scalarValue, y / scalarValue, z / scalarValue, w / scalarValue);
     return resultValue;
 }
