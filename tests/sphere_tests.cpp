@@ -142,6 +142,14 @@ TEST(Sphere, NormalOnSphereAtAxialPointZ) {
     EXPECT_TRUE(normalValue == vector(0.0, 0.0, 1.0));
 }
 
+TEST(Sphere, NormalIsNormalizedVector) {
+    double coordinateValue = std::sqrt(3.0) / 3.0;
+    Sphere sphereValue = sphere();
+    Tuple normalValue = normal_at(sphereValue, point(coordinateValue, coordinateValue, coordinateValue));
+
+    EXPECT_TRUE(normalValue == normalize(normalValue));
+}
+
 TEST(Sphere, NormalOnSphereAtNonaxialPoint) {
     double coordinateValue = std::sqrt(3.0) / 3.0;
     Sphere sphereValue = sphere();
