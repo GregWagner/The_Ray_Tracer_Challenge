@@ -28,6 +28,8 @@ struct Matrix {
 
     Matrix transpose() const;
 
+    Matrix submatrix(int removeRowValue, int removeColumnValue) const;
+
     double determinant() const;
 
     struct RowProxy {

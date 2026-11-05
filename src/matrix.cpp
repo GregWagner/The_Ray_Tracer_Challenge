@@ -178,6 +178,10 @@ Matrix transposeMatrix(const Matrix &matrixValue) {
     return transpose(matrixValue);
 }
 
+Matrix Matrix::submatrix(int removeRowValue, int removeColumnValue) const {
+    return ::submatrix(*this, removeRowValue, removeColumnValue);
+}
+
 double Matrix::determinant() const {
     return ::determinant(*this);
 }

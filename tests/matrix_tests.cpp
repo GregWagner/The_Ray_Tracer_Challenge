@@ -98,6 +98,42 @@ TEST(Matrix, MultiplyingMatrixByIdentityMatrix) {
     EXPECT_TRUE(result == A);
 }
 
+TEST(Matrix, SubmatrixOf3x3Matrix) {
+    Matrix matrixValue = {
+        -3.0, 5.0, 0.0,
+        1.0, -2.0, -7.0,
+        0.0, 1.0, 1.0
+    };
+
+    Matrix resultValue = submatrix(matrixValue, 0, 2);
+
+    Matrix expectedValue = {
+        1.0, -2.0,
+        0.0, 1.0
+    };
+
+    EXPECT_TRUE(resultValue == expectedValue);
+}
+
+TEST(Matrix, SubmatrixOf4x4Matrix) {
+    Matrix matrixValue = {
+        -6.0, 1.0, 1.0, 6.0,
+        -8.0, 5.0, 8.0, 6.0,
+        -1.0, 0.0, 8.0, 2.0,
+        -7.0, 1.0, -1.0, 1.0
+    };
+
+    Matrix resultValue = submatrix(matrixValue, 2, 1);
+
+    Matrix expectedValue = {
+        -6.0, 1.0, 6.0,
+        -8.0, 8.0, 6.0,
+        -7.0, -1.0, 1.0
+    };
+
+    EXPECT_TRUE(resultValue == expectedValue);
+}
+
 TEST(Matrix, DeterminantOf2x2Matrix) {
     Matrix matrixValue = {
         1.0, 5.0,
