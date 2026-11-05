@@ -155,6 +155,18 @@ Matrix identity() {
     return identityMatrix();
 }
 
+Matrix translation(double xValue, double yValue, double zValue) {
+    Matrix resultValue = identityMatrix();
+    resultValue.data[3] = xValue;
+    resultValue.data[7] = yValue;
+    resultValue.data[11] = zValue;
+    return resultValue;
+}
+
+Matrix translationMatrix(double xValue, double yValue, double zValue) {
+    return translation(xValue, yValue, zValue);
+}
+
 Matrix inverse(const Matrix &matrixValue) {
     Matrix cofactorMatrix;
     cofactorMatrix.rows = matrixValue.rows;

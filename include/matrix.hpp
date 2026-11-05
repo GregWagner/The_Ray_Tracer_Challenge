@@ -68,6 +68,9 @@ Matrix inverse(const Matrix &matrixValue);
 bool isInvertible(const Matrix &matrixValue);
 
 Matrix identityMatrix();
+
+Matrix translation(double xValue, double yValue, double zValue);
+Matrix translationMatrix(double xValue, double yValue, double zValue);
 Matrix identity_matrix();
 Matrix identity();
 
