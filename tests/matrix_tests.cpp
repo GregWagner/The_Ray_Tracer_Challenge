@@ -334,6 +334,16 @@ TEST(Matrix, TransposingAMatrix) {
     EXPECT_TRUE(resultValue == expectedValue);
 }
 
+TEST(Matrix, MultiplyingByInverseTranslationMatrix) {
+    Matrix transformValue = translation(5.0, -3.0, 2.0);
+    Matrix inverseValue = inverse(transformValue);
+    Tuple pointValue = point(-3.0, 4.0, 5.0);
+
+    Tuple resultValue = inverseValue * pointValue;
+
+    EXPECT_TRUE(resultValue == point(-8.0, 7.0, 3.0));
+}
+
 TEST(Matrix, MultiplyingByTranslationMatrix) {
     Matrix transformValue = translation(5.0, -3.0, 2.0);
     Tuple pointValue = point(-3.0, 4.0, 5.0);
