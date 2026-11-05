@@ -74,13 +74,20 @@ if(BUILD_TESTING)
     add_subdirectory(tests)
 endif()
 
-add_executable(projectile_example
-    examples/projectile/main.cpp
+add_library(raytracer_core STATIC
     src/tuple.cpp
     src/projectile.cpp
+    src/canvas.cpp
 )
-target_include_directories(projectile_example PRIVATE
+target_include_directories(raytracer_core PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
+target_compile_features(raytracer_core PUBLIC cxx_std_20)
+raytracer_enable_strict_warnings(raytracer_core)
+
+add_executable(projectile_example
+    examples/projectile/main.cpp
+)
+target_link_libraries(projectile_example PRIVATE raytracer_core)
 target_compile_features(projectile_example PRIVATE cxx_std_20)
 raytracer_enable_strict_warnings(projectile_example)

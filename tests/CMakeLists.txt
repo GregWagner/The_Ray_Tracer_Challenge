@@ -1,14 +1,10 @@
 add_executable(raytracer_tests
     tuple_tests.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/../src/tuple.cpp
-)
-
-target_include_directories(raytracer_tests PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/../include
-    ${CMAKE_CURRENT_SOURCE_DIR}/..
+    canvas_tests.cpp
 )
 
 target_link_libraries(raytracer_tests PRIVATE
+    raytracer_core
     GTest::gtest_main
 )
 
