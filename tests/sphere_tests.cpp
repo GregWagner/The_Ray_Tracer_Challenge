@@ -4,6 +4,15 @@
 #include "ray.hpp"
 #include "tuple.hpp"
 
+TEST(Sphere, IntersectionEncapsulatesTAndObject) {
+    Sphere sphereValue = sphere();
+
+    Intersection intersectionValue = intersection(3.5, sphereValue);
+
+    EXPECT_DOUBLE_EQ(intersectionValue.t, 3.5);
+    EXPECT_EQ(intersectionValue.object, &sphereValue);
+}
+
 TEST(Sphere, RayIntersectsSphereAtTwoPoints) {
     Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
     Sphere sphereValue = sphere();
