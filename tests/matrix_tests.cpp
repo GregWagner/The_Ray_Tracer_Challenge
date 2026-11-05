@@ -354,6 +354,15 @@ TEST(Matrix, MultiplyingByInverseScalingMatrix) {
     EXPECT_TRUE(resultValue == vector(-2.0, 2.0, 2.0));
 }
 
+TEST(Matrix, ReflectionIsScalingByNegativeValue) {
+    Matrix transformValue = scaling(-1.0, 1.0, 1.0);
+    Tuple pointValue = point(2.0, 3.0, 4.0);
+
+    Tuple resultValue = transformValue * pointValue;
+
+    EXPECT_TRUE(resultValue == point(-2.0, 3.0, 4.0));
+}
+
 TEST(Matrix, ScalingMatrixAppliedToVector) {
     Matrix transformValue = scaling(2.0, 3.0, 4.0);
     Tuple vectorValue = vector(-4.0, 6.0, 8.0);
