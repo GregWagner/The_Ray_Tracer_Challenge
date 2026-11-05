@@ -28,6 +28,15 @@ TEST(Canvas, WritingPixelsToCanvas) {
     EXPECT_TRUE(pixelAt(canvasValue, 2, 3) == redValue);
 }
 
+TEST(Canvas, PpmEndsWithNewline) {
+    Canvas canvasValue = canvas(5, 3);
+
+    std::string ppmValue = canvasToPpm(canvasValue);
+
+    ASSERT_FALSE(ppmValue.empty());
+    EXPECT_EQ(ppmValue.back(), '\n');
+}
+
 TEST(Canvas, ConstructingPpmHeader) {
     Canvas canvasValue = canvas(5, 3);
 
