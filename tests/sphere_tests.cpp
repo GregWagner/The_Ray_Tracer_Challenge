@@ -100,6 +100,28 @@ TEST(Sphere, ChangingSphereTransformation) {
     EXPECT_TRUE(sphereValue.transform == transformValue);
 }
 
+TEST(Sphere, IntersectingScaledSphereWithRay) {
+    Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
+    Sphere sphereValue = sphere();
+    set_transform(sphereValue, scaling(2.0, 2.0, 2.0));
+
+    Intersections intersectionsValue = intersect(sphereValue, rayValue);
+
+    EXPECT_EQ(intersectionsValue.count, 2);
+    EXPECT_DOUBLE_EQ(intersectionsValue[0].t, 3.0);
+    EXPECT_DOUBLE_EQ(intersectionsValue[1].t, 7.0);
+}
+
+TEST(Sphere, IntersectingTranslatedSphereWithRay) {
+    Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
+    Sphere sphereValue = sphere();
+    set_transform(sphereValue, translation(5.0, 0.0, 0.0));
+
+    Intersections intersectionsValue = intersect(sphereValue, rayValue);
+
+    EXPECT_EQ(intersectionsValue.count, 0);
+}
+
 TEST(Sphere, RayIntersectsSphereAtTwoPoints) {
     Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
     Sphere sphereValue = sphere();
