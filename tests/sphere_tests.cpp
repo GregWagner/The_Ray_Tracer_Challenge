@@ -25,6 +25,17 @@ TEST(Sphere, IntersectionEncapsulatesTAndObject) {
     EXPECT_EQ(intersectionValue.object, &sphereValue);
 }
 
+TEST(Sphere, IntersectSetsObjectOnIntersection) {
+    Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
+    Sphere sphereValue = sphere();
+
+    Intersections intersectionsValue = intersect(sphereValue, rayValue);
+
+    EXPECT_EQ(intersectionsValue.count, 2);
+    EXPECT_EQ(intersectionsValue[0].object, &sphereValue);
+    EXPECT_EQ(intersectionsValue[1].object, &sphereValue);
+}
+
 TEST(Sphere, RayIntersectsSphereAtTwoPoints) {
     Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
     Sphere sphereValue = sphere();
