@@ -85,6 +85,27 @@ TEST(Matrix, DifferentMatricesAreNotEqual) {
     EXPECT_TRUE(A != B);
 }
 
+TEST(Matrix, MultiplyingMatrixByIdentityMatrix) {
+    Matrix A = {
+        0, 1, 2, 4,
+        1, 2, 4, 8,
+        2, 4, 8, 16,
+        4, 8, 16, 32
+    };
+
+    Matrix result = A * identityMatrix();
+
+    EXPECT_TRUE(result == A);
+}
+
+TEST(Matrix, MultiplyingIdentityMatrixByTuple) {
+    Tuple tupleValue = tuple(1, 2, 3, 4);
+
+    Tuple result = identityMatrix() * tupleValue;
+
+    EXPECT_TRUE(result == tupleValue);
+}
+
 TEST(Matrix, MultiplyingMatrixByTuple) {
     Matrix matrixValue = {
         1, 2, 3, 4,

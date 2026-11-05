@@ -43,6 +43,10 @@ using Matrix4x4 = Matrix;
 
 Matrix matrix(std::initializer_list<double> valueList);
 
+Matrix identityMatrix();
+Matrix identity_matrix();
+Matrix identity();
+
 bool operator==(const Matrix &leftValue, const Matrix &rightValue);
 bool operator!=(const Matrix &leftValue, const Matrix &rightValue);
 

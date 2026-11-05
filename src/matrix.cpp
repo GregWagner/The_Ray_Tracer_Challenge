@@ -139,6 +139,22 @@ Matrix matrix(std::initializer_list<double> valueList) {
     return Matrix(valueList);
 }
 
+Matrix identityMatrix() {
+    Matrix resultValue = Matrix(1.0, 0.0, 0.0, 0.0,
+                                0.0, 1.0, 0.0, 0.0,
+                                0.0, 0.0, 1.0, 0.0,
+                                0.0, 0.0, 0.0, 1.0);
+    return resultValue;
+}
+
+Matrix identity_matrix() {
+    return identityMatrix();
+}
+
+Matrix identity() {
+    return identityMatrix();
+}
+
 bool operator!=(const Matrix &leftValue, const Matrix &rightValue) {
     return !(leftValue == rightValue);
 }
