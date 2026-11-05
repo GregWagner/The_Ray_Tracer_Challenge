@@ -1,6 +1,8 @@
 #ifndef MATRIX_HPP
 #define MATRIX_HPP
 
+#include "tuple.hpp"
+
 #include <cstddef>
 #include <initializer_list>
 
@@ -21,6 +23,8 @@ struct Matrix {
     double &operator()(int rowIndex, int columnIndex);
 
     Matrix operator*(const Matrix &otherValue) const;
+
+    Tuple operator*(const Tuple &otherValue) const;
 
     struct RowProxy {
         Matrix *matrixValue;

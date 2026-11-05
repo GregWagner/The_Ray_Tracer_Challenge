@@ -85,6 +85,20 @@ TEST(Matrix, DifferentMatricesAreNotEqual) {
     EXPECT_TRUE(A != B);
 }
 
+TEST(Matrix, MultiplyingMatrixByTuple) {
+    Matrix matrixValue = {
+        1, 2, 3, 4,
+        2, 4, 4, 2,
+        8, 6, 4, 1,
+        0, 0, 0, 1
+    };
+    Tuple tupleValue = tuple(1, 2, 3, 1);
+
+    Tuple resultValue = matrixValue * tupleValue;
+
+    EXPECT_TRUE(resultValue == tuple(18, 24, 33, 1));
+}
+
 TEST(Matrix, MultiplyingTwoMatrices) {
     Matrix A = {
         1, 2, 3, 4,

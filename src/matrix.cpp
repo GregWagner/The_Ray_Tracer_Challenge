@@ -107,6 +107,14 @@ Matrix Matrix::operator*(const Matrix &otherValue) const {
     return resultValue;
 }
 
+Tuple Matrix::operator*(const Tuple &otherValue) const {
+    double xValue = data[0] * otherValue.x + data[1] * otherValue.y + data[2] * otherValue.z + data[3] * otherValue.w;
+    double yValue = data[4] * otherValue.x + data[5] * otherValue.y + data[6] * otherValue.z + data[7] * otherValue.w;
+    double zValue = data[8] * otherValue.x + data[9] * otherValue.y + data[10] * otherValue.z + data[11] * otherValue.w;
+    double wValue = data[12] * otherValue.x + data[13] * otherValue.y + data[14] * otherValue.z + data[15] * otherValue.w;
+    return tuple(xValue, yValue, zValue, wValue);
+}
+
 Matrix::RowProxy Matrix::operator[](int rowIndex) {
     RowProxy proxyValue;
     proxyValue.matrixValue = this;
