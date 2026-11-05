@@ -392,6 +392,51 @@ TEST(Matrix, TranslationDoesNotAffectVectors) {
     EXPECT_TRUE(resultValue == vectorValue);
 }
 
+TEST(Matrix, ShearingMovesXInProportionToZ) {
+    Matrix transformValue = shearing(0.0, 1.0, 0.0, 0.0, 0.0, 0.0);
+    Tuple pointValue = point(2.0, 3.0, 4.0);
+
+    Tuple resultValue = transformValue * pointValue;
+
+    EXPECT_TRUE(resultValue == point(6.0, 3.0, 4.0));
+}
+
+TEST(Matrix, ShearingMovesYInProportionToX) {
+    Matrix transformValue = shearing(0.0, 0.0, 1.0, 0.0, 0.0, 0.0);
+    Tuple pointValue = point(2.0, 3.0, 4.0);
+
+    Tuple resultValue = transformValue * pointValue;
+
+    EXPECT_TRUE(resultValue == point(2.0, 5.0, 4.0));
+}
+
+TEST(Matrix, ShearingMovesYInProportionToZ) {
+    Matrix transformValue = shearing(0.0, 0.0, 0.0, 1.0, 0.0, 0.0);
+    Tuple pointValue = point(2.0, 3.0, 4.0);
+
+    Tuple resultValue = transformValue * pointValue;
+
+    EXPECT_TRUE(resultValue == point(2.0, 7.0, 4.0));
+}
+
+TEST(Matrix, ShearingMovesZInProportionToX) {
+    Matrix transformValue = shearing(0.0, 0.0, 0.0, 0.0, 1.0, 0.0);
+    Tuple pointValue = point(2.0, 3.0, 4.0);
+
+    Tuple resultValue = transformValue * pointValue;
+
+    EXPECT_TRUE(resultValue == point(2.0, 3.0, 6.0));
+}
+
+TEST(Matrix, ShearingMovesZInProportionToY) {
+    Matrix transformValue = shearing(0.0, 0.0, 0.0, 0.0, 0.0, 1.0);
+    Tuple pointValue = point(2.0, 3.0, 4.0);
+
+    Tuple resultValue = transformValue * pointValue;
+
+    EXPECT_TRUE(resultValue == point(2.0, 3.0, 7.0));
+}
+
 TEST(Matrix, ShearingMovesXInProportionToY) {
     Matrix transformValue = shearing(1.0, 0.0, 0.0, 0.0, 0.0, 0.0);
     Tuple pointValue = point(2.0, 3.0, 4.0);
