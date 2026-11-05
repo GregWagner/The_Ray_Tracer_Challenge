@@ -59,8 +59,11 @@ void write_pixel(Canvas *canvasValue, int xValue, int yValue, Tuple colorValue) 
 
 std::string Canvas::toPpm() {
     std::string resultValue = "P3\n";
-    resultValue = resultValue + std::to_string(width) + " " + std::to_string(height) + "\n";
-    resultValue = resultValue + "255\n";
+    resultValue += std::to_string(width);
+    resultValue += " ";
+    resultValue += std::to_string(height);
+    resultValue += "\n";
+    resultValue += "255\n";
 
     int lineLength = 0;
     int yIndex = 0;
@@ -109,14 +112,14 @@ std::string Canvas::toPpm() {
             while (channelIndex < 3) {
                 std::string channelText = channelTexts[channelIndex];
                 if (lineLength > 0 && lineLength + 1 + static_cast<int>(channelText.length()) > 70) {
-                    resultValue = resultValue + "\n";
+                    resultValue += "\n";
                     lineLength = 0;
                 }
                 if (lineLength > 0) {
-                    resultValue = resultValue + " ";
+                    resultValue += " ";
                     lineLength = lineLength + 1;
                 }
-                resultValue = resultValue + channelText;
+                resultValue += channelText;
                 lineLength = lineLength + static_cast<int>(channelText.length());
 
                 channelIndex = channelIndex + 1;
@@ -124,7 +127,7 @@ std::string Canvas::toPpm() {
 
             xIndex = xIndex + 1;
         }
-        resultValue = resultValue + "\n";
+        resultValue += "\n";
         lineLength = 0;
         yIndex = yIndex + 1;
     }
