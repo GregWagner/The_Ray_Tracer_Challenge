@@ -8,6 +8,10 @@ struct Tuple {
     double y;
     double z;
     double w;
+    double red;
+    double green;
+    double blue;
+    double alpha;
 
     Tuple();
 
@@ -36,6 +40,7 @@ struct Tuple {
 Tuple tuple(double xValue, double yValue, double zValue, double wValue);
 Tuple point(double xValue, double yValue, double zValue);
 Tuple vector(double xValue, double yValue, double zValue);
+Tuple color(double redValue, double greenValue, double blueValue);
 
 bool isPoint(Tuple tupleValue);
 bool isVector(Tuple tupleValue);
@@ -46,6 +51,4 @@ Tuple normalize(Tuple tupleValue);
 double dot(Tuple tupleValueOne, Tuple tupleValueTwo);
 
 Tuple cross(Tuple tupleValueOne, Tuple tupleValueTwo);
-
-double magnitude(Tuple tupleValue);
 #endif

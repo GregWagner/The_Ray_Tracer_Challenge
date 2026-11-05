@@ -162,6 +162,14 @@ TEST(Tuples, DotProductOfTwoTuples) {
     EXPECT_DOUBLE_EQ(resultValue, 20.0);
 }
 
+TEST(Tuples, ColorsAreRedGreenBlueTuples) {
+    Tuple colorValue = color(-0.5, 0.4, 1.7);
+
+    EXPECT_DOUBLE_EQ(colorValue.red, -0.5);
+    EXPECT_DOUBLE_EQ(colorValue.green, 0.4);
+    EXPECT_DOUBLE_EQ(colorValue.blue, 1.7);
+}
+
 TEST(Tuples, CrossProductOfTwoVectors) {
     Tuple vectorA = vector(1, 2, 3);
     Tuple vectorB = vector(2, 3, 4);

@@ -9,6 +9,10 @@ Tuple::Tuple() {
     y = 0.0;
     z = 0.0;
     w = 0.0;
+    red = 0.0;
+    green = 0.0;
+    blue = 0.0;
+    alpha = 0.0;
 }
 
 Tuple::Tuple(double xValue, double yValue, double zValue, double wValue) {
@@ -16,6 +20,10 @@ Tuple::Tuple(double xValue, double yValue, double zValue, double wValue) {
     y = yValue;
     z = zValue;
     w = wValue;
+    red = xValue;
+    green = yValue;
+    blue = zValue;
+    alpha = wValue;
 }
 
 bool Tuple::isPoint() {
@@ -87,6 +95,11 @@ Tuple point(double xValue, double yValue, double zValue) {
 Tuple vector(double xValue, double yValue, double zValue) {
     Tuple newVector = tuple(xValue, yValue, zValue, 0);
     return newVector;
+}
+
+Tuple color(double redValue, double greenValue, double blueValue) {
+    Tuple newColor = tuple(redValue, greenValue, blueValue, 0.0);
+    return newColor;
 }
 
 bool isPoint(Tuple tupleValue) {
