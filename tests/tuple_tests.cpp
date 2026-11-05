@@ -2,7 +2,8 @@
 
 #include "tuple.hpp"
 
-TEST(Tuples, ATupleWithW10IsAPoint) {
+// from spec page 4
+TEST(Tuples, ATupleWithWEqaulTo1IsAPoint) {
     Tuple a = tuple(4.3, -4.2, 3.1, 1.0);
 
     EXPECT_DOUBLE_EQ(a.x, 4.3);
@@ -10,11 +11,11 @@ TEST(Tuples, ATupleWithW10IsAPoint) {
     EXPECT_DOUBLE_EQ(a.z, 3.1);
     EXPECT_DOUBLE_EQ(a.w, 1.0);
 
-    EXPECT_TRUE(a.is_point());
-    EXPECT_FALSE(a.is_vector());
+    EXPECT_TRUE(a.isPoint());
+    EXPECT_FALSE(a.isVector());
 
-    EXPECT_TRUE(is_point(a));
-    EXPECT_FALSE(is_vector(a));
+    EXPECT_TRUE(isPoint(a));
+    EXPECT_FALSE(isVector(a));
 
     EXPECT_EQ(a.type(), "point");
 }
@@ -27,11 +28,11 @@ TEST(Tuples, ATupleWithW0IsAVector) {
     EXPECT_DOUBLE_EQ(a.z, 3.1);
     EXPECT_DOUBLE_EQ(a.w, 0.0);
 
-    EXPECT_FALSE(a.is_point());
-    EXPECT_TRUE(a.is_vector());
+    EXPECT_FALSE(a.isPoint());
+    EXPECT_TRUE(a.isVector());
 
-    EXPECT_FALSE(is_point(a));
-    EXPECT_TRUE(is_vector(a));
+    EXPECT_FALSE(isPoint(a));
+    EXPECT_TRUE(isVector(a));
 
     EXPECT_EQ(a.type(), "vector");
 }

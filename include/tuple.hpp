@@ -9,23 +9,23 @@ struct Tuple {
     double z;
     double w;
 
-    Tuple(double x_value, double y_value, double z_value, double w_value);
+    Tuple(double xValue, double yValue, double zValue, double wValue);
 
-    bool is_point();
-    bool is_vector();
+    bool isPoint();
+    bool isVector();
 
     std::string type();
 
-    bool operator==(Tuple other);
+    bool operator==(Tuple otherValue);
 
-    Tuple operator+(Tuple other);
+    Tuple operator+(Tuple otherValue);
 };
 
-Tuple tuple(double x, double y, double z, double w);
-Tuple point(double x, double y, double z);
-Tuple vector(double x, double y, double z);
+Tuple tuple(double xValue, double yValue, double zValue, double wValue);
+Tuple point(double xValue, double yValue, double zValue);
+Tuple vector(double xValue, double yValue, double zValue);
 
-bool is_point(Tuple t);
-bool is_vector(Tuple t);
+bool isPoint(Tuple tupleValue);
+bool isVector(Tuple tupleValue);
 
 #endif

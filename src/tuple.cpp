@@ -1,20 +1,20 @@
 #include "tuple.hpp"
 
-Tuple::Tuple(double x_value, double y_value, double z_value, double w_value) {
-    x = x_value;
-    y = y_value;
-    z = z_value;
-    w = w_value;
+Tuple::Tuple(double xValue, double yValue, double zValue, double wValue) {
+    x = xValue;
+    y = yValue;
+    z = zValue;
+    w = wValue;
 }
 
-bool Tuple::is_point() {
+bool Tuple::isPoint() {
     if (w == 1.0) {
         return true;
     }
     return false;
 }
 
-bool Tuple::is_vector() {
+bool Tuple::isVector() {
     if (w == 0.0) {
         return true;
     }
@@ -22,51 +22,51 @@ bool Tuple::is_vector() {
 }
 
 std::string Tuple::type() {
-    if (is_point() == true) {
+    if (isPoint() == true) {
         return "point";
     }
-    if (is_vector() == true) {
+    if (isVector() == true) {
         return "vector";
     }
     return "tuple";
 }
 
-bool Tuple::operator==(Tuple other) {
-    if (x == other.x && y == other.y && z == other.z && w == other.w) {
+bool Tuple::operator==(Tuple otherValue) {
+    if (x == otherValue.x && y == otherValue.y && z == otherValue.z && w == otherValue.w) {
         return true;
     }
     return false;
 }
 
-Tuple Tuple::operator+(Tuple other) {
-    Tuple result(x + other.x, y + other.y, z + other.z, w + other.w);
-    return result;
+Tuple Tuple::operator+(Tuple otherValue) {
+    Tuple resultValue(x + otherValue.x, y + otherValue.y, z + otherValue.z, w + otherValue.w);
+    return resultValue;
 }
 
-Tuple tuple(double x, double y, double z, double w) {
-    Tuple new_tuple(x, y, z, w);
-    return new_tuple;
+Tuple tuple(double xValue, double yValue, double zValue, double wValue) {
+    Tuple newTuple(xValue, yValue, zValue, wValue);
+    return newTuple;
 }
 
-Tuple point(double x, double y, double z) {
-    Tuple new_point = tuple(x, y, z, 1);
-    return new_point;
+Tuple point(double xValue, double yValue, double zValue) {
+    Tuple newPoint = tuple(xValue, yValue, zValue, 1);
+    return newPoint;
 }
 
-Tuple vector(double x, double y, double z) {
-    Tuple new_vector = tuple(x, y, z, 0);
-    return new_vector;
+Tuple vector(double xValue, double yValue, double zValue) {
+    Tuple newVector = tuple(xValue, yValue, zValue, 0);
+    return newVector;
 }
 
-bool is_point(Tuple t) {
-    if (t.is_point() == true) {
+bool isPoint(Tuple tupleValue) {
+    if (tupleValue.isPoint() == true) {
         return true;
     }
     return false;
 }
 
-bool is_vector(Tuple t) {
-    if (t.is_vector() == true) {
+bool isVector(Tuple tupleValue) {
+    if (tupleValue.isVector() == true) {
         return true;
     }
     return false;
