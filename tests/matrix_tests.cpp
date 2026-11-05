@@ -115,6 +115,19 @@ TEST(Matrix, SubmatrixOf3x3Matrix) {
     EXPECT_TRUE(resultValue == expectedValue);
 }
 
+TEST(Matrix, CofactorOf3x3Matrix) {
+    Matrix matrixValue = {
+        3.0, 5.0, 0.0,
+        2.0, -1.0, -7.0,
+        6.0, -1.0, 5.0
+    };
+
+    EXPECT_DOUBLE_EQ(minor(matrixValue, 0, 0), -12.0);
+    EXPECT_DOUBLE_EQ(cofactor(matrixValue, 0, 0), -12.0);
+    EXPECT_DOUBLE_EQ(minor(matrixValue, 1, 0), 25.0);
+    EXPECT_DOUBLE_EQ(cofactor(matrixValue, 1, 0), -25.0);
+}
+
 TEST(Matrix, MinorOf3x3Matrix) {
     Matrix matrixValue = {
         3.0, 5.0, 0.0,

@@ -33,6 +33,8 @@ struct Matrix {
     double determinant() const;
 
 double minor(int removeRowValue, int removeColumnValue) const;
+
+double cofactor(int removeRowValue, int removeColumnValue) const;
     struct RowProxy {
         Matrix *matrixValue;
         int rowIndex;
@@ -56,6 +58,7 @@ Matrix transposeMatrix(const Matrix &matrixValue);
 Matrix submatrix(const Matrix &matrixValue, int removeRowValue, int removeColumnValue);
 double determinant(const Matrix &matrixValue);
 double minor(const Matrix &matrixValue, int removeRowValue, int removeColumnValue);
+double cofactor(const Matrix &matrixValue, int removeRowValue, int removeColumnValue);
 
 Matrix identityMatrix();
 Matrix identity_matrix();

@@ -190,6 +190,10 @@ double Matrix::minor(int removeRowValue, int removeColumnValue) const {
     return ::minor(*this, removeRowValue, removeColumnValue);
 }
 
+double Matrix::cofactor(int removeRowValue, int removeColumnValue) const {
+    return ::cofactor(*this, removeRowValue, removeColumnValue);
+}
+
 Matrix submatrix(const Matrix &matrixValue, int removeRowValue, int removeColumnValue) {
     Matrix resultValue;
     resultValue.rows = matrixValue.rows - 1;
@@ -218,6 +222,15 @@ Matrix submatrix(const Matrix &matrixValue, int removeRowValue, int removeColumn
 double minor(const Matrix &matrixValue, int removeRowValue, int removeColumnValue) {
     Matrix subMatrixValue = submatrix(matrixValue, removeRowValue, removeColumnValue);
     return determinant(subMatrixValue);
+}
+
+double cofactor(const Matrix &matrixValue, int removeRowValue, int removeColumnValue) {
+    double minorValue = minor(matrixValue, removeRowValue, removeColumnValue);
+    int sumValue = removeRowValue + removeColumnValue;
+    if (sumValue % 2 == 1) {
+        minorValue = -minorValue;
+    }
+    return minorValue;
 }
 
 double determinant(const Matrix &matrixValue) {
