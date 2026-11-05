@@ -51,7 +51,25 @@ std::string Tuple::type() {
 }
 
 bool Tuple::operator==(Tuple otherValue) {
-    if (x == otherValue.x && y == otherValue.y && z == otherValue.z && w == otherValue.w) {
+    double differenceX = x - otherValue.x;
+    double differenceY = y - otherValue.y;
+    double differenceZ = z - otherValue.z;
+    double differenceW = w - otherValue.w;
+
+    if (differenceX < 0.0) {
+        differenceX = -differenceX;
+    }
+    if (differenceY < 0.0) {
+        differenceY = -differenceY;
+    }
+    if (differenceZ < 0.0) {
+        differenceZ = -differenceZ;
+    }
+    if (differenceW < 0.0) {
+        differenceW = -differenceW;
+    }
+
+    if (differenceX < 0.00001 && differenceY < 0.00001 && differenceZ < 0.00001 && differenceW < 0.00001) {
         return true;
     }
     return false;

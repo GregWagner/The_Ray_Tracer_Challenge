@@ -170,6 +170,32 @@ TEST(Tuples, ColorsAreRedGreenBlueTuples) {
     EXPECT_DOUBLE_EQ(colorValue.blue, 1.7);
 }
 
+TEST(Tuples, AddingColors) {
+    Tuple colorOne = color(0.9, 0.6, 0.75);
+    Tuple colorTwo = color(0.7, 0.1, 0.25);
+
+    Tuple result = colorOne + colorTwo;
+
+    EXPECT_TRUE(result == color(1.6, 0.7, 1.0));
+}
+
+TEST(Tuples, SubtractingColors) {
+    Tuple colorOne = color(0.9, 0.6, 0.75);
+    Tuple colorTwo = color(0.7, 0.1, 0.25);
+
+    Tuple result = colorOne - colorTwo;
+
+    EXPECT_TRUE(result == color(0.2, 0.5, 0.5));
+}
+
+TEST(Tuples, MultiplyingColorByScalar) {
+    Tuple colorValue = color(0.2, 0.3, 0.4);
+
+    Tuple result = colorValue * 2;
+
+    EXPECT_TRUE(result == color(0.4, 0.6, 0.8));
+}
+
 TEST(Tuples, CrossProductOfTwoVectors) {
     Tuple vectorA = vector(1, 2, 3);
     Tuple vectorB = vector(2, 3, 4);
