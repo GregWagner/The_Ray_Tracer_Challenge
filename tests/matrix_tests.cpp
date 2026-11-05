@@ -344,6 +344,16 @@ TEST(Matrix, MultiplyingByInverseTranslationMatrix) {
     EXPECT_TRUE(resultValue == point(-8.0, 7.0, 3.0));
 }
 
+TEST(Matrix, MultiplyingByInverseScalingMatrix) {
+    Matrix transformValue = scaling(2.0, 3.0, 4.0);
+    Matrix inverseValue = inverse(transformValue);
+    Tuple vectorValue = vector(-4.0, 6.0, 8.0);
+
+    Tuple resultValue = inverseValue * vectorValue;
+
+    EXPECT_TRUE(resultValue == vector(-2.0, 2.0, 2.0));
+}
+
 TEST(Matrix, ScalingMatrixAppliedToVector) {
     Matrix transformValue = scaling(2.0, 3.0, 4.0);
     Tuple vectorValue = vector(-4.0, 6.0, 8.0);
