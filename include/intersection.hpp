@@ -1,6 +1,7 @@
 #ifndef INTERSECTION_HPP
 #define INTERSECTION_HPP
 
+#include "material.hpp"
 #include "matrix.hpp"
 #include "ray.hpp"
 #include "tuple.hpp"
@@ -14,6 +15,7 @@ struct Sphere {
     Tuple center;
     double radius;
     Matrix transform;
+    Material material;
 
     Sphere();
     Sphere(Tuple centerValue, double radiusValue);

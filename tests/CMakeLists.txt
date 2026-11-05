@@ -5,6 +5,7 @@ add_executable(raytracer_tests
     ray_tests.cpp
     sphere_tests.cpp
     point_light_tests.cpp
+    material_tests.cpp
 )
 
 target_link_libraries(raytracer_tests PRIVATE

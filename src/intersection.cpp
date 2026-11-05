@@ -6,12 +6,14 @@ Sphere::Sphere() {
     center = point(0.0, 0.0, 0.0);
     radius = 1.0;
     transform = identityMatrix();
+    material = ::material();
 }
 
 Sphere::Sphere(Tuple centerValue, double radiusValue) {
     center = centerValue;
     radius = radiusValue;
     transform = identityMatrix();
+    material = ::material();
 }
 
 Sphere sphere() {
