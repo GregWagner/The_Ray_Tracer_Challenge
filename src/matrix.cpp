@@ -155,6 +155,31 @@ Matrix identity() {
     return identityMatrix();
 }
 
+Matrix inverse(const Matrix &matrixValue) {
+    Matrix cofactorMatrix;
+    cofactorMatrix.rows = matrixValue.rows;
+    cofactorMatrix.columns = matrixValue.columns;
+    for (int index = 0; index < 16; index++) {
+        cofactorMatrix.data[index] = 0.0;
+    }
+
+    for (int rowIndex = 0; rowIndex < matrixValue.rows; rowIndex++) {
+        for (int columnIndex = 0; columnIndex < matrixValue.columns; columnIndex++) {
+            cofactorMatrix.data[rowIndex * matrixValue.columns + columnIndex] = cofactor(matrixValue, rowIndex, columnIndex);
+        }
+    }
+
+    Matrix adjugateMatrix = transpose(cofactorMatrix);
+
+    double detValue = determinant(matrixValue);
+    Matrix resultValue = adjugateMatrix;
+    int totalValue = resultValue.rows * resultValue.columns;
+    for (int index = 0; index < totalValue; index++) {
+        resultValue.data[index] = resultValue.data[index] / detValue;
+    }
+    return resultValue;
+}
+
 Matrix Matrix::transpose() const {
     Matrix resultValue;
     resultValue.rows = columns;
@@ -188,6 +213,10 @@ double Matrix::determinant() const {
 
 bool Matrix::isInvertible() const {
     return ::isInvertible(*this);
+}
+
+Matrix Matrix::inverse() const {
+    return ::inverse(*this);
 }
 
 double Matrix::minor(int removeRowValue, int removeColumnValue) const {

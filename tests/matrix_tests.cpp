@@ -173,6 +173,31 @@ TEST(Matrix, DeterminantOf3x3Matrix) {
     EXPECT_DOUBLE_EQ(determinant(matrixValue), -196.0);
 }
 
+TEST(Matrix, InverseOfMatrix) {
+    Matrix matrixValue = {
+        -5.0, 2.0, 6.0, -8.0,
+        1.0, -5.0, 1.0, 8.0,
+        7.0, 7.0, -6.0, -7.0,
+        1.0, -3.0, 7.0, 4.0
+    };
+
+    Matrix inverseValue = inverse(matrixValue);
+
+    EXPECT_DOUBLE_EQ(determinant(matrixValue), 532.0);
+    EXPECT_DOUBLE_EQ(cofactor(matrixValue, 2, 3), -160.0);
+    EXPECT_NEAR(inverseValue(3, 2), -160.0 / 532.0, 0.00001);
+    EXPECT_DOUBLE_EQ(cofactor(matrixValue, 3, 2), 105.0);
+    EXPECT_NEAR(inverseValue(2, 3), 105.0 / 532.0, 0.00001);
+
+    Matrix expectedValue = {
+        0.21805, 0.45113, 0.24060, -0.04511,
+        -0.80827, -1.45677, -0.44361, 0.52068,
+        -0.07895, -0.22368, -0.05263, 0.19737,
+        -0.52256, -0.81391, -0.30075, 0.30639
+    };
+    EXPECT_TRUE(inverseValue == expectedValue);
+}
+
 TEST(Matrix, InvertibleMatrix) {
     Matrix matrixValue = {
         6.0, 4.0, 4.0, 4.0,
