@@ -7,7 +7,9 @@
 #include <vector>
 
 struct Matrix {
-    double data[16];
+    int rows;
+    int columns;
+    std::vector<double> data;
 
     Matrix();
     Matrix(std::initializer_list<double> valueList);
@@ -30,7 +32,6 @@ struct Matrix {
         double operator[](int columnIndex) const;
     };
     RowProxy operator[](int rowIndex);
-    // const version? can't easily return reference to const; return proxy with const Matrix*
 };
 
 using Matrix4 = Matrix;

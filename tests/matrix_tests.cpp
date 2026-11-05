@@ -24,3 +24,27 @@ TEST(Matrix, ConstructingAndInspecting4x4) {
     EXPECT_DOUBLE_EQ(M.data[3], 4.0);
     EXPECT_DOUBLE_EQ(M.at(3, 2), 15.5);
 }
+
+TEST(Matrix, A2x2MatrixIsRepresentable) {
+    Matrix M = {
+        -3.0, 5.0,
+        1.0, -2.0
+    };
+
+    EXPECT_DOUBLE_EQ(M(0, 0), -3.0);
+    EXPECT_DOUBLE_EQ(M(0, 1), 5.0);
+    EXPECT_DOUBLE_EQ(M(1, 0), 1.0);
+    EXPECT_DOUBLE_EQ(M(1, 1), -2.0);
+}
+
+TEST(Matrix, A3x3MatrixIsRepresentable) {
+    Matrix M = {
+        -3.0, 5.0, 0.0,
+        1.0, -2.0, -7.0,
+        0.0, 1.0, 1.0
+    };
+
+    EXPECT_DOUBLE_EQ(M(0, 0), -3.0);
+    EXPECT_DOUBLE_EQ(M(1, 1), -2.0);
+    EXPECT_DOUBLE_EQ(M(2, 2), 1.0);
+}
