@@ -3,13 +3,11 @@
 
 #include <cstddef>
 #include <initializer_list>
-#include <string>
-#include <vector>
 
 struct Matrix {
     int rows;
     int columns;
-    std::vector<double> data;
+    double data[16];
 
     Matrix();
     Matrix(std::initializer_list<double> valueList);
@@ -40,4 +38,5 @@ using Matrix4x4 = Matrix;
 Matrix matrix(std::initializer_list<double> valueList);
 
 bool operator==(const Matrix &leftValue, const Matrix &rightValue);
+
 #endif
