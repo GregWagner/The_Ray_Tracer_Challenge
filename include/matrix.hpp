@@ -98,6 +98,9 @@ Matrix shearingMatrix(double xyValue, double xzValue, double yxValue, double yzV
 Matrix identity_matrix();
 Matrix identity();
 
+Matrix viewTransform(Tuple fromValue, Tuple toValue, Tuple upValue);
+Matrix view_transform(Tuple fromValue, Tuple toValue, Tuple upValue);
+
 bool operator==(const Matrix &leftValue, const Matrix &rightValue);
 bool operator!=(const Matrix &leftValue, const Matrix &rightValue);
 

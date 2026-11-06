@@ -414,3 +414,23 @@ Matrix shearing(double xyValue, double xzValue, double yxValue, double yzValue, 
 Matrix shearingMatrix(double xyValue, double xzValue, double yxValue, double yzValue, double zxValue, double zyValue) {
     return shearing(xyValue, xzValue, yxValue, yzValue, zxValue, zyValue);
 }
+
+Matrix viewTransform(Tuple fromValue, Tuple toValue, Tuple upValue) {
+    Tuple forwardValue = normalize(toValue - fromValue);
+    Tuple upnValue = normalize(upValue);
+    Tuple leftValue = cross(forwardValue, upnValue);
+    Tuple trueUpValue = cross(leftValue, forwardValue);
+
+    Matrix orientationValue = Matrix(leftValue.x, leftValue.y, leftValue.z, 0.0,
+                                   trueUpValue.x, trueUpValue.y, trueUpValue.z, 0.0,
+                                   -forwardValue.x, -forwardValue.y, -forwardValue.z, 0.0,
+                                   0.0, 0.0, 0.0, 1.0);
+
+    Matrix translationValue = translation(-fromValue.x, -fromValue.y, -fromValue.z);
+    Matrix resultValue = orientationValue * translationValue;
+    return resultValue;
+}
+
+Matrix view_transform(Tuple fromValue, Tuple toValue, Tuple upValue) {
+    return viewTransform(fromValue, toValue, upValue);
+}

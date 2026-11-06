@@ -516,6 +516,16 @@ TEST(Matrix, RotatingPointAroundXAxis) {
     EXPECT_NEAR(resultTwo.z, 1.0, 0.00001);
 }
 
+TEST(Matrix, ViewTransformForDefaultOrientation) {
+    Tuple fromValue = point(0.0, 0.0, 0.0);
+    Tuple toValue = point(0.0, 0.0, -1.0);
+    Tuple upValue = vector(0.0, 1.0, 0.0);
+
+    Matrix resultValue = view_transform(fromValue, toValue, upValue);
+
+    EXPECT_TRUE(resultValue == identityMatrix());
+}
+
 TEST(Matrix, MultiplyingByTranslationMatrix) {
     Matrix transformValue = translation(5.0, -3.0, 2.0);
     Tuple pointValue = point(-3.0, 4.0, 5.0);
