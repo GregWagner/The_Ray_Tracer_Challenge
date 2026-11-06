@@ -1,7 +1,10 @@
 #include <QApplication>
+#include <QElapsedTimer>
 #include <QImage>
 #include <QLabel>
 #include <QPixmap>
+#include <QString>
+#include <QVBoxLayout>
 
 #include "camera.hpp"
 #include "canvas.hpp"
@@ -70,12 +73,23 @@ int main(int argc, char *argv[]) {
     QImage image(cameraValue.hsize, cameraValue.vsize, QImage::Format_RGB32);
     image.fill(Qt::black);
 
-    QLabel label;
-    label.setWindowTitle("World Scene");
-    label.resize(image.size());
-    label.setPixmap(QPixmap::fromImage(image));
-    label.show();
+    QWidget window;
+    QVBoxLayout layout(&window);
+    QLabel imageLabel;
+    QLabel timerLabel;
+
+    imageLabel.setPixmap(QPixmap::fromImage(image));
+    timerLabel.setText("Elapsed: 0 ms");
+
+    layout.addWidget(&imageLabel);
+    layout.addWidget(&timerLabel);
+
+    window.setWindowTitle("World Scene");
+    window.show();
     application.processEvents();
+
+    QElapsedTimer timer;
+    timer.start();
 
     int yIndex = 0;
     while (yIndex < cameraValue.vsize) {
@@ -110,10 +124,14 @@ int main(int argc, char *argv[]) {
             xIndex = xIndex + 1;
         }
 
-        label.setPixmap(QPixmap::fromImage(image));
+        imageLabel.setPixmap(QPixmap::fromImage(image));
+        timerLabel.setText(QString("Elapsed: %1 ms").arg(timer.elapsed()));
         application.processEvents();
         yIndex = yIndex + 1;
     }
+
+    timerLabel.setText(QString("Finished in %1 ms").arg(timer.elapsed()));
+    application.processEvents();
 
     return application.exec();
 }
