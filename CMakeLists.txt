@@ -83,6 +83,7 @@ add_library(raytracer_core STATIC
     src/intersection.cpp
     src/point_light.cpp
     src/material.cpp
+    src/lighting.cpp
 )
 target_include_directories(raytracer_core PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
