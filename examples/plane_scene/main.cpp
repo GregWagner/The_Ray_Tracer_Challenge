@@ -57,7 +57,7 @@ int main(int argc, char *argv[]) {
     worldValue.lights.clear();
     worldValue.lights.push_back(worldValue.light);
 
-    Camera cameraValue = camera(400, 200, PI / 3.0);
+    Camera cameraValue = camera(1280, 1024, PI / 3.0);
     cameraValue.transform = view_transform(point(0.0, 1.5, -5.0), point(0.0, 1.0, 0.0), vector(0.0, 1.0, 0.0));
 
     QImage image(cameraValue.hsize, cameraValue.vsize, QImage::Format_RGB32);
