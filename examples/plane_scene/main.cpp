@@ -5,6 +5,7 @@
 #include "lighting.hpp"
 #include "material.hpp"
 #include "matrix.hpp"
+#include "plane.hpp"
 #include "sphere.hpp"
 #include "point_light.hpp"
 #include "qt_canvas.h"
@@ -39,6 +40,13 @@ int main(int argc, char *argv[]) {
     rightSphere.material.diffuse = 0.7;
     rightSphere.material.specular = 0.3;
     worldValue.objects.push_back(rightSphere);
+
+    Plane wallPlane = plane();
+    set_transform(wallPlane, translation(0.0, 0.0, 5.0) * rotation_x(PI / 2.0));
+    wallPlane.material = material();
+    wallPlane.material.color = color(0.9, 0.9, 1.0);
+    wallPlane.material.specular = 0.0;
+    worldValue.planes.push_back(wallPlane);
 
     worldValue.light = point_light(point(-10.0, 10.0, -10.0), color(1.0, 1.0, 1.0));
     worldValue.hasLight = true;

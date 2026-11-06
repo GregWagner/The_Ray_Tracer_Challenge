@@ -46,6 +46,17 @@ Intersections intersect_world(const World &worldValue, const Ray &rayValue) {
         objectIndex = objectIndex + 1;
     }
 
+    int planeIndex = 0;
+    while (planeIndex < (int)worldValue.planes.size()) {
+        Intersections planeIntersections = intersect(worldValue.planes[static_cast<std::size_t>(planeIndex)], rayValue);
+        int intersectionIndex = 0;
+        while (intersectionIndex < planeIntersections.count) {
+            resultValue.add(planeIntersections[static_cast<std::size_t>(intersectionIndex)]);
+            intersectionIndex = intersectionIndex + 1;
+        }
+        planeIndex = planeIndex + 1;
+    }
+
     int outerIndex = 0;
     while (outerIndex < resultValue.count) {
         int innerIndex = 0;

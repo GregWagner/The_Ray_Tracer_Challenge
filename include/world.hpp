@@ -4,10 +4,12 @@
 #include <vector>
 
 #include "intersection.hpp"
+#include "plane.hpp"
 #include "point_light.hpp"
 
 struct World {
     std::vector<Sphere> objects;
+    std::vector<Plane> planes;
     std::vector<PointLight> lights;
     bool hasLight;
     PointLight light;
