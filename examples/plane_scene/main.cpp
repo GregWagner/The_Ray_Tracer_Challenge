@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     worldValue.objects.push_back(leftSphere);
 
     Sphere rightSphere = sphere();
-    set_transform(rightSphere, translation(1.0, 1.0, 0.0));
+    set_transform(rightSphere, translation(1.0, 0.33, -0.75));
     rightSphere.material = material();
     rightSphere.material.color = color(0.0, 0.0, 1.0);
     rightSphere.material.diffuse = 0.7;
