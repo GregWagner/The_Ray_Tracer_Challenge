@@ -24,6 +24,28 @@ TEST(Plane, IntersectWithCoplanarRay) {
     EXPECT_EQ(intersectionsValue.count, 0);
 }
 
+TEST(Plane, IntersectingFromAbove) {
+    Plane planeValue = plane();
+    Ray rayValue = ray(point(0.0, 1.0, 0.0), vector(0.0, -1.0, 0.0));
+
+    Intersections intersectionsValue = local_intersect(planeValue, rayValue);
+
+    EXPECT_EQ(intersectionsValue.count, 1);
+    EXPECT_DOUBLE_EQ(intersectionsValue[0].t, 1.0);
+    EXPECT_EQ(intersectionsValue[0].object, &planeValue);
+}
+
+TEST(Plane, IntersectingFromBelow) {
+    Plane planeValue = plane();
+    Ray rayValue = ray(point(0.0, -1.0, 0.0), vector(0.0, 1.0, 0.0));
+
+    Intersections intersectionsValue = local_intersect(planeValue, rayValue);
+
+    EXPECT_EQ(intersectionsValue.count, 1);
+    EXPECT_DOUBLE_EQ(intersectionsValue[0].t, 1.0);
+    EXPECT_EQ(intersectionsValue[0].object, &planeValue);
+}
+
 TEST(Plane, NormalIsConstantEverywhere) {
     Plane planeValue = plane();
 
