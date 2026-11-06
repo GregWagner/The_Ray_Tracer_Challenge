@@ -11,6 +11,7 @@ add_executable(raytracer_tests
     plane_tests.cpp
     world_tests.cpp
     camera_tests.cpp
+    pattern_tests.cpp
 )
 
 target_link_libraries(raytracer_tests PRIVATE
