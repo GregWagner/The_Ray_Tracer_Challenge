@@ -114,6 +114,13 @@ target_link_libraries(clock_example PRIVATE raytracer_core)
 target_compile_features(clock_example PRIVATE cxx_std_20)
 raytracer_enable_strict_warnings(clock_example)
 
+add_executable(world_scene_example
+    examples/world_scene/main.cpp
+)
+target_link_libraries(world_scene_example PRIVATE raytracer_core)
+target_compile_features(world_scene_example PRIVATE cxx_std_20)
+raytracer_enable_strict_warnings(world_scene_example)
+
 add_executable(ray_sphere_example
     examples/ray_sphere/main.cpp
 )
