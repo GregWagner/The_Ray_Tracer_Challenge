@@ -61,15 +61,6 @@ int main(int argc, char *argv[]) {
     leftSphere.material.diffuse = 0.7;
     leftSphere.material.specular = 0.3;
     worldValue.objects.push_back(leftSphere);
-
-    Sphere redBall = sphere();
-    set_transform(redBall, translation(2.0, 1.0, -0.5) * scaling(0.5, 0.5, 0.5));
-    redBall.material = material();
-    redBall.material.color = color(1.0, 0.0, 0.0);
-    redBall.material.diffuse = 0.7;
-    redBall.material.specular = 0.3;
-    worldValue.objects.push_back(redBall);
-
     worldValue.light = point_light(point(-10.0, 10.0, -10.0), color(1.0, 1.0, 1.0));
     worldValue.hasLight = true;
     worldValue.lights.clear();
