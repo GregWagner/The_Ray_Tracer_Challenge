@@ -1,4 +1,10 @@
 #include <QApplication>
+#include <QElapsedTimer>
+#include <QImage>
+#include <QLabel>
+#include <QPixmap>
+#include <QString>
+#include <QVBoxLayout>
 
 #include "camera.hpp"
 #include "canvas.hpp"
@@ -6,9 +12,8 @@
 #include "material.hpp"
 #include "matrix.hpp"
 #include "plane.hpp"
-#include "sphere.hpp"
 #include "point_light.hpp"
-#include "qt_canvas.h"
+#include "ray.hpp"
 #include "tuple.hpp"
 #include "world.hpp"
 
@@ -22,7 +27,6 @@ int main(int argc, char *argv[]) {
     floorSphere.material = material();
     floorSphere.material.color = color(1.0, 0.9, 0.9);
     floorSphere.material.specular = 0.0;
-
     worldValue.objects.push_back(floorSphere);
 
     Sphere leftSphere = sphere();
@@ -56,9 +60,68 @@ int main(int argc, char *argv[]) {
     Camera cameraValue = camera(400, 200, PI / 3.0);
     cameraValue.transform = view_transform(point(0.0, 1.5, -5.0), point(0.0, 1.0, 0.0), vector(0.0, 1.0, 0.0));
 
-    Canvas canvasValue = render(cameraValue, worldValue);
+    QImage image(cameraValue.hsize, cameraValue.vsize, QImage::Format_RGB32);
+    image.fill(Qt::black);
 
-    showCanvas(application, canvasValue, "Plane Scene");
+    QWidget window;
+    QVBoxLayout layout(&window);
+    QLabel imageLabel;
+    QLabel timerLabel;
 
-    return 0;
+    imageLabel.setPixmap(QPixmap::fromImage(image));
+    timerLabel.setText("Elapsed: 0 ms");
+
+    layout.addWidget(&imageLabel);
+    layout.addWidget(&timerLabel);
+
+    window.setWindowTitle("Plane Scene");
+    window.show();
+    application.processEvents();
+
+    QElapsedTimer timer;
+    timer.start();
+
+    int yIndex = 0;
+    while (yIndex < cameraValue.vsize) {
+        int xIndex = 0;
+        while (xIndex < cameraValue.hsize) {
+            Ray rayValue = ray_for_pixel(cameraValue, xIndex, yIndex);
+            Tuple colorValue = color_at(worldValue, rayValue);
+
+            int redValue = static_cast<int>(colorValue.red * 255.0 + 0.5);
+            int greenValue = static_cast<int>(colorValue.green * 255.0 + 0.5);
+            int blueValue = static_cast<int>(colorValue.blue * 255.0 + 0.5);
+            if (redValue < 0) {
+                redValue = 0;
+            }
+            if (redValue > 255) {
+                redValue = 255;
+            }
+            if (greenValue < 0) {
+                greenValue = 0;
+            }
+            if (greenValue > 255) {
+                greenValue = 255;
+            }
+            if (blueValue < 0) {
+                blueValue = 0;
+            }
+            if (blueValue > 255) {
+                blueValue = 255;
+            }
+
+            image.setPixel(xIndex, yIndex, qRgb(redValue, greenValue, blueValue));
+            xIndex = xIndex + 1;
+        }
+
+        imageLabel.setPixmap(QPixmap::fromImage(image));
+        timerLabel.setText(QString("Elapsed: %1 ms").arg(timer.elapsed()));
+        application.processEvents();
+        yIndex = yIndex + 1;
+    }
+
+    timerLabel.setText(QString("Finished in %1 ms").arg(timer.elapsed()));
+    application.processEvents();
+
+    return application.exec();
 }
