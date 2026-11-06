@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
     Sphere floorSphere = sphere();
     set_transform(floorSphere, scaling(10.0, 0.01, 10.0));
     floorSphere.material = material();
-    floorSphere.material.color = color(1.0, 0.9, 0.9);
+    floorSphere.material.color = color(0.0, 1.0, 0.0);
     floorSphere.material.specular = 0.0;
     worldValue.objects.push_back(floorSphere);
 
