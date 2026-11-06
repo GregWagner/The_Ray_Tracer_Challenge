@@ -526,6 +526,25 @@ TEST(Matrix, ViewTransformLookingInPositiveZDirection) {
     EXPECT_TRUE(resultValue == scaling(-1.0, 1.0, -1.0));
 }
 
+TEST(Matrix, ArbitraryViewTransform) {
+    Tuple fromValue = point(1.0, 3.0, 2.0);
+    Tuple toValue = point(4.0, -2.0, 8.0);
+    Tuple upValue = vector(1.0, 1.0, 0.0);
+
+    Matrix resultValue = view_transform(fromValue, toValue, upValue);
+
+    double expectedValues[16] = {
+        -0.50709, 0.50709, 0.67612, -2.36643,
+        0.76772, 0.60609, 0.12122, -2.82843,
+        -0.35857, 0.59761, -0.71714, 0.00000,
+        0.00000, 0.00000, 0.00000, 1.00000
+    };
+
+    for (int index = 0; index < 16; index++) {
+        EXPECT_NEAR(resultValue.data[index], expectedValues[index], 0.0001);
+    }
+}
+
 TEST(Matrix, ViewTransformMovesTheWorld) {
     Tuple fromValue = point(0.0, 0.0, 8.0);
     Tuple toValue = point(0.0, 0.0, 0.0);
