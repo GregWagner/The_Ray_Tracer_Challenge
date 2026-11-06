@@ -141,6 +141,18 @@ endif()
 target_compile_features(world_scene_example PRIVATE cxx_std_20)
 raytracer_enable_strict_warnings(world_scene_example)
 
+add_executable(plane_scene_example
+    examples/plane_scene/main.cpp
+)
+target_include_directories(plane_scene_example PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/examples/common)
+target_link_libraries(plane_scene_example PRIVATE raytracer_core)
+if(Qt6_FOUND)
+    target_link_libraries(plane_scene_example PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+    set_target_properties(plane_scene_example PROPERTIES AUTOMOC ON CXX_CLANG_TIDY "")
+endif()
+target_compile_features(plane_scene_example PRIVATE cxx_std_20)
+raytracer_enable_strict_warnings(plane_scene_example)
+
 if(BUILD_QT_EXAMPLE AND Qt6_FOUND)
     add_executable(qt_render_example
         examples/qt_render/main.cpp

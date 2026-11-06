@@ -1,6 +1,5 @@
 #include "intersection.hpp"
 #include <typeinfo>
-#include <iostream>
 
 #include <cmath>
 
@@ -210,7 +209,6 @@ Computation prepare_computations(const Intersection &intersectionValue, const Ra
     resultValue.point = position(rayValue, resultValue.t);
     resultValue.eyev = rayValue.direction * -1.0;
 
-    std::cerr << "prepare object=" << resultValue.object << " typeid=" << typeid(*resultValue.object).name() << std::endl;
     resultValue.normalv = normal_at(*resultValue.object, resultValue.point);
     if (dot(resultValue.normalv, rayValue.direction) > 0.0) {
         resultValue.inside = true;
