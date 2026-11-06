@@ -10,13 +10,14 @@
 #include "tuple.hpp"
 
 int main() {
-    int canvasWidth = 200;
-    int canvasHeight = 200;
+    int canvasWidth = 400;
+    int canvasHeight = 400;
     Canvas canvasValue = canvas(canvasWidth, canvasHeight);
 
     Sphere sphereValue = sphere();
     sphereValue.material = material();
     sphereValue.material.color = color(1.0, 0.2, 1.0);
+    set_transform(sphereValue, scaling(2.0, 2.0, 2.0));
 
     PointLight lightValue = point_light(point(-10.0, 10.0, -10.0), color(1.0, 1.0, 1.0));
 
