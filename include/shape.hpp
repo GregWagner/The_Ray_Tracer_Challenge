@@ -45,6 +45,9 @@ TestShape test_shape();
 
 Intersections intersect(const Shape &shapeValue, const Ray &rayValue);
 Tuple normal_at(const Shape &shapeValue, const Tuple &pointValue);
+
+Tuple stripe_at_object(Pattern patternValue, const Shape &shapeValue, const Tuple &pointValue);
+Tuple pattern_at_object(Pattern patternValue, const Shape &shapeValue, const Tuple &pointValue);
 Tuple local_normal_at(const Shape &shapeValue, const Tuple &pointValue);
 
 void set_transform(Shape &shapeValue, Matrix transformValue);
