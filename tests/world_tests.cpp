@@ -43,6 +43,13 @@ TEST(World, ColorWithIntersectionBehindRay) {
     EXPECT_TRUE(resultValue == innerValue.material.color);
 }
 
+TEST(World, NoShadowWhenObjectBehindLight) {
+    World worldValue = default_world();
+    Tuple pointValue = point(-20.0, 20.0, -20.0);
+
+    EXPECT_FALSE(is_shadowed(worldValue, pointValue));
+}
+
 TEST(World, ShadowWhenObjectBetweenPointAndLight) {
     World worldValue = default_world();
     Tuple pointValue = point(10.0, -10.0, 10.0);
