@@ -65,3 +65,25 @@ Ray ray_for_pixel(Camera cameraValue, int xValue, int yValue) {
 Ray rayForPixel(Camera cameraValue, int xValue, int yValue) {
     return ray_for_pixel(cameraValue, xValue, yValue);
 }
+
+Canvas render(Camera cameraValue, World worldValue) {
+    Canvas canvasValue = canvas(cameraValue.hsize, cameraValue.vsize);
+
+    int yIndex = 0;
+    while (yIndex < cameraValue.vsize) {
+        int xIndex = 0;
+        while (xIndex < cameraValue.hsize) {
+            Ray rayValue = ray_for_pixel(cameraValue, xIndex, yIndex);
+            Tuple colorValue = color_at(worldValue, rayValue);
+            canvasValue.writePixel(xIndex, yIndex, colorValue);
+            xIndex = xIndex + 1;
+        }
+        yIndex = yIndex + 1;
+    }
+
+    return canvasValue;
+}
+
+Canvas renderCamera(Camera cameraValue, World worldValue) {
+    return render(cameraValue, worldValue);
+}

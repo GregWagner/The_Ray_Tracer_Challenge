@@ -56,6 +56,19 @@ TEST(Camera, RayWhenCameraTransformed) {
     EXPECT_NEAR(rayValue.direction.z, -rootTwoOverTwo, 0.00001);
 }
 
+TEST(Camera, RenderingWorldWithCamera) {
+    World worldValue = default_world();
+    Camera cameraValue = camera(11, 11, PI / 2.0);
+    Tuple fromValue = point(0.0, 0.0, -5.0);
+    Tuple toValue = point(0.0, 0.0, 0.0);
+    Tuple upValue = vector(0.0, 1.0, 0.0);
+    cameraValue.transform = view_transform(fromValue, toValue, upValue);
+
+    Canvas imageValue = render(cameraValue, worldValue);
+
+    EXPECT_TRUE(pixel_at(imageValue, 5, 5) == color(0.38066, 0.47583, 0.2855));
+}
+
 TEST(Camera, ConstructingACamera) {
     Camera cameraValue = camera(160, 120, PI / 2.0);
 
