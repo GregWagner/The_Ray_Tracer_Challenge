@@ -29,6 +29,20 @@ TEST(World, ShadingAnIntersection) {
     EXPECT_NEAR(resultValue.blue, 0.2855, 0.00001);
 }
 
+TEST(World, ColorWithIntersectionBehindRay) {
+    World worldValue = default_world();
+    Sphere &outerValue = worldValue.objects[0];
+    Sphere &innerValue = worldValue.objects[1];
+    outerValue.material.ambient = 1.0;
+    innerValue.material.ambient = 1.0;
+
+    Ray rayValue = ray(point(0.0, 0.0, 0.75), vector(0.0, 0.0, -1.0));
+
+    Tuple resultValue = color_at(worldValue, rayValue);
+
+    EXPECT_TRUE(resultValue == innerValue.material.color);
+}
+
 TEST(World, ColorAtRayHits) {
     World worldValue = default_world();
     Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
