@@ -28,6 +28,10 @@ Intersections intersect(const Plane &planeValue, const Ray &rayValue) {
     return planeValue.intersect(rayValue);
 }
 
+Intersections local_intersect(const Plane &planeValue, const Ray &rayValue) {
+    return planeValue.localIntersect(rayValue);
+}
+
 Tuple normal_at(const Plane &planeValue, const Tuple &pointValue) {
     return planeValue.normalAt(pointValue);
 }

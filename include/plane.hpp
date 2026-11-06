@@ -8,6 +8,10 @@ struct Plane : Shape {
 
     Intersections localIntersect(const Ray &rayValue) const override;
 
+Intersections local_intersect(const Ray &rayValue) const {
+    return localIntersect(rayValue);
+}
+
     Tuple localNormalAt(const Tuple &objectPointValue) const override;
 
     Tuple local_normal_at(const Tuple &objectPointValue) const {
@@ -18,6 +22,7 @@ struct Plane : Shape {
 Plane plane();
 
 Intersections intersect(const Plane &planeValue, const Ray &rayValue);
+Intersections local_intersect(const Plane &planeValue, const Ray &rayValue);
 Tuple normal_at(const Plane &planeValue, const Tuple &pointValue);
 Tuple local_normal_at(const Plane &planeValue, const Tuple &pointValue);
 #endif
