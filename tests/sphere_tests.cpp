@@ -1,6 +1,7 @@
 #include <gtest/gtest.h>
 
 #include <cmath>
+#include <type_traits>
 
 #include "intersection.hpp"
 #include "ray.hpp"
@@ -228,6 +229,10 @@ TEST(Sphere, NormalOnSphereAtNonaxialPoint) {
     Sphere sphereValue = sphere();
     Tuple normalValue = normal_at(sphereValue, point(coordinateValue, coordinateValue, coordinateValue));
     EXPECT_TRUE(normalValue == vector(coordinateValue, coordinateValue, coordinateValue));
+}
+
+TEST(Sphere, SphereIsAShape) {
+    EXPECT_TRUE((std::is_base_of<Shape, Sphere>::value));
 }
 
 TEST(Sphere, RayIntersectsSphereAtTwoPoints) {
