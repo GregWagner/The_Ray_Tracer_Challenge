@@ -32,6 +32,7 @@ void setTransform(Sphere &sphereValue, Matrix transformValue);
 
 bool operator==(const Sphere &leftValue, const Sphere &rightValue);
 
+
 Tuple normal_at(const Sphere &sphereValue, const Tuple &pointValue);
 
 Tuple normalAt(const Sphere &sphereValue, const Tuple &pointValue);
@@ -47,6 +48,26 @@ struct Intersection {
 };
 
 bool operator==(const Intersection &leftValue, const Intersection &rightValue);
+
+struct Computation {
+    double t;
+    const Sphere *object;
+    Tuple point;
+    Tuple eyev;
+    Tuple normalv;
+    bool inside;
+
+    Computation();
+};
+
+using Computations = Computation;
+using PreparedComputations = Computation;
+using IntersectionComputation = Computation;
+using IntersectionInfo = Computation;
+using IntersectionData = Computation;
+
+Computation prepare_computations(const Intersection &intersectionValue, const Ray &rayValue);
+Computation prepareComputations(const Intersection &intersectionValue, const Ray &rayValue);
 
 struct Hit {
     Intersection *intersection;

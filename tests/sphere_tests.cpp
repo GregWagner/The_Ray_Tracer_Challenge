@@ -76,6 +76,20 @@ TEST(Sphere, HitIsLowestNonnegativeIntersection) {
     EXPECT_TRUE(hitValue == intersectionFour);
 }
 
+TEST(Computations, PrecomputingIntersectionState) {
+    Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
+    Sphere sphereValue = sphere();
+    Intersection intersectionValue = intersection(4.0, sphereValue);
+
+    Computation comps = prepare_computations(intersectionValue, rayValue);
+
+    EXPECT_DOUBLE_EQ(comps.t, 4.0);
+    EXPECT_EQ(comps.object, &sphereValue);
+    EXPECT_TRUE(comps.point == point(0.0, 0.0, -1.0));
+    EXPECT_TRUE(comps.eyev == vector(0.0, 0.0, -1.0));
+    EXPECT_TRUE(comps.normalv == vector(0.0, 0.0, -1.0));
+}
+
 TEST(Sphere, IntersectSetsObjectOnIntersection) {
     Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
     Sphere sphereValue = sphere();

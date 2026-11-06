@@ -196,6 +196,35 @@ bool Hit::operator==(const Intersection &rightValue) const {
     return *intersection == rightValue;
 }
 
+Computation::Computation() {
+    t = 0.0;
+    object = 0;
+    inside = false;
+}
+
+Computation prepare_computations(const Intersection &intersectionValue, const Ray &rayValue) {
+    Computation resultValue;
+    resultValue.t = intersectionValue.t;
+    resultValue.object = intersectionValue.object;
+
+    resultValue.point = position(rayValue, resultValue.t);
+    resultValue.eyev = rayValue.direction * -1.0;
+
+    resultValue.normalv = normal_at(*resultValue.object, resultValue.point);
+    if (dot(resultValue.normalv, rayValue.direction) > 0.0) {
+        resultValue.inside = true;
+        resultValue.normalv = resultValue.normalv * -1.0;
+    } else {
+        resultValue.inside = false;
+    }
+
+    return resultValue;
+}
+
+Computation prepareComputations(const Intersection &intersectionValue, const Ray &rayValue) {
+    return prepare_computations(intersectionValue, rayValue);
+}
+
 Hit hit(const Intersections &intersectionsValue) {
     Intersection *bestValue = 0;
     for (std::size_t indexValue = 0; indexValue < intersectionsValue.intersections.size(); indexValue++) {
