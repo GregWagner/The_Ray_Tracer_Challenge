@@ -14,4 +14,6 @@ struct Material {
 };
 
 Material material();
+
+bool operator==(const Material &leftValue, const Material &rightValue);
 #endif

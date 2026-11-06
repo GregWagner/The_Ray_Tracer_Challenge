@@ -9,6 +9,10 @@
 struct World {
     std::vector<Sphere> objects;
     std::vector<PointLight> lights;
+    bool hasLight;
+    PointLight light;
+
+    World();
 };
 
 World world();

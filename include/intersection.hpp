@@ -30,6 +30,8 @@ void set_transform(Sphere &sphereValue, Matrix transformValue);
 
 void setTransform(Sphere &sphereValue, Matrix transformValue);
 
+bool operator==(const Sphere &leftValue, const Sphere &rightValue);
+
 Tuple normal_at(const Sphere &sphereValue, const Tuple &pointValue);
 
 Tuple normalAt(const Sphere &sphereValue, const Tuple &pointValue);

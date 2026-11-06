@@ -29,6 +29,26 @@ void setTransform(Sphere &sphereValue, Matrix transformValue) {
     set_transform(sphereValue, transformValue);
 }
 
+bool operator==(const Sphere &leftValue, const Sphere &rightValue) {
+    if (!(leftValue.center == rightValue.center)) {
+        return false;
+    }
+    double radiusDifference = leftValue.radius - rightValue.radius;
+    if (radiusDifference < 0.0) {
+        radiusDifference = -radiusDifference;
+    }
+    if (radiusDifference > 0.00001) {
+        return false;
+    }
+    if (!(leftValue.transform == rightValue.transform)) {
+        return false;
+    }
+    if (!(leftValue.material == rightValue.material)) {
+        return false;
+    }
+    return true;
+}
+
 Tuple Sphere::normal_at(const Tuple &pointValue) const {
     return ::normal_at(*this, pointValue);
 }

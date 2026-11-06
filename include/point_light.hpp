@@ -14,4 +14,6 @@ PointLight point_light(Tuple positionValue, Tuple intensityValue);
 
 Light light(Tuple positionValue, Tuple intensityValue);
 
+bool operator==(const PointLight &leftValue, const PointLight &rightValue);
+
 #endif
