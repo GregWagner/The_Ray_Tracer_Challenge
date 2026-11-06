@@ -77,7 +77,8 @@ Tuple shade_hit(World worldValue, Computation compsValue) {
         return compsValue.object->material.color;
     }
 
-    Tuple resultValue = lighting(compsValue.object->material, lightValue, compsValue.point, compsValue.eyev, compsValue.normalv, false);
+    bool inShadowValue = is_shadowed(worldValue, compsValue.point);
+    Tuple resultValue = lighting(compsValue.object->material, lightValue, compsValue.point, compsValue.eyev, compsValue.normalv, inShadowValue);
     return resultValue;
 }
 
@@ -114,13 +115,19 @@ bool is_shadowed(World worldValue, Tuple pointValue) {
     Ray rayValue = ray(pointValue, normalize(vectorValue));
 
     Intersections intersectionsValue = intersect_world(worldValue, rayValue);
-    Hit hitValue = hit(intersectionsValue);
 
-    if (hitValue) {
-        if (hitValue->t < distanceValue && hitValue->t >= 0.0) {
-            return true;
+    int indexValue = 0;
+    while (indexValue < intersectionsValue.count) {
+        double tValue = intersectionsValue[static_cast<std::size_t>(indexValue)].t;
+        if (tValue > 0.00001) {
+            if (tValue < distanceValue) {
+                return true;
+            }
+            return false;
         }
+        indexValue = indexValue + 1;
     }
+
     return false;
 }
 

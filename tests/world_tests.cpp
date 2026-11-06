@@ -71,6 +71,29 @@ TEST(World, NoShadowWhenNothingCollinear) {
     EXPECT_FALSE(is_shadowed(worldValue, pointValue));
 }
 
+TEST(World, ShadeHitWithIntersectionInShadow) {
+    World worldValue = world();
+    worldValue.light = point_light(point(0.0, 0.0, -10.0), color(1.0, 1.0, 1.0));
+    worldValue.hasLight = true;
+
+    Sphere sphereOne = sphere();
+    worldValue.objects.push_back(sphereOne);
+
+    Sphere sphereTwo = sphere();
+    set_transform(sphereTwo, translation(0.0, 0.0, 10.0));
+    worldValue.objects.push_back(sphereTwo);
+
+    Ray rayValue = ray(point(0.0, 0.0, 5.0), vector(0.0, 0.0, 1.0));
+    Intersection intersectionValue = intersection(4.0, sphereTwo);
+
+    Computation comps = prepare_computations(intersectionValue, rayValue);
+    Tuple resultValue = shade_hit(worldValue, comps);
+
+    EXPECT_NEAR(resultValue.red, 0.1, 0.00001);
+    EXPECT_NEAR(resultValue.green, 0.1, 0.00001);
+    EXPECT_NEAR(resultValue.blue, 0.1, 0.00001);
+}
+
 TEST(World, ColorAtRayHits) {
     World worldValue = default_world();
     Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
