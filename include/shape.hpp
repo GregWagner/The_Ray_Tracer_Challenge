@@ -12,6 +12,8 @@ struct Intersections;
 struct Shape {
     Matrix transform;
     Material material;
+    mutable Ray savedRay;
+    mutable Ray saved_ray;
 
     Shape();
 
@@ -39,5 +41,8 @@ TestShape test_shape();
 
 Intersections intersect(const Shape &shapeValue, const Ray &rayValue);
 Tuple normal_at(const Shape &shapeValue, const Tuple &pointValue);
+
+void set_transform(Shape &shapeValue, Matrix transformValue);
+void setTransform(Shape &shapeValue, Matrix transformValue);
 
 #endif

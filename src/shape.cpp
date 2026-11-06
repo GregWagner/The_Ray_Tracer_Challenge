@@ -10,6 +10,8 @@ Shape::~Shape() = default;
 Intersections Shape::intersect(const Ray &rayValue) const {
     Matrix inverseTransform = inverse(transform);
     Ray objectRay = ::transform(rayValue, inverseTransform);
+    savedRay = objectRay;
+    saved_ray = objectRay;
     Intersections resultValue = localIntersect(objectRay);
     std::size_t indexValue = 0;
     while (indexValue < resultValue.intersections.size()) {
@@ -35,6 +37,14 @@ Intersections intersect(const Shape &shapeValue, const Ray &rayValue) {
 
 Tuple normal_at(const Shape &shapeValue, const Tuple &pointValue) {
     return shapeValue.normalAt(pointValue);
+}
+
+void set_transform(Shape &shapeValue, Matrix transformValue) {
+    shapeValue.transform = transformValue;
+}
+
+void setTransform(Shape &shapeValue, Matrix transformValue) {
+    set_transform(shapeValue, transformValue);
 }
 
 TestShape::TestShape() {
