@@ -5,6 +5,20 @@
 #include "camera.hpp"
 #include "matrix.hpp"
 
+TEST(Camera, PixelSizeForHorizontalCanvas) {
+    Camera cameraValue = camera(200, 125, PI / 2.0);
+
+    EXPECT_NEAR(cameraValue.pixelSize, 0.01, 0.00001);
+    EXPECT_NEAR(cameraValue.pixel_size, 0.01, 0.00001);
+}
+
+TEST(Camera, PixelSizeForVerticalCanvas) {
+    Camera cameraValue = camera(125, 200, PI / 2.0);
+
+    EXPECT_NEAR(cameraValue.pixelSize, 0.01, 0.00001);
+    EXPECT_NEAR(cameraValue.pixel_size, 0.01, 0.00001);
+}
+
 TEST(Camera, ConstructingACamera) {
     Camera cameraValue = camera(160, 120, PI / 2.0);
 
