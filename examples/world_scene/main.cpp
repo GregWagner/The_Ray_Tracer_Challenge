@@ -59,7 +59,7 @@ int main() {
     worldValue.hasLight = true;
     worldValue.light = lightValue;
 
-    Camera cameraValue = camera(100, 50, PI / 3.0);
+    Camera cameraValue = camera(400, 200, PI / 3.0);
     cameraValue.transform = view_transform(point(0.0, 1.5, -5.0), point(0.0, 1.0, 0.0), vector(0.0, 1.0, 0.0));
 
     Canvas canvasValue = render(cameraValue, worldValue);
