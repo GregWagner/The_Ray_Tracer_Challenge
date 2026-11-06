@@ -17,4 +17,7 @@ struct World {
 
 World world();
 World default_world();
+
+Intersections intersect_world(World worldValue, Ray rayValue);
+Intersections intersectWorld(World worldValue, Ray rayValue);
 #endif

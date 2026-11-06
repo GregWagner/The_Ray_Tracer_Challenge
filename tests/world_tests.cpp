@@ -15,6 +15,19 @@ TEST(World, CreatingWorld) {
     EXPECT_FALSE(worldValue.hasLight);
 }
 
+TEST(World, IntersectWorldWithRay) {
+    World worldValue = default_world();
+    Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
+
+    Intersections intersectionsValue = intersect_world(worldValue, rayValue);
+
+    EXPECT_EQ(intersectionsValue.count, 4);
+    EXPECT_DOUBLE_EQ(intersectionsValue[0].t, 4.0);
+    EXPECT_DOUBLE_EQ(intersectionsValue[1].t, 4.5);
+    EXPECT_DOUBLE_EQ(intersectionsValue[2].t, 5.5);
+    EXPECT_DOUBLE_EQ(intersectionsValue[3].t, 6.0);
+}
+
 TEST(World, DefaultWorld) {
     PointLight lightValue = point_light(point(-10.0, 10.0, -10.0), color(1.0, 1.0, 1.0));
 
