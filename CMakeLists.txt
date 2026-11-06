@@ -85,6 +85,7 @@ add_library(raytracer_core STATIC
     src/material.cpp
     src/lighting.cpp
     src/world.cpp
+    src/camera.cpp
 )
 target_include_directories(raytracer_core PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
