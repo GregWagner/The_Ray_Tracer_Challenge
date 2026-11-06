@@ -28,6 +28,15 @@ struct Shape {
 
 using ShapePtr = Shape *;
 
+struct TestShape : Shape {
+    TestShape();
+
+    Intersections localIntersect(const Ray &rayValue) const override;
+    Tuple localNormalAt(const Tuple &objectPointValue) const override;
+};
+
+TestShape test_shape();
+
 Intersections intersect(const Shape &shapeValue, const Ray &rayValue);
 Tuple normal_at(const Shape &shapeValue, const Tuple &pointValue);
 

@@ -36,3 +36,22 @@ Intersections intersect(const Shape &shapeValue, const Ray &rayValue) {
 Tuple normal_at(const Shape &shapeValue, const Tuple &pointValue) {
     return shapeValue.normalAt(pointValue);
 }
+
+TestShape::TestShape() {
+}
+
+Intersections TestShape::localIntersect(const Ray &rayValue) const {
+    (void)rayValue;
+    Intersections resultValue;
+    return resultValue;
+}
+
+Tuple TestShape::localNormalAt(const Tuple &objectPointValue) const {
+    (void)objectPointValue;
+    return objectPointValue;
+}
+
+TestShape test_shape() {
+    TestShape resultValue;
+    return resultValue;
+}

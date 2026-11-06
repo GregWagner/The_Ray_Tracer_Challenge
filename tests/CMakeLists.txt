@@ -1,5 +1,6 @@
 add_executable(raytracer_tests
     tuple_tests.cpp
+    shape_tests.cpp
     canvas_tests.cpp
     matrix_tests.cpp
     ray_tests.cpp
