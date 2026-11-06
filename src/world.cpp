@@ -33,7 +33,7 @@ World default_world() {
 
     return resultValue;
 }
-Intersections intersect_world(World worldValue, Ray rayValue) {
+Intersections intersect_world(const World &worldValue, const Ray &rayValue) {
     Intersections resultValue;
     int objectIndex = 0;
     while (objectIndex < (int)worldValue.objects.size()) {
@@ -63,11 +63,11 @@ Intersections intersect_world(World worldValue, Ray rayValue) {
     return resultValue;
 }
 
-Intersections intersectWorld(World worldValue, Ray rayValue) {
+Intersections intersectWorld(const World &worldValue, const Ray &rayValue) {
     return intersect_world(worldValue, rayValue);
 }
 
-Tuple shade_hit(World worldValue, Computation compsValue) {
+Tuple shade_hit(const World &worldValue, const Computation &compsValue) {
     PointLight lightValue;
     if (worldValue.hasLight) {
         lightValue = worldValue.light;
@@ -82,11 +82,11 @@ Tuple shade_hit(World worldValue, Computation compsValue) {
     return resultValue;
 }
 
-Tuple shadeHit(World worldValue, Computation compsValue) {
+Tuple shadeHit(const World &worldValue, const Computation &compsValue) {
     return shade_hit(worldValue, compsValue);
 }
 
-Tuple color_at(World worldValue, Ray rayValue) {
+Tuple color_at(const World &worldValue, const Ray &rayValue) {
     Intersections intersectionsValue = intersect_world(worldValue, rayValue);
     Hit hitValue = hit(intersectionsValue);
     if (!hitValue) {
@@ -96,11 +96,11 @@ Tuple color_at(World worldValue, Ray rayValue) {
     return shade_hit(worldValue, compsValue);
 }
 
-Tuple colorAt(World worldValue, Ray rayValue) {
+Tuple colorAt(const World &worldValue, const Ray &rayValue) {
     return color_at(worldValue, rayValue);
 }
 
-bool is_shadowed(World worldValue, Tuple pointValue) {
+bool is_shadowed(const World &worldValue, const Tuple &pointValue) {
     PointLight lightValue;
     if (worldValue.hasLight) {
         lightValue = worldValue.light;
@@ -131,6 +131,6 @@ bool is_shadowed(World worldValue, Tuple pointValue) {
     return false;
 }
 
-bool isShadowed(World worldValue, Tuple pointValue) {
+bool isShadowed(const World &worldValue, const Tuple &pointValue) {
     return is_shadowed(worldValue, pointValue);
 }

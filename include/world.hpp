@@ -18,17 +18,17 @@ struct World {
 World world();
 World default_world();
 
-Intersections intersect_world(World worldValue, Ray rayValue);
-Intersections intersectWorld(World worldValue, Ray rayValue);
+Intersections intersect_world(const World &worldValue, const Ray &rayValue);
+Intersections intersectWorld(const World &worldValue, const Ray &rayValue);
 
 #include "lighting.hpp"
 
-Tuple shade_hit(World worldValue, Computation compsValue);
-Tuple shadeHit(World worldValue, Computation compsValue);
+Tuple shade_hit(const World &worldValue, const Computation &compsValue);
+Tuple shadeHit(const World &worldValue, const Computation &compsValue);
 
-bool is_shadowed(World worldValue, Tuple pointValue);
-bool isShadowed(World worldValue, Tuple pointValue);
+bool is_shadowed(const World &worldValue, const Tuple &pointValue);
+bool isShadowed(const World &worldValue, const Tuple &pointValue);
 
-Tuple color_at(World worldValue, Ray rayValue);
-Tuple colorAt(World worldValue, Ray rayValue);
+Tuple color_at(const World &worldValue, const Ray &rayValue);
+Tuple colorAt(const World &worldValue, const Ray &rayValue);
 #endif

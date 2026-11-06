@@ -2,6 +2,7 @@
 #define INTERSECTION_HPP
 
 #include "material.hpp"
+#include "shape.hpp"
 #include "matrix.hpp"
 #include "ray.hpp"
 #include "tuple.hpp"
@@ -11,17 +12,20 @@
 #include <optional>
 #include <vector>
 
-struct Sphere {
-    Tuple center;
-    double radius;
-    Matrix transform;
-    Material material;
-
+struct Sphere : Shape {
     Sphere();
-    Sphere(Tuple centerValue, double radiusValue);
 
-    Tuple normal_at(const Tuple &pointValue) const;
-    Tuple normalAt(const Tuple &pointValue) const;
+    Intersections localIntersect(const Ray &rayValue) const override;
+
+    Tuple localNormalAt(const Tuple &objectPointValue) const override;
+
+    Tuple normal_at(const Tuple &pointValue) const {
+        return normalAt(pointValue);
+    }
+
+    Tuple normalAt(const Tuple &pointValue) const {
+        return Shape::normalAt(pointValue);
+    }
 };
 
 Sphere sphere();
@@ -39,10 +43,10 @@ Tuple normalAt(const Sphere &sphereValue, const Tuple &pointValue);
 
 struct Intersection {
     double t;
-    const Sphere *object;
+    const Shape *object;
 
     Intersection();
-    Intersection(double tValue, const Sphere *objectValue);
+    Intersection(double tValue, const Shape *objectValue);
 
     operator double() const;
 };
@@ -51,7 +55,7 @@ bool operator==(const Intersection &leftValue, const Intersection &rightValue);
 
 struct Computation {
     double t;
-    const Sphere *object;
+    const Shape *object;
     Tuple point;
     Tuple eyev;
     Tuple normalv;

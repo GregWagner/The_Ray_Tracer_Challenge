@@ -1,19 +1,42 @@
 #include "intersection.hpp"
+#include <typeinfo>
+#include <iostream>
 
 #include <cmath>
 
 Sphere::Sphere() {
-    center = point(0.0, 0.0, 0.0);
-    radius = 1.0;
     transform = identityMatrix();
     material = ::material();
 }
 
-Sphere::Sphere(Tuple centerValue, double radiusValue) {
-    center = centerValue;
-    radius = radiusValue;
-    transform = identityMatrix();
-    material = ::material();
+Intersections Sphere::localIntersect(const Ray &rayValue) const {
+    Tuple sphereToRay = rayValue.origin - point(0.0, 0.0, 0.0);
+
+    double aValue = dot(rayValue.direction, rayValue.direction);
+    double bValue = 2.0 * dot(rayValue.direction, sphereToRay);
+    double cValue = dot(sphereToRay, sphereToRay) - 1.0;
+
+    double discriminantValue = bValue * bValue - 4.0 * aValue * cValue;
+
+    Intersections resultValue;
+    if (discriminantValue < 0.0) {
+        return resultValue;
+    }
+
+    double sqrtValue = std::sqrt(discriminantValue);
+    double t1Value = (-bValue - sqrtValue) / (2.0 * aValue);
+    double t2Value = (-bValue + sqrtValue) / (2.0 * aValue);
+
+    resultValue.add(intersection(t1Value, *this));
+    resultValue.add(intersection(t2Value, *this));
+
+    return resultValue;
+}
+
+Tuple Sphere::localNormalAt(const Tuple &objectPointValue) const {
+    Tuple objectNormalValue = objectPointValue - point(0.0, 0.0, 0.0);
+    objectNormalValue.w = 0.0;
+    return normalize(objectNormalValue);
 }
 
 Sphere sphere() {
@@ -30,16 +53,6 @@ void setTransform(Sphere &sphereValue, Matrix transformValue) {
 }
 
 bool operator==(const Sphere &leftValue, const Sphere &rightValue) {
-    if (!(leftValue.center == rightValue.center)) {
-        return false;
-    }
-    double radiusDifference = leftValue.radius - rightValue.radius;
-    if (radiusDifference < 0.0) {
-        radiusDifference = -radiusDifference;
-    }
-    if (radiusDifference > 0.00001) {
-        return false;
-    }
     if (!(leftValue.transform == rightValue.transform)) {
         return false;
     }
@@ -49,25 +62,8 @@ bool operator==(const Sphere &leftValue, const Sphere &rightValue) {
     return true;
 }
 
-Tuple Sphere::normal_at(const Tuple &pointValue) const {
-    return ::normal_at(*this, pointValue);
-}
-
-Tuple Sphere::normalAt(const Tuple &pointValue) const {
-    return ::normal_at(*this, pointValue);
-}
-
 Tuple normal_at(const Sphere &sphereValue, const Tuple &pointValue) {
-    Matrix inverseTransformValue = inverse(sphereValue.transform);
-    Tuple objectPointValue = inverseTransformValue * pointValue;
-    Tuple objectNormalValue = objectPointValue - point(0.0, 0.0, 0.0);
-    objectNormalValue.w = 0.0;
-    objectNormalValue = normalize(objectNormalValue);
-
-    Matrix normalTransformValue = transpose(inverseTransformValue);
-    Tuple worldNormalValue = normalTransformValue * objectNormalValue;
-    worldNormalValue.w = 0.0;
-    return normalize(worldNormalValue);
+    return sphereValue.normalAt(pointValue);
 }
 
 Tuple normalAt(const Sphere &sphereValue, const Tuple &pointValue) {
@@ -79,7 +75,7 @@ Intersection::Intersection() {
     object = 0;
 }
 
-Intersection::Intersection(double tValue, const Sphere *objectValue) {
+Intersection::Intersection(double tValue, const Shape *objectValue) {
     t = tValue;
     object = objectValue;
 }
@@ -214,6 +210,7 @@ Computation prepare_computations(const Intersection &intersectionValue, const Ra
     resultValue.point = position(rayValue, resultValue.t);
     resultValue.eyev = rayValue.direction * -1.0;
 
+    std::cerr << "prepare object=" << resultValue.object << " typeid=" << typeid(*resultValue.object).name() << std::endl;
     resultValue.normalv = normal_at(*resultValue.object, resultValue.point);
     if (dot(resultValue.normalv, rayValue.direction) > 0.0) {
         resultValue.inside = true;
@@ -280,27 +277,5 @@ Intersections intersections(std::initializer_list<Intersection> values) {
 }
 
 Intersections intersect(const Sphere &sphereValue, const Ray &rayValue) {
-    Matrix inverseTransform = inverse(sphereValue.transform);
-    Ray rayToUse = transform(rayValue, inverseTransform);
-
-    Tuple sphereToRay = rayToUse.origin - sphereValue.center;
-
-    double aValue = dot(rayToUse.direction, rayToUse.direction);
-    double bValue = 2.0 * dot(rayToUse.direction, sphereToRay);
-    double cValue = dot(sphereToRay, sphereToRay) - (sphereValue.radius * sphereValue.radius);
-    double discriminantValue = bValue * bValue - 4.0 * aValue * cValue;
-
-    Intersections resultValue;
-    if (discriminantValue < 0.0) {
-        return resultValue;
-    }
-
-    double sqrtValue = std::sqrt(discriminantValue);
-    double t1Value = (-bValue - sqrtValue) / (2.0 * aValue);
-    double t2Value = (-bValue + sqrtValue) / (2.0 * aValue);
-
-    resultValue.add(intersection(t1Value, sphereValue));
-    resultValue.add(intersection(t2Value, sphereValue));
-
-    return resultValue;
+    return sphereValue.intersect(rayValue);
 }
