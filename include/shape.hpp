@@ -26,6 +26,10 @@ struct Shape {
     virtual Intersections localIntersect(const Ray &rayValue) const = 0;
 
     virtual Tuple localNormalAt(const Tuple &objectPointValue) const = 0;
+
+    Tuple local_normal_at(const Tuple &objectPointValue) const {
+        return localNormalAt(objectPointValue);
+    }
 };
 
 using ShapePtr = Shape *;
@@ -41,6 +45,7 @@ TestShape test_shape();
 
 Intersections intersect(const Shape &shapeValue, const Ray &rayValue);
 Tuple normal_at(const Shape &shapeValue, const Tuple &pointValue);
+Tuple local_normal_at(const Shape &shapeValue, const Tuple &pointValue);
 
 void set_transform(Shape &shapeValue, Matrix transformValue);
 void setTransform(Shape &shapeValue, Matrix transformValue);

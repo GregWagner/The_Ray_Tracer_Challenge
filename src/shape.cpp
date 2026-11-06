@@ -65,3 +65,7 @@ TestShape test_shape() {
     TestShape resultValue;
     return resultValue;
 }
+
+Tuple local_normal_at(const Shape &shapeValue, const Tuple &pointValue) {
+    return shapeValue.localNormalAt(pointValue);
+}

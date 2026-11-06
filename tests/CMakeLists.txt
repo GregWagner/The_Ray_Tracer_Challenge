@@ -8,6 +8,7 @@ add_executable(raytracer_tests
     point_light_tests.cpp
     material_tests.cpp
     lighting_tests.cpp
+    plane_tests.cpp
     world_tests.cpp
     camera_tests.cpp
 )
