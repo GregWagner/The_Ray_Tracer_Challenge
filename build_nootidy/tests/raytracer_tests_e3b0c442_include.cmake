@@ -1,0 +1,5 @@
+if(EXISTS "/mnt/extra_drive/Ray_Tracing/The_Ray_Tracer_Challenge/build_nootidy/tests/raytracer_tests_e3b0c442_tests.cmake")
+  include("/mnt/extra_drive/Ray_Tracing/The_Ray_Tracer_Challenge/build_nootidy/tests/raytracer_tests_e3b0c442_tests.cmake")
+else()
+  add_test(raytracer_tests_NOT_BUILT raytracer_tests_NOT_BUILT)
+endif()

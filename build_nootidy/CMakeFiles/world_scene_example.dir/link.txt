@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/world_scene_example.dir/link.d CMakeFiles/world_scene_example.dir/examples/world_scene/main.cpp.o -o world_scene_example  libraytracer_core.a

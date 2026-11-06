@@ -1,0 +1,11 @@
+{
+	"InstallScripts" : 
+	[
+		"/mnt/extra_drive/Ray_Tracing/The_Ray_Tracer_Challenge/build_nootidy/cmake_install.cmake",
+		"/mnt/extra_drive/Ray_Tracing/The_Ray_Tracer_Challenge/build_nootidy/_deps/googletest-build/cmake_install.cmake",
+		"/mnt/extra_drive/Ray_Tracing/The_Ray_Tracer_Challenge/build_nootidy/_deps/googletest-build/googlemock/cmake_install.cmake",
+		"/mnt/extra_drive/Ray_Tracing/The_Ray_Tracer_Challenge/build_nootidy/_deps/googletest-build/googletest/cmake_install.cmake",
+		"/mnt/extra_drive/Ray_Tracing/The_Ray_Tracer_Challenge/build_nootidy/tests/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

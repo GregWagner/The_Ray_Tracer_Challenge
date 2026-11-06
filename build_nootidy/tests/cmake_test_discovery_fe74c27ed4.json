@@ -1,0 +1,742 @@
+{
+  "tests": 134,
+  "name": "AllTests",
+  "testsuites": [
+    {
+      "name": "Tuples",
+      "tests": 30,
+      "testsuite": [
+        {
+          "name": "ATupleWithWEqaulTo1IsAPoint",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 9
+        },
+        {
+          "name": "ATupleWithWEqualTo0IsAVector",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 26
+        },
+        {
+          "name": "PointCreatesTuplesWithW1",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 43
+        },
+        {
+          "name": "VectorCreatesTuplesWithW0",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 49
+        },
+        {
+          "name": "AddingTwoTuples",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 55
+        },
+        {
+          "name": "SubtractingTwoPoints",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 64
+        },
+        {
+          "name": "SubtractingVectorFromPoint",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 73
+        },
+        {
+          "name": "SubtractingTwoVectors",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 82
+        },
+        {
+          "name": "SubtractingVectorFromZeroVector",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 91
+        },
+        {
+          "name": "NegatingATuple",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 100
+        },
+        {
+          "name": "MultiplyingTupleByScalar",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 108
+        },
+        {
+          "name": "MultiplyingTupleByFraction",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 116
+        },
+        {
+          "name": "DividingTupleByScalar",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 124
+        },
+        {
+          "name": "NormalizingVector400",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 132
+        },
+        {
+          "name": "NormalizingVector123",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 140
+        },
+        {
+          "name": "MagnitudeOfNormalizedVector",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 150
+        },
+        {
+          "name": "DotProductOfTwoTuples",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 158
+        },
+        {
+          "name": "ColorsAreRedGreenBlueTuples",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 167
+        },
+        {
+          "name": "AddingColors",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 175
+        },
+        {
+          "name": "SubtractingColors",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 184
+        },
+        {
+          "name": "MultiplyingColorByScalar",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 193
+        },
+        {
+          "name": "MultiplyingColors",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 201
+        },
+        {
+          "name": "ReflectingVectorOffSlantedSurface",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 210
+        },
+        {
+          "name": "ReflectingVectorAt45Degrees",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 220
+        },
+        {
+          "name": "CrossProductOfTwoVectors",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 229
+        },
+        {
+          "name": "MagnitudeOfVector100",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 240
+        },
+        {
+          "name": "MagnitudeOfVector010",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 246
+        },
+        {
+          "name": "MagnitudeOfVector001",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 252
+        },
+        {
+          "name": "MagnitudeOfVector123",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 258
+        },
+        {
+          "name": "MagnitudeOfVectorNeg1Neg2Neg3",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/tuple_tests.cpp",
+          "line": 264
+        }
+      ]
+    },
+    {
+      "name": "Canvas",
+      "tests": 6,
+      "testsuite": [
+        {
+          "name": "CreatingACanvas",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/canvas_tests.cpp",
+          "line": 9
+        },
+        {
+          "name": "WritingPixelsToCanvas",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/canvas_tests.cpp",
+          "line": 22
+        },
+        {
+          "name": "PpmEndsWithNewline",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/canvas_tests.cpp",
+          "line": 31
+        },
+        {
+          "name": "ConstructingPpmHeader",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/canvas_tests.cpp",
+          "line": 40
+        },
+        {
+          "name": "ConstructingPpmPixelData",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/canvas_tests.cpp",
+          "line": 49
+        },
+        {
+          "name": "SplittingLongLinesInPpm",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/canvas_tests.cpp",
+          "line": 68
+        }
+      ]
+    },
+    {
+      "name": "Matrix",
+      "tests": 47,
+      "testsuite": [
+        {
+          "name": "ConstructingAndInspecting4x4",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 8
+        },
+        {
+          "name": "A2x2MatrixIsRepresentable",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 30
+        },
+        {
+          "name": "A3x3MatrixIsRepresentable",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 42
+        },
+        {
+          "name": "EqualMatricesAreEqual",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 54
+        },
+        {
+          "name": "DifferentMatricesAreNotEqual",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 72
+        },
+        {
+          "name": "MultiplyingMatrixByIdentityMatrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 90
+        },
+        {
+          "name": "SubmatrixOf3x3Matrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 103
+        },
+        {
+          "name": "CofactorOf3x3Matrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 120
+        },
+        {
+          "name": "MinorOf3x3Matrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 133
+        },
+        {
+          "name": "SubmatrixOf4x4Matrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 146
+        },
+        {
+          "name": "DeterminantOf3x3Matrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 165
+        },
+        {
+          "name": "InverseOfMatrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 178
+        },
+        {
+          "name": "InverseOfAnotherMatrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 203
+        },
+        {
+          "name": "MultiplyingProductByInverse",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 223
+        },
+        {
+          "name": "InverseOfThirdMatrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 243
+        },
+        {
+          "name": "InvertibleMatrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 263
+        },
+        {
+          "name": "NoninvertibleMatrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 275
+        },
+        {
+          "name": "DeterminantOf4x4Matrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 287
+        },
+        {
+          "name": "DeterminantOf2x2Matrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 302
+        },
+        {
+          "name": "TransposingIdentityMatrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 313
+        },
+        {
+          "name": "TransposingAMatrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 319
+        },
+        {
+          "name": "MultiplyingByInverseTranslationMatrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 339
+        },
+        {
+          "name": "MultiplyingByInverseScalingMatrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 349
+        },
+        {
+          "name": "ReflectionIsScalingByNegativeValue",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 359
+        },
+        {
+          "name": "ScalingMatrixAppliedToVector",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 368
+        },
+        {
+          "name": "ScalingMatrixAppliedToPoint",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 377
+        },
+        {
+          "name": "TranslationDoesNotAffectVectors",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 386
+        },
+        {
+          "name": "ShearingMovesXInProportionToZ",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 395
+        },
+        {
+          "name": "ShearingMovesYInProportionToX",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 404
+        },
+        {
+          "name": "ShearingMovesYInProportionToZ",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 413
+        },
+        {
+          "name": "ShearingMovesZInProportionToX",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 422
+        },
+        {
+          "name": "ShearingMovesZInProportionToY",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 431
+        },
+        {
+          "name": "ShearingMovesXInProportionToY",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 440
+        },
+        {
+          "name": "RotatingPointAroundZAxis",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 449
+        },
+        {
+          "name": "RotatingPointAroundYAxis",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 468
+        },
+        {
+          "name": "InverseOfXRotationRotatesOppositeDirection",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 487
+        },
+        {
+          "name": "RotatingPointAroundXAxis",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 500
+        },
+        {
+          "name": "ViewTransformLookingInPositiveZDirection",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 519
+        },
+        {
+          "name": "ArbitraryViewTransform",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 529
+        },
+        {
+          "name": "ViewTransformMovesTheWorld",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 548
+        },
+        {
+          "name": "ViewTransformForDefaultOrientation",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 558
+        },
+        {
+          "name": "MultiplyingByTranslationMatrix",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 568
+        },
+        {
+          "name": "IndividualTransformationsAppliedInSequence",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 577
+        },
+        {
+          "name": "ChainedTransformationsInReverseOrder",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 593
+        },
+        {
+          "name": "MultiplyingIdentityMatrixByTuple",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 605
+        },
+        {
+          "name": "MultiplyingMatrixByTuple",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 613
+        },
+        {
+          "name": "MultiplyingTwoMatrices",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/matrix_tests.cpp",
+          "line": 627
+        }
+      ]
+    },
+    {
+      "name": "Ray",
+      "tests": 4,
+      "testsuite": [
+        {
+          "name": "CreatingAndQueryingARay",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/ray_tests.cpp",
+          "line": 6
+        },
+        {
+          "name": "TranslatingARay",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/ray_tests.cpp",
+          "line": 16
+        },
+        {
+          "name": "ScalingARay",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/ray_tests.cpp",
+          "line": 27
+        },
+        {
+          "name": "ComputingAPointFromADistance",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/ray_tests.cpp",
+          "line": 37
+        }
+      ]
+    },
+    {
+      "name": "Sphere",
+      "tests": 23,
+      "testsuite": [
+        {
+          "name": "AggregatingIntersections",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 9
+        },
+        {
+          "name": "IntersectionEncapsulatesTAndObject",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 21
+        },
+        {
+          "name": "HitWhenAllIntersectionsPositive",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 30
+        },
+        {
+          "name": "HitWhenSomeIntersectionsNegative",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 42
+        },
+        {
+          "name": "HitWhenAllIntersectionsNegative",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 54
+        },
+        {
+          "name": "HitIsLowestNonnegativeIntersection",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 65
+        },
+        {
+          "name": "IntersectSetsObjectOnIntersection",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 116
+        },
+        {
+          "name": "DefaultSphereTransformation",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 127
+        },
+        {
+          "name": "ChangingSphereTransformation",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 133
+        },
+        {
+          "name": "IntersectingScaledSphereWithRay",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 142
+        },
+        {
+          "name": "IntersectingTranslatedSphereWithRay",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 154
+        },
+        {
+          "name": "NormalOnSphereAtAxialPointX",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 164
+        },
+        {
+          "name": "NormalOnSphereAtAxialPointY",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 170
+        },
+        {
+          "name": "NormalOnSphereAtAxialPointZ",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 176
+        },
+        {
+          "name": "NormalOnTranslatedSphere",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 182
+        },
+        {
+          "name": "NormalOnTransformedSphere",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 193
+        },
+        {
+          "name": "NormalIsNormalizedVector",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 206
+        },
+        {
+          "name": "NormalOnSphereAtNonaxialPoint",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 214
+        },
+        {
+          "name": "RayIntersectsSphereAtTwoPoints",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 221
+        },
+        {
+          "name": "RayOriginatesInsideSphere",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 232
+        },
+        {
+          "name": "SphereBehindRay",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 243
+        },
+        {
+          "name": "RayMissesSphere",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 254
+        },
+        {
+          "name": "RayIntersectsSphereAtTangent",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 263
+        }
+      ]
+    },
+    {
+      "name": "Computations",
+      "tests": 3,
+      "testsuite": [
+        {
+          "name": "IntersectionOnTheOutside",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 79
+        },
+        {
+          "name": "IntersectionOnTheInside",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 89
+        },
+        {
+          "name": "PrecomputingIntersectionState",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/sphere_tests.cpp",
+          "line": 102
+        }
+      ]
+    },
+    {
+      "name": "PointLight",
+      "tests": 1,
+      "testsuite": [
+        {
+          "name": "PointLightHasPositionAndIntensity",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/point_light_tests.cpp",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "name": "Material",
+      "tests": 1,
+      "testsuite": [
+        {
+          "name": "DefaultMaterial",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/material_tests.cpp",
+          "line": 6
+        }
+      ]
+    },
+    {
+      "name": "Lighting",
+      "tests": 5,
+      "testsuite": [
+        {
+          "name": "EyeBetweenLightAndSurface",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/lighting_tests.cpp",
+          "line": 9
+        },
+        {
+          "name": "LightBehindSurface",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/lighting_tests.cpp",
+          "line": 23
+        },
+        {
+          "name": "EyeInPathOfReflectionVector",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/lighting_tests.cpp",
+          "line": 37
+        },
+        {
+          "name": "LightOffset45Degrees",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/lighting_tests.cpp",
+          "line": 52
+        },
+        {
+          "name": "EyeOffset45Degrees",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/lighting_tests.cpp",
+          "line": 66
+        }
+      ]
+    },
+    {
+      "name": "World",
+      "tests": 7,
+      "testsuite": [
+        {
+          "name": "CreatingWorld",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/world_tests.cpp",
+          "line": 10
+        },
+        {
+          "name": "ShadingAnIntersection",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/world_tests.cpp",
+          "line": 18
+        },
+        {
+          "name": "ColorWithIntersectionBehindRay",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/world_tests.cpp",
+          "line": 32
+        },
+        {
+          "name": "ColorAtRayHits",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/world_tests.cpp",
+          "line": 46
+        },
+        {
+          "name": "ShadingAnIntersectionFromTheInside",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/world_tests.cpp",
+          "line": 57
+        },
+        {
+          "name": "IntersectWorldWithRay",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/world_tests.cpp",
+          "line": 74
+        },
+        {
+          "name": "DefaultWorld",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/world_tests.cpp",
+          "line": 87
+        }
+      ]
+    },
+    {
+      "name": "Camera",
+      "tests": 7,
+      "testsuite": [
+        {
+          "name": "PixelSizeForHorizontalCanvas",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/camera_tests.cpp",
+          "line": 8
+        },
+        {
+          "name": "PixelSizeForVerticalCanvas",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/camera_tests.cpp",
+          "line": 15
+        },
+        {
+          "name": "RayThroughCenterOfCanvas",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/camera_tests.cpp",
+          "line": 22
+        },
+        {
+          "name": "RayThroughCornerOfCanvas",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/camera_tests.cpp",
+          "line": 31
+        },
+        {
+          "name": "RayWhenCameraTransformed",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/camera_tests.cpp",
+          "line": 42
+        },
+        {
+          "name": "RenderingWorldWithCamera",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/camera_tests.cpp",
+          "line": 59
+        },
+        {
+          "name": "ConstructingACamera",
+          "file": "\/mnt\/extra_drive\/Ray_Tracing\/The_Ray_Tracer_Challenge\/tests\/camera_tests.cpp",
+          "line": 72
+        }
+      ]
+    }
+  ]
+}

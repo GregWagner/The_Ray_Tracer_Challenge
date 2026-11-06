@@ -1,0 +1,20 @@
+include("/usr/share/cmake/Modules/GoogleTestAddTests.cmake")
+gtest_discover_tests_impl(
+  TEST_TARGET [==[raytracer_tests]==]
+  TEST_EXECUTABLE [==[/mnt/extra_drive/Ray_Tracing/The_Ray_Tracer_Challenge/build_nootidy/tests/raytracer_tests]==]
+  TEST_EXECUTOR [==[]==]
+  TEST_WORKING_DIR [==[/mnt/extra_drive/Ray_Tracing/The_Ray_Tracer_Challenge/build_nootidy/tests]==]
+  TEST_EXTRA_ARGS [==[]==]
+  TEST_PROPERTIES [==[]==]
+  TEST_PREFIX [==[]==]
+  TEST_SUFFIX [==[]==]
+  TEST_FILTER [==[]==]
+  NO_PRETTY_TYPES [==[FALSE]==]
+  NO_PRETTY_VALUES [==[FALSE]==]
+  TEST_LIST [==[raytracer_tests_TESTS]==]
+  CTEST_FILE [==[/mnt/extra_drive/Ray_Tracing/The_Ray_Tracer_Challenge/build_nootidy/tests/raytracer_tests_e3b0c442_tests.cmake]==]
+  TEST_DISCOVERY_TIMEOUT [==[5]==]
+  TEST_DISCOVERY_EXTRA_ARGS [==[]==]
+  TEST_XML_OUTPUT_DIR [==[]==]
+  TEST_JSON_OUTPUT_DIR [==[/mnt/extra_drive/Ray_Tracing/The_Ray_Tracer_Challenge/build_nootidy/tests]==]
+)

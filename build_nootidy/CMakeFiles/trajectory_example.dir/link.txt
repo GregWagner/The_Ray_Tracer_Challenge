@@ -1,0 +1,1 @@
+/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/trajectory_example.dir/link.d CMakeFiles/trajectory_example.dir/examples/trajectory/main.cpp.o -o trajectory_example  libraytracer_core.a
