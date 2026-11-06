@@ -37,6 +37,7 @@ endfunction()
 
 # Options
 option(BUILD_TESTING "Build unit tests" ON)
+option(BUILD_QT_EXAMPLE "Build Qt GUI example" ON)
 
 # clang-tidy
 find_program(CLANG_TIDY_EXE NAMES clang-tidy)
@@ -45,6 +46,13 @@ if(CLANG_TIDY_EXE)
     set(CMAKE_CXX_CLANG_TIDY "${CLANG_TIDY_EXE}")
 endif()
 
+# Qt
+if(BUILD_QT_EXAMPLE)
+    find_package(Qt6 QUIET COMPONENTS Core Gui Widgets)
+    if(Qt6_FOUND)
+        message(STATUS "Qt6 found: ${Qt6_DIR}")
+    endif()
+endif()
 # clang-format target
 find_program(CLANG_FORMAT_EXE NAMES clang-format)
 if(CLANG_FORMAT_EXE)
@@ -120,6 +128,15 @@ add_executable(world_scene_example
 target_link_libraries(world_scene_example PRIVATE raytracer_core)
 target_compile_features(world_scene_example PRIVATE cxx_std_20)
 raytracer_enable_strict_warnings(world_scene_example)
+
+if(BUILD_QT_EXAMPLE AND Qt6_FOUND)
+    add_executable(qt_render_example
+        examples/qt_render/main.cpp
+    )
+    target_link_libraries(qt_render_example PRIVATE raytracer_core Qt6::Core Qt6::Gui Qt6::Widgets)
+    target_compile_features(qt_render_example PRIVATE cxx_std_20)
+    set_target_properties(qt_render_example PROPERTIES AUTOMOC ON CXX_CLANG_TIDY "")
+endif()
 
 add_executable(ray_sphere_example
     examples/ray_sphere/main.cpp
