@@ -6,6 +6,7 @@ Material::Material() {
     diffuse = 0.9;
     specular = 0.9;
     shininess = 200.0;
+    hasPattern = false;
 }
 
 Material material() {
@@ -44,6 +45,17 @@ bool operator==(const Material &leftValue, const Material &rightValue) {
     }
     if (shininessDifference > 0.00001) {
         return false;
+    }
+    if (leftValue.hasPattern != rightValue.hasPattern) {
+        return false;
+    }
+    if (leftValue.hasPattern) {
+        if (!(leftValue.pattern.a == rightValue.pattern.a)) {
+            return false;
+        }
+        if (!(leftValue.pattern.b == rightValue.pattern.b)) {
+            return false;
+        }
     }
     return true;
 }

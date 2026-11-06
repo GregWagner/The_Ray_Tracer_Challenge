@@ -5,11 +5,13 @@
 Pattern::Pattern() {
     a = color(1.0, 1.0, 1.0);
     b = color(0.0, 0.0, 0.0);
+    hasPattern = false;
 }
 
 Pattern::Pattern(Tuple aValue, Tuple bValue) {
     a = aValue;
     b = bValue;
+    hasPattern = true;
 }
 
 Pattern stripe_pattern(Tuple aValue, Tuple bValue) {

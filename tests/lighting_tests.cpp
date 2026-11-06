@@ -20,6 +20,24 @@ TEST(Lighting, EyeBetweenLightAndSurface) {
     EXPECT_NEAR(resultValue.blue, 1.9, 0.00001);
 }
 
+TEST(Lighting, LightingWithPatternApplied) {
+    Material materialValue = material();
+    materialValue.pattern = stripe_pattern(color(1.0, 1.0, 1.0), color(0.0, 0.0, 0.0));
+    materialValue.ambient = 1.0;
+    materialValue.diffuse = 0.0;
+    materialValue.specular = 0.0;
+
+    Tuple eyevValue = vector(0.0, 0.0, -1.0);
+    Tuple normalvValue = vector(0.0, 0.0, -1.0);
+    PointLight lightValue = point_light(point(0.0, 0.0, -10.0), color(1.0, 1.0, 1.0));
+
+    Tuple resultOne = lighting(materialValue, lightValue, point(0.9, 0.0, 0.0), eyevValue, normalvValue, false);
+    Tuple resultTwo = lighting(materialValue, lightValue, point(1.1, 0.0, 0.0), eyevValue, normalvValue, false);
+
+    EXPECT_TRUE(resultOne == color(1.0, 1.0, 1.0));
+    EXPECT_TRUE(resultTwo == color(0.0, 0.0, 0.0));
+}
+
 TEST(Lighting, SurfaceInShadow) {
     Material materialValue = material();
     Tuple positionValue = point(0.0, 0.0, 0.0);

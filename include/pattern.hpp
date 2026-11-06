@@ -6,6 +6,7 @@
 struct Pattern {
     Tuple a;
     Tuple b;
+    bool hasPattern;
 
     Pattern();
     Pattern(Tuple aValue, Tuple bValue);

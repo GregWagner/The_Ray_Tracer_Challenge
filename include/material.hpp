@@ -1,6 +1,7 @@
 #ifndef MATERIAL_HPP
 #define MATERIAL_HPP
 
+#include "pattern.hpp"
 #include "tuple.hpp"
 
 struct Material {
@@ -9,6 +10,8 @@ struct Material {
     double diffuse;
     double specular;
     double shininess;
+    bool hasPattern;
+    Pattern pattern;
 
     Material();
 };

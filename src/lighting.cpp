@@ -8,7 +8,11 @@ Tuple lighting(Material materialValue,
                Tuple eyevValue,
                Tuple normalValue,
                bool inShadowValue) {
-    Tuple effectiveColor = materialValue.color * lightValue.intensity;
+    Tuple materialColor = materialValue.color;
+    if (materialValue.hasPattern || materialValue.pattern.hasPattern) {
+        materialColor = pattern_at(materialValue.pattern, pointValue);
+    }
+    Tuple effectiveColor = materialColor * lightValue.intensity;
     Tuple lightVector = lightValue.position - pointValue;
     lightVector = normalize(lightVector);
 
