@@ -526,6 +526,16 @@ TEST(Matrix, ViewTransformLookingInPositiveZDirection) {
     EXPECT_TRUE(resultValue == scaling(-1.0, 1.0, -1.0));
 }
 
+TEST(Matrix, ViewTransformMovesTheWorld) {
+    Tuple fromValue = point(0.0, 0.0, 8.0);
+    Tuple toValue = point(0.0, 0.0, 0.0);
+    Tuple upValue = vector(0.0, 1.0, 0.0);
+
+    Matrix resultValue = view_transform(fromValue, toValue, upValue);
+
+    EXPECT_TRUE(resultValue == translation(0.0, 0.0, -8.0));
+}
+
 TEST(Matrix, ViewTransformForDefaultOrientation) {
     Tuple fromValue = point(0.0, 0.0, 0.0);
     Tuple toValue = point(0.0, 0.0, -1.0);
