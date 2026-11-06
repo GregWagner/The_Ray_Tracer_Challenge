@@ -84,3 +84,17 @@ Tuple shade_hit(World worldValue, Computation compsValue) {
 Tuple shadeHit(World worldValue, Computation compsValue) {
     return shade_hit(worldValue, compsValue);
 }
+
+Tuple color_at(World worldValue, Ray rayValue) {
+    Intersections intersectionsValue = intersect_world(worldValue, rayValue);
+    Hit hitValue = hit(intersectionsValue);
+    if (!hitValue) {
+        return color(0.0, 0.0, 0.0);
+    }
+    Computation compsValue = prepare_computations(hitValue.value(), rayValue);
+    return shade_hit(worldValue, compsValue);
+}
+
+Tuple colorAt(World worldValue, Ray rayValue) {
+    return color_at(worldValue, rayValue);
+}

@@ -29,6 +29,17 @@ TEST(World, ShadingAnIntersection) {
     EXPECT_NEAR(resultValue.blue, 0.2855, 0.00001);
 }
 
+TEST(World, ColorAtRayHits) {
+    World worldValue = default_world();
+    Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
+
+    Tuple resultValue = color_at(worldValue, rayValue);
+
+    EXPECT_NEAR(resultValue.red, 0.38066, 0.00001);
+    EXPECT_NEAR(resultValue.green, 0.47583, 0.00001);
+    EXPECT_NEAR(resultValue.blue, 0.2855, 0.00001);
+}
+
 TEST(World, ShadingAnIntersectionFromTheInside) {
     World worldValue = default_world();
     worldValue.light = point_light(point(0.0, 0.25, 0.0), color(1.0, 1.0, 1.0));
