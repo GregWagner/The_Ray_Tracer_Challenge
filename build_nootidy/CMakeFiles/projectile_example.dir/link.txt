@@ -1,1 +1,0 @@
-/usr/bin/c++ -Wl,--dependency-file=CMakeFiles/projectile_example.dir/link.d CMakeFiles/projectile_example.dir/examples/projectile/main.cpp.o -o projectile_example  libraytracer_core.a

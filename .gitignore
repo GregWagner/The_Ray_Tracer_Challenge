@@ -1,4 +1,5 @@
 build
+build_*
 *.pdf
 *.ppm
 compile_commands.json
