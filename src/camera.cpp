@@ -47,3 +47,21 @@ Camera camera(int hsizeValue, int vsizeValue, double fieldOfViewValue, Matrix tr
     resultValue.transform = transformValue;
     return resultValue;
 }
+
+Ray ray_for_pixel(Camera cameraValue, int xValue, int yValue) {
+    double xOffset = (xValue + 0.5) * cameraValue.pixelSize;
+    double yOffset = (yValue + 0.5) * cameraValue.pixelSize;
+    double worldX = cameraValue.halfWidth - xOffset;
+    double worldY = cameraValue.halfHeight - yOffset;
+
+    Matrix inverseTransform = inverse(cameraValue.transform);
+    Tuple pixelValue = inverseTransform * point(worldX, worldY, -1.0);
+    Tuple originValue = inverseTransform * point(0.0, 0.0, 0.0);
+    Tuple directionValue = normalize(pixelValue - originValue);
+
+    return ray(originValue, directionValue);
+}
+
+Ray rayForPixel(Camera cameraValue, int xValue, int yValue) {
+    return ray_for_pixel(cameraValue, xValue, yValue);
+}

@@ -4,6 +4,8 @@
 #include <cmath>
 
 #include "matrix.hpp"
+#include "ray.hpp"
+#include "tuple.hpp"
 
 struct Camera {
     int hsize;
@@ -24,4 +26,7 @@ struct Camera {
 
 Camera camera(int hsizeValue, int vsizeValue, double fieldOfViewValue);
 Camera camera(int hsizeValue, int vsizeValue, double fieldOfViewValue, Matrix transformValue);
+
+Ray ray_for_pixel(Camera cameraValue, int xValue, int yValue);
+Ray rayForPixel(Camera cameraValue, int xValue, int yValue);
 #endif
