@@ -118,14 +118,24 @@ raytracer_enable_strict_warnings(trajectory_example)
 add_executable(clock_example
     examples/clock/main.cpp
 )
+target_include_directories(clock_example PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/examples/common)
 target_link_libraries(clock_example PRIVATE raytracer_core)
+if(Qt6_FOUND)
+    target_link_libraries(clock_example PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+    set_target_properties(clock_example PROPERTIES AUTOMOC ON CXX_CLANG_TIDY "")
+endif()
 target_compile_features(clock_example PRIVATE cxx_std_20)
 raytracer_enable_strict_warnings(clock_example)
 
 add_executable(world_scene_example
     examples/world_scene/main.cpp
 )
+target_include_directories(world_scene_example PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/examples/common)
 target_link_libraries(world_scene_example PRIVATE raytracer_core)
+if(Qt6_FOUND)
+    target_link_libraries(world_scene_example PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+    set_target_properties(world_scene_example PROPERTIES AUTOMOC ON CXX_CLANG_TIDY "")
+endif()
 target_compile_features(world_scene_example PRIVATE cxx_std_20)
 raytracer_enable_strict_warnings(world_scene_example)
 
@@ -141,13 +151,23 @@ endif()
 add_executable(ray_sphere_example
     examples/ray_sphere/main.cpp
 )
+target_include_directories(ray_sphere_example PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/examples/common)
 target_link_libraries(ray_sphere_example PRIVATE raytracer_core)
+if(Qt6_FOUND)
+    target_link_libraries(ray_sphere_example PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+    set_target_properties(ray_sphere_example PROPERTIES AUTOMOC ON CXX_CLANG_TIDY "")
+endif()
 target_compile_features(ray_sphere_example PRIVATE cxx_std_20)
 raytracer_enable_strict_warnings(ray_sphere_example)
 
 add_executable(ray_sphere_with_lighting_example
     examples/ray_sphere_with_lighting/main.cpp
 )
+target_include_directories(ray_sphere_with_lighting_example PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/examples/common)
 target_link_libraries(ray_sphere_with_lighting_example PRIVATE raytracer_core)
+if(Qt6_FOUND)
+    target_link_libraries(ray_sphere_with_lighting_example PRIVATE Qt6::Core Qt6::Gui Qt6::Widgets)
+    set_target_properties(ray_sphere_with_lighting_example PROPERTIES AUTOMOC ON CXX_CLANG_TIDY "")
+endif()
 target_compile_features(ray_sphere_with_lighting_example PRIVATE cxx_std_20)
 raytracer_enable_strict_warnings(ray_sphere_with_lighting_example)

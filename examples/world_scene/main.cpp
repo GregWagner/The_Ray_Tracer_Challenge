@@ -1,5 +1,4 @@
-#include <fstream>
-#include <iostream>
+#include <QApplication>
 
 #include "camera.hpp"
 #include "canvas.hpp"
@@ -7,10 +6,13 @@
 #include "material.hpp"
 #include "matrix.hpp"
 #include "point_light.hpp"
+#include "qt_canvas.h"
 #include "tuple.hpp"
 #include "world.hpp"
 
-int main() {
+int main(int argc, char *argv[]) {
+    QApplication application(argc, argv);
+
     World worldValue = world();
 
     Sphere floorSphere = sphere();
@@ -54,21 +56,17 @@ int main() {
     leftSphere.material.specular = 0.3;
     worldValue.objects.push_back(leftSphere);
 
-    PointLight lightValue = point_light(point(-10.0, 10.0, -10.0), color(1.0, 1.0, 1.0));
-    worldValue.lights.push_back(lightValue);
+    worldValue.light = point_light(point(-10.0, 10.0, -10.0), color(1.0, 1.0, 1.0));
     worldValue.hasLight = true;
-    worldValue.light = lightValue;
+    worldValue.lights.clear();
+    worldValue.lights.push_back(worldValue.light);
 
     Camera cameraValue = camera(1280, 1024, PI / 3.0);
     cameraValue.transform = view_transform(point(0.0, 1.5, -5.0), point(0.0, 1.0, 0.0), vector(0.0, 1.0, 0.0));
 
     Canvas canvasValue = render(cameraValue, worldValue);
 
-    std::ofstream outputFile("world_scene.ppm");
-    outputFile << canvasToPpm(canvasValue);
-    outputFile.close();
-
-    std::cout << "Saved canvas to world_scene.ppm\n";
+    showCanvas(application, canvasValue, "World Scene");
 
     return 0;
 }

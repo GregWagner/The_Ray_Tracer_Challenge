@@ -1,12 +1,14 @@
-#include <fstream>
-#include <iostream>
+#include <QApplication>
 
 #include "canvas.hpp"
 #include "intersection.hpp"
+#include "qt_canvas.h"
 #include "ray.hpp"
 #include "tuple.hpp"
 
-int main() {
+int main(int argc, char *argv[]) {
+    QApplication application(argc, argv);
+
     int canvasWidth = 200;
     int canvasHeight = 200;
     Canvas canvasValue = canvas(canvasWidth, canvasHeight);
@@ -38,11 +40,7 @@ int main() {
         yIndex = yIndex + 1;
     }
 
-    std::ofstream outputFile("ray_sphere.ppm");
-    outputFile << canvasToPpm(canvasValue);
-    outputFile.close();
-
-    std::cout << "Saved canvas to ray_sphere.ppm\n";
+    showCanvas(application, canvasValue, "Ray Sphere");
 
     return 0;
 }

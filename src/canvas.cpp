@@ -18,7 +18,7 @@ Canvas::Canvas(int widthValue, int heightValue) {
     }
 }
 
-Tuple Canvas::pixelAt(int xValue, int yValue) {
+Tuple Canvas::pixelAt(int xValue, int yValue) const {
     int index = yValue * width + xValue;
     return pixels[static_cast<std::size_t>(index)];
 }

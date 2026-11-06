@@ -1,15 +1,18 @@
-#include <fstream>
-#include <iostream>
+#include <QApplication>
 
 #include "canvas.hpp"
 #include "intersection.hpp"
 #include "lighting.hpp"
 #include "material.hpp"
 #include "point_light.hpp"
+#include "qt_canvas.h"
 #include "ray.hpp"
 #include "tuple.hpp"
+#include "world.hpp"
 
-int main() {
+int main(int argc, char *argv[]) {
+    QApplication application(argc, argv);
+
     int canvasWidth = 800;
     int canvasHeight = 800;
     Canvas canvasValue = canvas(canvasWidth, canvasHeight);
@@ -19,7 +22,12 @@ int main() {
     sphereValue.material.color = color(1.0, 0.2, 1.0);
     set_transform(sphereValue, scaling(4.0, 4.0, 4.0));
 
+    World worldValue = world();
+    worldValue.objects.push_back(sphereValue);
     PointLight lightValue = point_light(point(-10.0, 10.0, -10.0), color(1.0, 1.0, 1.0));
+    worldValue.lights.push_back(lightValue);
+    worldValue.hasLight = true;
+    worldValue.light = lightValue;
 
     int yIndex = 0;
     while (yIndex < canvasHeight) {
@@ -37,10 +45,8 @@ int main() {
 
             Tuple colorValue = color(0.0, 0.0, 0.0);
             if (hitValue) {
-                Tuple pointValue = position(rayValue, hitValue->t);
-                Tuple normalValue = normal_at(*hitValue->object, pointValue);
-                Tuple eyeValue = -rayValue.direction;
-                colorValue = lighting(hitValue->object->material, lightValue, pointValue, eyeValue, normalValue);
+                Computation comps = prepare_computations(*hitValue, rayValue);
+                colorValue = shade_hit(worldValue, comps);
             }
 
             canvasValue.writePixel(xIndex, yIndex, colorValue);
@@ -49,11 +55,7 @@ int main() {
         yIndex = yIndex + 1;
     }
 
-    std::ofstream outputFile("ray_sphere_with_lighting.ppm");
-    outputFile << canvasToPpm(canvasValue);
-    outputFile.close();
-
-    std::cout << "Saved canvas to ray_sphere_with_lighting.ppm\n";
+    showCanvas(application, canvasValue, "Ray Sphere With Lighting");
 
     return 0;
 }

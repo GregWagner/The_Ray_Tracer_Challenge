@@ -1,17 +1,16 @@
-#include <fstream>
-#include <iostream>
+#include <QApplication>
 
 #include "canvas.hpp"
 #include "matrix.hpp"
+#include "qt_canvas.h"
 #include "tuple.hpp"
 
-int main() {
+int main(int argc, char *argv[]) {
+    QApplication application(argc, argv);
+
     int canvasWidth = 800;
     int canvasHeight = 800;
     Canvas canvasValue = canvas(canvasWidth, canvasHeight);
-
-    Tuple centerValue = color(0.0, 0.0, 0.0);
-    (void)centerValue;
 
     int centerX = canvasWidth / 2;
     int centerY = canvasHeight / 2;
@@ -40,11 +39,7 @@ int main() {
         hourIndex = hourIndex + 1;
     }
 
-    std::ofstream outputFile("clock.ppm");
-    outputFile << canvasToPpm(canvasValue);
-    outputFile.close();
-
-    std::cout << "Saved canvas to clock.ppm\n";
+    showCanvas(application, canvasValue, "Analog Clock");
 
     return 0;
 }

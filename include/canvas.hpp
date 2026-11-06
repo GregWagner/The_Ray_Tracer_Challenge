@@ -15,7 +15,7 @@ struct Canvas {
     Canvas();
     Canvas(int widthValue, int heightValue);
 
-    Tuple pixelAt(int xValue, int yValue);
+    Tuple pixelAt(int xValue, int yValue) const;
     void writePixel(int xValue, int yValue, Tuple colorValue);
 
     std::string toPpm();
