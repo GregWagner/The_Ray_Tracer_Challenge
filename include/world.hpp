@@ -20,4 +20,9 @@ World default_world();
 
 Intersections intersect_world(World worldValue, Ray rayValue);
 Intersections intersectWorld(World worldValue, Ray rayValue);
+
+#include "lighting.hpp"
+
+Tuple shade_hit(World worldValue, Computation compsValue);
+Tuple shadeHit(World worldValue, Computation compsValue);
 #endif

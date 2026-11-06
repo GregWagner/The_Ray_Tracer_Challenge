@@ -1,5 +1,7 @@
 #include "world.hpp"
 
+#include "lighting.hpp"
+
 #include <cmath>
 
 World::World() {
@@ -27,9 +29,6 @@ World default_world() {
 
     Sphere sphereTwo = sphere();
     set_transform(sphereTwo, scaling(0.5, 0.5, 0.5));
-    sphereTwo.material.color = color(0.8, 1.0, 0.6);
-    sphereTwo.material.diffuse = 0.7;
-    sphereTwo.material.specular = 0.2;
     resultValue.objects.push_back(sphereTwo);
 
     return resultValue;
@@ -66,4 +65,22 @@ Intersections intersect_world(World worldValue, Ray rayValue) {
 
 Intersections intersectWorld(World worldValue, Ray rayValue) {
     return intersect_world(worldValue, rayValue);
+}
+
+Tuple shade_hit(World worldValue, Computation compsValue) {
+    PointLight lightValue;
+    if (worldValue.hasLight) {
+        lightValue = worldValue.light;
+    } else if (worldValue.lights.size() > 0) {
+        lightValue = worldValue.lights[0];
+    } else {
+        return compsValue.object->material.color;
+    }
+
+    Tuple resultValue = lighting(compsValue.object->material, lightValue, compsValue.point, compsValue.eyev, compsValue.normalv, false);
+    return resultValue;
+}
+
+Tuple shadeHit(World worldValue, Computation compsValue) {
+    return shade_hit(worldValue, compsValue);
 }
