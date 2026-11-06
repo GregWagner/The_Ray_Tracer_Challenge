@@ -56,6 +56,10 @@ struct Computation {
     Tuple eyev;
     Tuple normalv;
     bool inside;
+    Tuple over_point;
+    Tuple overPoint;
+    Tuple under_point;
+    Tuple underPoint;
 
     Computation();
 };

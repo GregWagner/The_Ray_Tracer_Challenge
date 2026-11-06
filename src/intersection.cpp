@@ -200,6 +200,10 @@ Computation::Computation() {
     t = 0.0;
     object = 0;
     inside = false;
+    over_point = ::point(0.0, 0.0, 0.0);
+    overPoint = ::point(0.0, 0.0, 0.0);
+    under_point = ::point(0.0, 0.0, 0.0);
+    underPoint = ::point(0.0, 0.0, 0.0);
 }
 
 Computation prepare_computations(const Intersection &intersectionValue, const Ray &rayValue) {
@@ -217,6 +221,11 @@ Computation prepare_computations(const Intersection &intersectionValue, const Ra
     } else {
         resultValue.inside = false;
     }
+
+    resultValue.over_point = resultValue.point + (resultValue.normalv * 0.00001);
+    resultValue.overPoint = resultValue.over_point;
+    resultValue.under_point = resultValue.point - (resultValue.normalv * 0.00001);
+    resultValue.underPoint = resultValue.under_point;
 
     return resultValue;
 }

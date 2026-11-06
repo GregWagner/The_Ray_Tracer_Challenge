@@ -99,6 +99,18 @@ TEST(Computations, IntersectionOnTheInside) {
     EXPECT_TRUE(comps.normalv == vector(0.0, 0.0, -1.0));
 }
 
+TEST(Computations, HitOffsetsPoint) {
+    Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
+    Sphere sphereValue = sphere();
+    set_transform(sphereValue, translation(0.0, 0.0, 1.0));
+    Intersection intersectionValue = intersection(5.0, sphereValue);
+
+    Computation comps = prepare_computations(intersectionValue, rayValue);
+
+    EXPECT_TRUE(comps.over_point.z < -0.000005);
+    EXPECT_TRUE(comps.point.z > comps.over_point.z);
+}
+
 TEST(Computations, PrecomputingIntersectionState) {
     Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));
     Sphere sphereValue = sphere();
