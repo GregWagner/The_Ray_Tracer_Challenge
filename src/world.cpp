@@ -98,3 +98,32 @@ Tuple color_at(World worldValue, Ray rayValue) {
 Tuple colorAt(World worldValue, Ray rayValue) {
     return color_at(worldValue, rayValue);
 }
+
+bool is_shadowed(World worldValue, Tuple pointValue) {
+    PointLight lightValue;
+    if (worldValue.hasLight) {
+        lightValue = worldValue.light;
+    } else if (worldValue.lights.size() > 0) {
+        lightValue = worldValue.lights[0];
+    } else {
+        return false;
+    }
+
+    Tuple vectorValue = lightValue.position - pointValue;
+    double distanceValue = magnitude(vectorValue);
+    Ray rayValue = ray(pointValue, normalize(vectorValue));
+
+    Intersections intersectionsValue = intersect_world(worldValue, rayValue);
+    Hit hitValue = hit(intersectionsValue);
+
+    if (hitValue) {
+        if (hitValue->t < distanceValue && hitValue->t >= 0.0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+bool isShadowed(World worldValue, Tuple pointValue) {
+    return is_shadowed(worldValue, pointValue);
+}

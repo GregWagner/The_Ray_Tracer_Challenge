@@ -43,6 +43,13 @@ TEST(World, ColorWithIntersectionBehindRay) {
     EXPECT_TRUE(resultValue == innerValue.material.color);
 }
 
+TEST(World, NoShadowWhenNothingCollinear) {
+    World worldValue = default_world();
+    Tuple pointValue = point(0.0, 10.0, 0.0);
+
+    EXPECT_FALSE(is_shadowed(worldValue, pointValue));
+}
+
 TEST(World, ColorAtRayHits) {
     World worldValue = default_world();
     Ray rayValue = ray(point(0.0, 0.0, -5.0), vector(0.0, 0.0, 1.0));

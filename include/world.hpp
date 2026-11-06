@@ -26,6 +26,9 @@ Intersections intersectWorld(World worldValue, Ray rayValue);
 Tuple shade_hit(World worldValue, Computation compsValue);
 Tuple shadeHit(World worldValue, Computation compsValue);
 
+bool is_shadowed(World worldValue, Tuple pointValue);
+bool isShadowed(World worldValue, Tuple pointValue);
+
 Tuple color_at(World worldValue, Ray rayValue);
 Tuple colorAt(World worldValue, Ray rayValue);
 #endif
