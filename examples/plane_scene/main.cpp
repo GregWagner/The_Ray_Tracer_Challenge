@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     Plane wallPlane = plane();
     set_transform(wallPlane, translation(0.0, 0.0, 5.0) * rotation_x(PI / 2.0));
     wallPlane.material = material();
-    wallPlane.material.color = color(0.9, 0.9, 1.0);
+    wallPlane.material.color = color(1.0, 1.0, 0.8);
     wallPlane.material.specular = 0.0;
     worldValue.planes.push_back(wallPlane);
 
